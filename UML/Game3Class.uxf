@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0-XS">
+  <zoom_level>11</zoom_level>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>66</x>
+      <y>110</y>
+      <w>198</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>Класс для сущности 
+"Игра &lt;&lt;Потерянное слово&gt;&gt;"</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>176</x>
+      <y>165</y>
+      <w>55</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;80.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>55</x>
+      <y>242</y>
+      <w>176</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>Game3
+--
+- WordDictionary
+- WordGrid
+- TryCounter
+--
+- RandomPosition()
+- RandomWords()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>451</x>
+      <y>253</y>
+      <w>198</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>Класс для сущности 
+"Ячейка"</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>132</x>
+      <y>363</y>
+      <w>143</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>110.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>253</x>
+      <y>341</y>
+      <w>187</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>Cell
+--
+- Word
+- IsVisible
+
+--
++ SetWord()
++ GetWord()
++ SetIsVisible()
++ GetIsVisible()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>385</x>
+      <y>264</y>
+      <w>88</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;80.0;60.0;10.0</additional_attributes>
+  </element>
+</diagram>
