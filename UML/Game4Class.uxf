@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0-XS">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>360</x>
+      <y>230</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Класс для сущности 
+"Figure"</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>70</x>
+      <y>370</y>
+      <w>140</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>120.0;30.0;10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>190</x>
+      <y>310</y>
+      <w>170</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>Figure
+--
+- IsFill
+
+--
++ SetIsFill()
++ GetIsFill()
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>240</y>
+      <w>80</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;80.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>10</x>
+      <y>100</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Класс для сущности 
+"Игра &lt;&lt;Матрицы памяти&gt;&gt;"</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>110</x>
+      <y>150</y>
+      <w>50</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;80.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>220</y>
+      <w>160</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Game4
+--
+- FigureGrid
+- Lives
+--
+- RandomPosition()
+- ClearGrid()
+- FillGrid()
+- IsCorrectStep()
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
