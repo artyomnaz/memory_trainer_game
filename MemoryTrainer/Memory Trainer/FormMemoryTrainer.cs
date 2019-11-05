@@ -16,5 +16,30 @@ namespace Memory_Trainer
         {
             InitializeComponent();
         }
+
+        private void buttonFindAPair_Click(object sender, EventArgs e)
+        {
+            return;
+        }
+
+        private void buttonLostWord_Click(object sender, EventArgs e)
+        {
+            return;
+        }
+
+        private void buttonQuadShulte_Click(object sender, EventArgs e)
+        {
+            return;
+        }
+
+        private void buttonMemoryMatrix_Click(object sender, EventArgs e)
+        {
+            return;
+        }
+
+        private void buttonThimbles_Click(object sender, EventArgs e)
+        {
+            return;
+        }
     }
 }
