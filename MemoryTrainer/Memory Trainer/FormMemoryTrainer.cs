@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Memory_Trainer.Quad_Shulte;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,7 +30,10 @@ namespace Memory_Trainer
 
         private void buttonQuadShulte_Click(object sender, EventArgs e)
         {
-            return;
+            FormQuadShulte formQuadShulte = new FormQuadShulte();
+            formQuadShulte.Show();
+            formQuadShulte.Owner = this;
+            Hide();
         }
 
         private void buttonMemoryMatrix_Click(object sender, EventArgs e)
