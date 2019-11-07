@@ -50,11 +50,20 @@
     <Compile Include="FormMemoryTrainer.Designer.cs">
       <DependentUpon>FormMemoryTrainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormThimbles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormThimbles.Designer.cs">
+      <DependentUpon>FormThimbles.cs</DependentUpon>
+    </Compile>
     <Compile Include="IGameInterface.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMemoryTrainer.resx">
       <DependentUpon>FormMemoryTrainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormThimbles.resx">
+      <DependentUpon>FormThimbles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

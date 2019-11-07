@@ -125,6 +125,7 @@
             this.Controls.Add(this.buttonQuadShulte);
             this.Controls.Add(this.buttonFindAPair);
             this.Name = "FormMemoryTrainer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Тренажер памяти";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

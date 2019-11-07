@@ -39,7 +39,12 @@ namespace Memory_Trainer
 
         private void buttonThimbles_Click(object sender, EventArgs e)
         {
-            return;
+            FormThimbles formThimbles = new FormThimbles();
+            formThimbles.Left = Left;
+            formThimbles.Top = Top;
+            Hide();
+            formThimbles.ShowDialog();
+            Show();
         }
     }
 }
