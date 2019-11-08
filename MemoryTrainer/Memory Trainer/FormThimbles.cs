@@ -26,15 +26,18 @@ namespace Memory_Trainer
             Animate();
         }
 
-        private void Timer1_Tick(object sender, EventArgs e) {
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
             // анимация перемешивания
-            if (thimbles[ind1].Left == x2 && thimbles[ind1].Top == y2) {
+            if (thimbles[ind1].Left == x2 && thimbles[ind1].Top == y2)
+            {
                 timer1.Stop();
                 timer1.Enabled = false;
                 isAnimation = false;
                 curstep += 1;
                 if (curstep < level + 2) Shuffle();
-                else {
+                else
+                {
                     curstep = 0;
                     // кладем мяч под наперсток с ind = bPos
                     int b_pos_x = thimbles[bPos].Left + thimbles[bPos].Width / 2 - pbBall.Width / 2;
@@ -42,10 +45,15 @@ namespace Memory_Trainer
                     pbBall.Left = b_pos_x;
                     pbBall.Top = b_pos_y;
                     pbBall.Visible = true;
+                    for (int i = 0; i < 3; i++)
+                    {
+                        thimbles[i].Click += FormThimbles_Click;
+                    }
                 }
                 return;
             }
-            else if (Math.Abs(thimbles[ind1].Left - x2) <= 20 && Math.Abs(thimbles[ind1].Top - y2) <= 10) {
+            else if (Math.Abs(thimbles[ind1].Left - x2) <= 20 && Math.Abs(thimbles[ind1].Top - y2) <= 10)
+            {
                 thimbles[ind1].Left = x2;
                 thimbles[ind1].Top = y2;
                 thimbles[ind2].Left = x1;
@@ -58,14 +66,17 @@ namespace Memory_Trainer
             thimbles[ind2].Top -= dy / timer1.Interval;
         }
 
-        private void Timer2_Tick(object sender, EventArgs e) {
+        private void Timer2_Tick(object sender, EventArgs e)
+        {
             // анимация перемешивания
-            if (isToTop && thimbles[ind1].Top == y2) {
+            if (isToTop && thimbles[ind1].Top == y2)
+            {
                 isToTop = false;
                 Thread.Sleep(400);
                 return;
             }
-            else if (!isToTop && thimbles[ind1].Top == y1) {
+            else if (!isToTop && thimbles[ind1].Top == y1)
+            {
                 timer2.Stop();
                 timer2.Enabled = false;
                 isAnimation = false;
@@ -78,7 +89,36 @@ namespace Memory_Trainer
             thimbles[ind1].Top -= koef * dy / timer2.Interval;
         }
 
-        private void Animate() {
+        private void Timer3_Tick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                int koef = isToTop ? -1 : 1;
+                thimbles[i].Top -= koef * dy / timer3.Interval;
+            }
+        }
+
+        private void FormThimbles_Click(object sender, EventArgs e)
+        {
+            int choise = -1;
+            for (int i = 0; i < 3; i++)
+            {
+                if (((PictureBox)sender) == thimbles[i])
+                {
+                    choise = i;
+                    break;
+                }
+            }
+            y1 = thimbles[0].Top;
+            y2 = y1 - 100;
+            dy = y2 - y1;
+            // запускаем анимацию
+            timer3.Enabled = true;
+            timer3.Start();
+        }
+
+        private void Animate()
+        {
             Random rand = new Random();
             isAnimation = true;
             // рандомные индексы обмениваемых
@@ -100,7 +140,8 @@ namespace Memory_Trainer
             timer2.Start();
         }
 
-        private void Shuffle() {
+        private void Shuffle()
+        {
             // перемешивание
             Random rand = new Random();
             isAnimation = true;

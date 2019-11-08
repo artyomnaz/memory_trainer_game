@@ -37,6 +37,7 @@
             this.pbThimble3 = new System.Windows.Forms.PictureBox();
             this.pbBall = new System.Windows.Forms.PictureBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbThimble1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbThimble2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbThimble3)).BeginInit();
@@ -103,6 +104,11 @@
             this.timer2.Interval = 20;
             this.timer2.Tick += new System.EventHandler(this.Timer2_Tick);
             // 
+            // timer3
+            // 
+            this.timer3.Interval = 20;
+            this.timer3.Tick += new System.EventHandler(this.Timer3_Tick);
+            // 
             // FormThimbles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -135,5 +141,6 @@
         private System.Windows.Forms.PictureBox pbThimble3;
         private System.Windows.Forms.PictureBox pbBall;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer timer3;
     }
 }
