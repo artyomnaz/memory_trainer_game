@@ -35,7 +35,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Memory_Trainer.Properties.Resources.правила;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(1, 1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(582, 561);
@@ -50,8 +50,10 @@
             this.ClientSize = new System.Drawing.Size(584, 561);
             this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Magneto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(600, 600);
             this.MinimumSize = new System.Drawing.Size(600, 600);
             this.Name = "FormRules";
