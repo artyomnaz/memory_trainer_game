@@ -45,7 +45,8 @@ namespace Memory_Trainer.Quad_Shulte
 
         public void ShowRules()
         {
-            throw new NotImplementedException();
+            FormRules rules = new FormRules();
+            rules.ShowDialog(this);
         }
 
         private void FormQuadShulte_FormClosed(object sender, FormClosedEventArgs e)
@@ -60,6 +61,11 @@ namespace Memory_Trainer.Quad_Shulte
             sec = time % 60;
             label3.Text = minute.ToString() + ':' + sec.ToString();
             time++;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ShowRules();
         }
     }
 }

@@ -60,6 +60,12 @@
       <DependentUpon>FormQuadShulte.cs</DependentUpon>
     </Compile>
     <Compile Include="Quad Shulte\Quad.cs" />
+    <Compile Include="Quad Shulte\Rules.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quad Shulte\Rules.Designer.cs">
+      <DependentUpon>Rules.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormMemoryTrainer.resx">
       <DependentUpon>FormMemoryTrainer.cs</DependentUpon>
     </EmbeddedResource>
@@ -71,9 +77,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Quad Shulte\FormQuadShulte.resx">
       <DependentUpon>FormQuadShulte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Quad Shulte\Rules.resx">
+      <DependentUpon>Rules.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -93,6 +103,9 @@
     <Folder Include="Lost word\" />
     <Folder Include="Memory matrix\" />
     <Folder Include="Thimbles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\правила.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
