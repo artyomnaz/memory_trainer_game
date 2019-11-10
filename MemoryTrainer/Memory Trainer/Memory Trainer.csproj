@@ -53,6 +53,12 @@
     <Compile Include="IGameInterface.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quad Shulte\FormInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quad Shulte\FormInfo.Designer.cs">
+      <DependentUpon>FormInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Quad Shulte\FormQuadShulte.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Quad Shulte\FormInfo.resx">
+      <DependentUpon>FormInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Quad Shulte\FormQuadShulte.resx">
       <DependentUpon>FormQuadShulte.cs</DependentUpon>
     </EmbeddedResource>
@@ -109,6 +118,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\RulesImage.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InfoPict.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

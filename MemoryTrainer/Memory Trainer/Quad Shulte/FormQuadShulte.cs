@@ -40,7 +40,8 @@ namespace Memory_Trainer.Quad_Shulte
 
         public void ShowInfo()
         {
-            throw new NotImplementedException();
+            FormInfo info = new FormInfo();
+            info.ShowDialog(this);
         }
 
         public void ShowRules()
@@ -66,6 +67,11 @@ namespace Memory_Trainer.Quad_Shulte
         private void button3_Click(object sender, EventArgs e)
         {
             ShowRules();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ShowInfo();
         }
     }
 }
