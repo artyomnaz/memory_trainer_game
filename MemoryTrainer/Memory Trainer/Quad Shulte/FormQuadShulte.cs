@@ -13,19 +13,69 @@ namespace Memory_Trainer.Quad_Shulte
     public partial class FormQuadShulte : Form,IGameInterface
     {
         int time;
+        DataGridViewButtonColumn[] buttonColumn = new DataGridViewButtonColumn[5];
         public FormQuadShulte()
         {
             InitializeComponent();
+            Game();
         }
 
-        public void DrawField()
+        public void Game()
         {
-            throw new NotImplementedException();
+            dataGridView1.RowTemplate.Height = 104;
+            dataGridView1.RowTemplate.Resizable = DataGridViewTriState.False;
+            dataGridView1.CellClick +=
+            new DataGridViewCellEventHandler(dataGridView1_CellClick);
+            for (int i = 0; i < 5; i++)
+            {
+                buttonColumn[i] = new DataGridViewButtonColumn();
+                dataGridView1.Columns.Add(buttonColumn[i]);
+                buttonColumn[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                buttonColumn[i].FlatStyle = FlatStyle.Popup;
+            }
+            dataGridView1.RowCount = 5;
+            int[] array = new int[25];
+            Random rnd = new Random();
+            bool ind = false;
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = rnd.Next(1, 26);
+                for (int j = i - 1; j >= 0; j--)
+                    if (array[i] == array[j]) ind = true;
+                if (ind) i = i - 1;
+                ind = false;
+            }
+            int[,] mas = new int[5, 5];
+            int k = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    mas[i, j] = array[k];
+                    k++;
+                }
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    dataGridView1[i, j].Value = mas[i, j];
+                }
+            }
+        }
+        public void DrawField()
+        {     
+
         }
 
         public bool IsFinish()
         {
-            throw new NotImplementedException();
+            if(num==26)
+            {
+                FormWin formWin = new FormWin();
+                formWin.ShowDialog(this);
+            }
+            return true;
         }
 
         public void OpenGame()
@@ -56,11 +106,11 @@ namespace Memory_Trainer.Quad_Shulte
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        {
+        {   
             int minute, sec;
             minute = time / 60;
             sec = time % 60;
-            label3.Text = minute.ToString() + ':' + sec.ToString();
+            TimerLabel.Text = minute.ToString() + ':' + sec.ToString();
             time++;
         }
 
@@ -73,5 +123,33 @@ namespace Memory_Trainer.Quad_Shulte
         {
             ShowInfo();
         }
+        int count = 0;
+        int num = 1;
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(timer1.Enabled==false)
+            {
+                timer1.Enabled = true;
+            }
+            if (dataGridView1[e.ColumnIndex, e.RowIndex].Value.ToString() == num.ToString())
+            {          
+                num++;
+                if (num<=25)
+                {
+                    Inflabel.Text = num.ToString();
+                }         
+                IsFinish();
+            }
+            else
+            {
+                count++;
+                CountLabel.Text = count.ToString();
+            }
+        }
+        private void dataGridView1_SelectionChanged_1(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
+        }
+
     }
 }
