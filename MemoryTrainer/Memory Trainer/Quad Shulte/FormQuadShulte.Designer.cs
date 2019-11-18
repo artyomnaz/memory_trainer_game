@@ -53,6 +53,8 @@
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.ColumnHeadersVisible = false;
             this.dataGridView1.Location = new System.Drawing.Point(239, 92);
@@ -107,6 +109,7 @@
             this.NewGamebutton.TabIndex = 3;
             this.NewGamebutton.Text = "Новая игра";
             this.NewGamebutton.UseVisualStyleBackColor = false;
+            this.NewGamebutton.Click += new System.EventHandler(this.NewGamebutton_Click);
             // 
             // Downloadbutton
             // 

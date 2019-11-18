@@ -59,6 +59,12 @@
     <Compile Include="Quad Shulte\FormInfo.Designer.cs">
       <DependentUpon>FormInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Quad Shulte\FormLevel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quad Shulte\FormLevel.Designer.cs">
+      <DependentUpon>FormLevel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Quad Shulte\FormQuadShulte.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     </Compile>
     <EmbeddedResource Include="Quad Shulte\FormInfo.resx">
       <DependentUpon>FormInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Quad Shulte\FormLevel.resx">
+      <DependentUpon>FormLevel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Quad Shulte\FormQuadShulte.resx">
       <DependentUpon>FormQuadShulte.cs</DependentUpon>
@@ -133,6 +142,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\победа.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\фон.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

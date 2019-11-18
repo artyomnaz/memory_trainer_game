@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Memory_Trainer.Quad_Shulte
@@ -13,51 +6,54 @@ namespace Memory_Trainer.Quad_Shulte
     public partial class FormQuadShulte : Form,IGameInterface
     {
         int time;
-        DataGridViewButtonColumn[] buttonColumn = new DataGridViewButtonColumn[5];
+        public int Level { get; set; }
         public FormQuadShulte()
         {
             InitializeComponent();
-            Game();
-        }
-
-        public void Game()
-        {
-            dataGridView1.RowTemplate.Height = 104;
             dataGridView1.RowTemplate.Resizable = DataGridViewTriState.False;
             dataGridView1.CellClick +=
             new DataGridViewCellEventHandler(dataGridView1_CellClick);
-            for (int i = 0; i < 5; i++)
+            this.dataGridView1.DefaultCellStyle.Font = new System.Drawing.Font("Magneto", 15);
+            Level = 5;
+            Game(Level);
+        }
+        public void Game(int level)
+        {
+            DataGridViewButtonColumn[] buttonColumn = new DataGridViewButtonColumn[level];
+            dataGridView1.RowTemplate.Height = dataGridView1.Height/level-1;        
+            for (int i = 0; i < level; i++)
             {
                 buttonColumn[i] = new DataGridViewButtonColumn();
                 dataGridView1.Columns.Add(buttonColumn[i]);
                 buttonColumn[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 buttonColumn[i].FlatStyle = FlatStyle.Popup;
             }
-            dataGridView1.RowCount = 5;
-            int[] array = new int[25];
+            dataGridView1.RowCount = level;
+            int r = level * level;
+            int[] array = new int[r];
             Random rnd = new Random();
             bool ind = false;
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] = rnd.Next(1, 26);
+                array[i] = rnd.Next(1, r+1);
                 for (int j = i - 1; j >= 0; j--)
                     if (array[i] == array[j]) ind = true;
                 if (ind) i = i - 1;
                 ind = false;
             }
-            int[,] mas = new int[5, 5];
+            int[,] mas = new int[level, level];
             int k = 0;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < level; i++)
             {
-                for (int j = 0; j < 5; j++)
+                for (int j = 0; j < level; j++)
                 {
                     mas[i, j] = array[k];
                     k++;
                 }
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < level; i++)
             {
-                for (int j = 0; j < 5; j++)
+                for (int j = 0; j < level; j++)
                 {
                     dataGridView1[i, j].Value = mas[i, j];
                 }
@@ -70,7 +66,7 @@ namespace Memory_Trainer.Quad_Shulte
 
         public bool IsFinish()
         {
-            if(num==26)
+            if(num == Math.Pow(Level,2) + 1)
             {
                 FormWin formWin = new FormWin();
                 formWin.ShowDialog(this);
@@ -127,14 +123,15 @@ namespace Memory_Trainer.Quad_Shulte
         int num = 1;
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(timer1.Enabled==false)
+            if(timer1.Enabled == false)
             {
                 timer1.Enabled = true;
+                time = 1;
             }
             if (dataGridView1[e.ColumnIndex, e.RowIndex].Value.ToString() == num.ToString())
             {          
                 num++;
-                if (num<=25)
+                if (num <= Math.Pow(Level, 2))
                 {
                     Inflabel.Text = num.ToString();
                 }         
@@ -150,6 +147,23 @@ namespace Memory_Trainer.Quad_Shulte
         {
             dataGridView1.ClearSelection();
         }
-
+        private void NewGamebutton_Click(object sender, EventArgs e)
+        {
+            FormLevel formLevel = new FormLevel();
+            formLevel.ShowDialog(this);
+            Level = formLevel.Level;
+            if (Level != 0)
+            {
+                timer1.Enabled = false;
+                count = 0;
+                num = 1;
+                TimerLabel.Text = "0:0";
+                Inflabel.Text = num.ToString();
+                CountLabel.Text = count.ToString();
+                dataGridView1.Rows.Clear();
+                dataGridView1.Columns.Clear();
+                Game(Level);
+            }
+        }
     }
 }
