@@ -107,6 +107,7 @@
             this.NewGamebutton.Name = "NewGamebutton";
             this.NewGamebutton.Size = new System.Drawing.Size(179, 61);
             this.NewGamebutton.TabIndex = 3;
+            this.NewGamebutton.TabStop = false;
             this.NewGamebutton.Text = "Новая игра";
             this.NewGamebutton.UseVisualStyleBackColor = false;
             this.NewGamebutton.Click += new System.EventHandler(this.NewGamebutton_Click);
@@ -120,6 +121,7 @@
             this.Downloadbutton.Name = "Downloadbutton";
             this.Downloadbutton.Size = new System.Drawing.Size(179, 61);
             this.Downloadbutton.TabIndex = 4;
+            this.Downloadbutton.TabStop = false;
             this.Downloadbutton.Text = "Загрузить игру";
             this.Downloadbutton.UseVisualStyleBackColor = false;
             // 
@@ -132,6 +134,7 @@
             this.Rulebutton.Name = "Rulebutton";
             this.Rulebutton.Size = new System.Drawing.Size(179, 61);
             this.Rulebutton.TabIndex = 5;
+            this.Rulebutton.TabStop = false;
             this.Rulebutton.Text = "Правила игры";
             this.Rulebutton.UseVisualStyleBackColor = false;
             this.Rulebutton.Click += new System.EventHandler(this.button3_Click);
@@ -155,6 +158,7 @@
             this.Savebutton.Name = "Savebutton";
             this.Savebutton.Size = new System.Drawing.Size(179, 61);
             this.Savebutton.TabIndex = 7;
+            this.Savebutton.TabStop = false;
             this.Savebutton.Text = "Сохранить игру";
             this.Savebutton.UseVisualStyleBackColor = false;
             // 
@@ -167,6 +171,7 @@
             this.Infobutton.Name = "Infobutton";
             this.Infobutton.Size = new System.Drawing.Size(179, 61);
             this.Infobutton.TabIndex = 8;
+            this.Infobutton.TabStop = false;
             this.Infobutton.Text = "Информация об игре";
             this.Infobutton.UseVisualStyleBackColor = false;
             this.Infobutton.Click += new System.EventHandler(this.button5_Click);
