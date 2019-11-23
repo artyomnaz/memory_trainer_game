@@ -83,9 +83,9 @@ namespace Memory_Trainer.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap RulesImage {
+        internal static System.Drawing.Bitmap Rules {
             get {
-                object obj = ResourceManager.GetObject("RulesImage", resourceCulture);
+                object obj = ResourceManager.GetObject("Rules", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
