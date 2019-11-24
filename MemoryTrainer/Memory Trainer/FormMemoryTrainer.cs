@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Memory_Trainer.Memory_matrix;
 
 namespace Memory_Trainer
 {
@@ -34,7 +35,10 @@ namespace Memory_Trainer
 
         private void buttonMemoryMatrix_Click(object sender, EventArgs e)
         {
-            return;
+            FormMemoryMatrix formMemoryMatrix = new FormMemoryMatrix();
+            formMemoryMatrix.Show();
+            formMemoryMatrix.Owner = this;
+            Hide();
         }
 
         private void buttonThimbles_Click(object sender, EventArgs e)
