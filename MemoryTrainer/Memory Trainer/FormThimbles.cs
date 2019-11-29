@@ -1,26 +1,49 @@
 ﻿using System;
+using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Memory_Trainer
-{
-    public partial class FormThimbles : Form, IGameInterface{
-        // наперстки
-        private PictureBox[] thimbles;
+namespace Memory_Trainer {
+    public partial class FormThimbles : Form, IGameInterface {
         // переменные анимации
-        private int ind1, ind2, x1, x2, y1, y2, dx, dy, curstep = 0, level = 1, bPos, choise = -1;
+        private int ind1, ind2, x1, x2, y1, y2, dx, dy, curstep = 0, level = 1, bPos, choise = -1, v = 2;
         double thimble1_pos_x, thimble1_pos_y, thimble2_pos_x, thimble2_pos_y;
         private bool isAnimation = false, isToTop = true;
+        private Rectangle[] thimbles;
+        private Rectangle ball_rect;
+        private Bitmap thimble_image, ball_image;
+        Graphics g;
+
+        private void DrawMe() {
+            pictureBox1.Image = Properties.Resources.bg;
+            g = Graphics.FromImage(pictureBox1.Image);
+            if(!isAnimation)
+                g.DrawImage(ball_image, ball_rect);
+            for (int i = 0; i < thimbles.Length; i++)
+                g.DrawImage(thimble_image, thimbles[i]);
+            pictureBox1.Invalidate();
+        }
 
         public FormThimbles() {
             InitializeComponent();
-            // сохраняем наперстки в массив
-            DrawField();
+            // массив с координатами наперстков
+            thimbles = new [] {
+                new Rectangle(107, 360, 180, 250),
+                new Rectangle(414, 380, 180, 250),
+                new Rectangle(721, 360, 180, 250)
+            };
+
+            thimble_image = Properties.Resources.thimble;
+            ball_image = Properties.Resources.ball;
+            label1.Parent = pictureBox1;
+            label1.BackColor = Color.Transparent;
+            label1.Text = "Уровень: 1";
+            DrawMe();
         }
 
         private void Button1_Click(object sender, EventArgs e) {
             // включаем размешивание
-            buttonStartGame.Enabled = false;
+            buttonStartGame.Visible = false;
             Animate();
         }
 
@@ -32,7 +55,7 @@ namespace Memory_Trainer
                 timer1.Stop();
                 timer1.Enabled = false;
                 isAnimation = false;
-                PictureBox temp = thimbles[ind2];
+                Rectangle temp = thimbles[ind2];
                 thimbles[ind2] = thimbles[ind1];
                 thimbles[ind1] = temp;
                 curstep += 1;
@@ -45,33 +68,28 @@ namespace Memory_Trainer
                 {
                     curstep = 0;
                     // кладем мяч под наперсток с ind = bPos
-                    int b_pos_x = thimbles[bPos].Left + thimbles[bPos].Width / 2 - pbBall.Width / 2;
-                    int b_pos_y = thimbles[bPos].Top + thimbles[bPos].Height - pbBall.Height - 20;
-                    pbBall.Left = b_pos_x;
-                    pbBall.Top = b_pos_y;
-                    pbBall.Visible = true;
-                    for (int i = 0; i < 3; i++)
-                        thimbles[i].Click += FormThimbles_Click;
+                    int b_pos_x = thimbles[bPos].Left + thimbles[bPos].Width / 2 - 44;
+                    int b_pos_y = thimbles[bPos].Top + thimbles[bPos].Height - 108;
+                    ball_rect = new Rectangle(b_pos_x, b_pos_y, 88, 88);
+                    DrawMe();
+                    pictureBox1.Click += FormThimbles_Click;
                 }
                 return;
             }
-            else  if (Math.Abs(thimbles[ind1].Left - x2) <= 20 && Math.Abs(thimbles[ind1].Top - y2) <= 10)
+            else  if (Math.Abs(thimbles[ind1].Left - x2) <= 40 && Math.Abs(thimbles[ind1].Top - y2) <= 20)
             {
-
-                thimbles[ind1].Left = x2;
-                thimbles[ind1].Top = y2;
-                thimbles[ind2].Left = x1;
-                thimbles[ind2].Top = y1;
+                thimbles[ind1] = new Rectangle(x2, y2, thimbles[ind1].Width, thimbles[ind1].Height);
+                thimbles[ind2] = new Rectangle(x1, y1, thimbles[ind2].Width, thimbles[ind2].Height);
+                DrawMe();
                 return;
             }
-            thimble1_pos_x += dx / timer1.Interval;
-            thimble2_pos_x -= dx / timer1.Interval;
-            thimble1_pos_y += dy / timer1.Interval;
-            thimble2_pos_y -= dy / timer1.Interval;
-            thimbles[ind1].Left = (int)thimble1_pos_x;
-            thimbles[ind2].Left = (int)thimble2_pos_x;
-            thimbles[ind1].Top = (int)thimble1_pos_y;
-            thimbles[ind2].Top = (int)thimble2_pos_y;
+            thimble1_pos_x += v * dx / timer1.Interval;
+            thimble2_pos_x -= v * dx / timer1.Interval;
+            thimble1_pos_y += v * dy / timer1.Interval;
+            thimble2_pos_y -= v * dy / timer1.Interval;
+            thimbles[ind1] = new Rectangle((int)thimble1_pos_x, (int)thimble1_pos_y, thimbles[ind1].Width, thimbles[ind1].Height);
+            thimbles[ind2] = new Rectangle((int)thimble2_pos_x, (int)thimble2_pos_y, thimbles[ind2].Width, thimbles[ind2].Height);
+            DrawMe();
         }
 
         private void Timer2_Tick(object sender, EventArgs e)
@@ -95,48 +113,49 @@ namespace Memory_Trainer
             }
 
             int koef = isToTop ? -1 : 1;
-            thimbles[ind1].Top -= koef * dy / timer2.Interval;
+            thimbles[ind1] = new Rectangle(thimbles[ind1].Left, thimbles[ind1].Top - koef * dy / timer2.Interval, thimbles[ind1].Width, thimbles[ind1].Height);
+            DrawMe();
         }
 
         private void Timer3_Tick(object sender, EventArgs e)
         {
-            for (int i = 0; i < 3; i++)
-            {
+            for (int i = 0; i < 3; i++) {
                 int koef = isToTop ? -1 : 1;
-                thimbles[i].Top -= koef * dy / timer3.Interval;
+                thimbles[i] = new Rectangle(thimbles[i].Left, thimbles[i].Top - koef * dy / timer3.Interval, thimbles[i].Width, thimbles[i].Height);
             }
-            if (isToTop && thimbles[0].Top == y2)
-            {
+            if (isToTop && thimbles[0].Top == y2) {
                 isToTop = !isToTop;
                 Thread.Sleep(400);
             }
-            else if (!isToTop && thimbles[0].Top == y1)
-            {
+            else if (!isToTop && thimbles[0].Top == y1) {
                 timer3.Stop();
                 timer3.Enabled = false;
                 isAnimation = false;
                 IsFinish();
                 return;
             }
+            DrawMe();
         }
 
         private void FormThimbles_Click(object sender, EventArgs e)
         {
-            if (isAnimation)
-                return;
-            for (int i = 0; i < 3; i++)
-            {
-                if (((PictureBox)sender) == thimbles[i])
-                {
+            if (isAnimation) return;
+            var mx = ((MouseEventArgs)e).Location.X;
+            var my = ((MouseEventArgs)e).Location.Y;
+            bool flag = false;
+            for (int i = 0; i < 3; i++) {
+                if (mx >= thimbles[i].Left && mx <= thimbles[i].Left + thimbles[i].Width &&
+                    my >= thimbles[i].Top  && my <= thimbles[i].Top + thimbles[i].Height) {
                     choise = i;
+                    flag = true;
                     break;
                 }
             }
+            if (!flag) return;
             y1 = thimbles[0].Top;
             y2 = y1 - 100;
             dy = y2 - y1;
             // запускаем анимацию
-            isAnimation = true;
             isToTop = true;
             timer3.Enabled = true;
             timer3.Start();
@@ -145,18 +164,19 @@ namespace Memory_Trainer
         private void Animate()
         {
             Random rand = new Random();
-            isAnimation = true;
+            // isAnimation = true;
             // рандомный индекс для мяча
             ind1 = rand.Next(0, 3);
             y1 = thimbles[ind1].Top;
             y2 = y1 - 100;
             dy = y2 - y1;
             // кладем мяч под наперсток с ind = ind1
-            int b_pos_x = thimbles[ind1].Left + thimbles[ind1].Width / 2 - pbBall.Width / 2;
-            int b_pos_y = thimbles[ind1].Top + thimbles[ind1].Height - pbBall.Height - 20;
-            pbBall.Left = b_pos_x;
-            pbBall.Top = b_pos_y;
             bPos = ind1;
+            int b_pos_x = thimbles[bPos].Left + thimbles[bPos].Width / 2 - 44;
+            int b_pos_y = thimbles[bPos].Top + thimbles[bPos].Height - 108;
+            ball_rect = new Rectangle(b_pos_x, b_pos_y, 88, 88);
+
+            isToTop = true;
             // запускаем анимацию показа мяча
             timer2.Enabled = true;
             timer2.Start();
@@ -172,9 +192,8 @@ namespace Memory_Trainer
             ind2 = rand.Next(0, 3);
             while (ind1 == ind2)
                 ind2 = rand.Next(0, 3);
-            if (bPos == ind1) {
+            if (bPos == ind1)
                 bPos = ind2;
-            }
             else if (bPos == ind2)
                 bPos = ind1;
             x1 = thimbles[ind1].Left;
@@ -212,35 +231,35 @@ namespace Memory_Trainer
             throw new NotImplementedException();
         }
 
-        public void DrawField() {
-            thimbles = new PictureBox[3];
-            thimbles[0] = pbThimble1;
-            thimbles[1] = pbThimble2;
-            thimbles[2] = pbThimble3;
-        }
-
         public bool IsFinish()
         {
-            for (int i = 0; i < thimbles.Length; i++) {
-                thimbles[i].Click += null;
-            }
+            pictureBox1.Click += null;
             if (choise == bPos) {
                 level++;
-                if (timer1.Interval != 1)
-                    timer1.Interval--;
+                label1.Text = "Уровень: " + level.ToString();
+                if (level % 4 == 0)
+                    v++;
                 pbBall.Hide();
                 Shuffle();
             }
             else
             {
-                DialogResult result = MessageBox.Show("Неверно!", "Продолжить игру?", MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show("Начать новую игру?", "Неверно!", MessageBoxButtons.YesNo);
+                v = 2;
+                level = 1;
+                label1.Text = "Уровень: " + level.ToString();
                 if (result == DialogResult.No) {
                     Close();
+                    return true;
                 }
-                level = 1;
-                timer1.Interval = 20;
+                Animate();
             }
-            return true;
+            return false;
+        }
+
+        public void DrawField()
+        {
+            throw new NotImplementedException();
         }
     }
 }
