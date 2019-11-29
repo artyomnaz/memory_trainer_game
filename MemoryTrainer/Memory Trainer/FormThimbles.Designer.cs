@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.buttonStartGame = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timerShuffle = new System.Windows.Forms.Timer(this.components);
+            this.timerOneToTop = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.label = new System.Windows.Forms.Label();
+            this.pbBackground = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBackground)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonStartGame
@@ -50,60 +50,60 @@
             this.buttonStartGame.TabIndex = 0;
             this.buttonStartGame.Text = "Начать игру";
             this.buttonStartGame.UseVisualStyleBackColor = false;
-            this.buttonStartGame.Click += new System.EventHandler(this.Button1_Click);
+            this.buttonStartGame.Click += new System.EventHandler(this.ButtonStartGame_Click);
             // 
-            // timer1
+            // timerShuffle
             // 
-            this.timer1.Interval = 40;
-            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            this.timerShuffle.Interval = 40;
+            this.timerShuffle.Tick += new System.EventHandler(this.TimerShuffle_Tick);
             // 
-            // timer2
+            // timerOneToTop
             // 
-            this.timer2.Interval = 20;
-            this.timer2.Tick += new System.EventHandler(this.Timer2_Tick);
+            this.timerOneToTop.Interval = 20;
+            this.timerOneToTop.Tick += new System.EventHandler(this.TimerOneToTop_Tick);
             // 
             // timer3
             // 
             this.timer3.Interval = 20;
-            this.timer3.Tick += new System.EventHandler(this.Timer3_Tick);
+            this.timer3.Tick += new System.EventHandler(this.TimerCheckWin_Tick);
             // 
-            // label1
+            // label
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 18);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "label1";
+            this.label.AutoSize = true;
+            this.label.BackColor = System.Drawing.Color.Transparent;
+            this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label.Location = new System.Drawing.Point(12, 5);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(46, 18);
+            this.label.TabIndex = 6;
+            this.label.Text = "label1";
             // 
-            // pictureBox1
+            // pbBackground
             // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::Memory_Trainer.Properties.Resources.bg;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1012, 681);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
+            this.pbBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pbBackground.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbBackground.Image = global::Memory_Trainer.Properties.Resources.bg;
+            this.pbBackground.Location = new System.Drawing.Point(0, 0);
+            this.pbBackground.Name = "pbBackground";
+            this.pbBackground.Size = new System.Drawing.Size(1012, 681);
+            this.pbBackground.TabIndex = 5;
+            this.pbBackground.TabStop = false;
             // 
             // FormThimbles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1012, 681);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label);
             this.Controls.Add(this.buttonStartGame);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbBackground);
             this.DoubleBuffered = true;
             this.MaximumSize = new System.Drawing.Size(1028, 720);
             this.MinimumSize = new System.Drawing.Size(1028, 720);
             this.Name = "FormThimbles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Наперстки";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBackground)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,10 +112,10 @@
         #endregion
 
         private System.Windows.Forms.Button buttonStartGame;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer timerShuffle;
+        private System.Windows.Forms.Timer timerOneToTop;
         private System.Windows.Forms.Timer timer3;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pbBackground;
+        private System.Windows.Forms.Label label;
     }
 }
