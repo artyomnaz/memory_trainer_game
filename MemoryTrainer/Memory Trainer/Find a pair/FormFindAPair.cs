@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Text;
+using System.Net;
 using System.Windows.Forms;
 
 namespace Memory_Trainer.Find_a_pair
@@ -7,12 +9,17 @@ namespace Memory_Trainer.Find_a_pair
     public partial class FormFindAPair : Form, IGameInterface
     {
         private Level lvl;
+        private readonly LevelManager _levelManager;
+        private readonly PrivateFontCollection _font;
         public FormFindAPair()
         {
             InitializeComponent();
-            lvl = new Level(3, this);
+            _font = new PrivateFontCollection();
+            LoadFont();
+            _levelManager = new LevelManager(BackgroundPB, _font);
+            //ImageAnimator.Animate(BackgroundImage, OnFrameChanged);
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.ResizeRedraw, true);
         }
-
         public void SaveGame()
         {
             throw new NotImplementedException();
@@ -35,7 +42,7 @@ namespace Memory_Trainer.Find_a_pair
 
         public void DrawField()
         {
-            lvl.Draw();
+            _levelManager.Draw();
         }
 
         public bool IsFinish()
@@ -50,7 +57,7 @@ namespace Memory_Trainer.Find_a_pair
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-           // pictureBox1.Location = new Point(pictureBox1.Location.X + 1, pictureBox1.Location.Y);
+            // pictureBox1.Location = new Point(pictureBox1.Location.X + 1, pictureBox1.Location.Y);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -91,7 +98,31 @@ namespace Memory_Trainer.Find_a_pair
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            lvl.off();
+            lvl.HideCards();
+        }
+        private void OnFrameChanged(object sender, EventArgs e)
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke((Action)(() => OnFrameChanged(sender, e)));
+                return;
+            }
+            ImageAnimator.UpdateFrames();
+            Invalidate(false);
+        }
+
+        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
+        private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont,
+            IntPtr pdv, [System.Runtime.InteropServices.In] ref uint pcFonts);
+        private void LoadFont()
+        {
+            byte[] fontData = Properties.Resources.fonto;
+            IntPtr fontPtr = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontData.Length);
+            System.Runtime.InteropServices.Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
+            uint dummy = 0;
+            _font.AddMemoryFont(fontPtr, Properties.Resources.fonto.Length);
+            AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.fonto.Length, IntPtr.Zero, ref dummy);
+            System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr);
         }
     }
 }

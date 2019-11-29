@@ -52,6 +52,7 @@
       <DependentUpon>FormFindAPair.cs</DependentUpon>
     </Compile>
     <Compile Include="Find a pair\Level.cs" />
+    <Compile Include="Find a pair\LevelManager.cs" />
     <Compile Include="FormMemoryTrainer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +78,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Find a pair\Fonts\fonto.TTF" />
+    <None Include="Image\dollar.TTF" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

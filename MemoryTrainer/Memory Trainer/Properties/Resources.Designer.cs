@@ -119,5 +119,15 @@ namespace Memory_Trainer.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] fonto {
+            get {
+                object obj = ResourceManager.GetObject("fonto", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
