@@ -5,14 +5,18 @@ using System.Windows.Forms;
 
 namespace Memory_Trainer {
     public partial class FormThimbles : Form, IGameInterface {
-        private int ind1, ind2, x1, x2, y1, y2, dx, dy, curstep = 0, level = 1, bPos = 0, choise = -1, v = 2;
+        private int ind1, ind2, x1, x2, y1, y2, dx, dy, curstep = 0, 
+                    level = 1, bPos = 0, choise = -1, v = 2, key = 55;
         double thimble1_pos_x, thimble1_pos_y, thimble2_pos_x, thimble2_pos_y;
         private bool isAnimation = false, isToTop = true;
         private Rectangle[] thimbles;
         private Rectangle ball_rect;
-
         private Bitmap thimble_image, ball_image;
         Graphics g;
+
+        private void ButtonAbout_Click(object sender, EventArgs e) {
+            ShowInfo();
+        }
 
         public FormThimbles() {
             InitializeComponent();
@@ -27,7 +31,13 @@ namespace Memory_Trainer {
             label.Parent = pbBackground;
             label.BackColor = Color.Transparent;
             label.Text = "Уровень: 1";
-            DrawField();
+            if (System.IO.File.Exists(@"thimbles_save.txt")) {
+                DialogResult result = MessageBox.Show("Имеется сохраненная игра. Открыть?", "Открытие игры", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                    OpenGame();
+                else DrawField();
+            }
+            else DrawField();
         }
 
         public void DrawField() {
@@ -37,17 +47,23 @@ namespace Memory_Trainer {
                 g.DrawImage(ball_image, ball_rect);
             for (int i = 0; i < thimbles.Length; i++)
                 g.DrawImage(thimble_image, thimbles[i]);
+            label.Text = "Уровень: " + level.ToString();
             pbBackground.Invalidate();
         }
 
         private void ButtonStartGame_Click(object sender, EventArgs e) {
-            buttonStartGame.Visible = false;
+            buttonStartGame.Enabled = false;
+            buttonSave.Enabled = false;
+            buttonOpen.Enabled = false;
+            buttonRules.Enabled = false;
+            buttonAbout.Enabled = false;
             Animate();
         }
 
         private void Animate() {
             Random rand = new Random();
-            bPos = rand.Next(0, 3);
+            ind1 = rand.Next(0, 3);
+            bPos = ind1;
             y1 = thimbles[bPos].Top;
             y2 = y1 - 100;
             dy = y2 - y1;
@@ -125,6 +141,9 @@ namespace Memory_Trainer {
                     int b_pos_y = thimbles[bPos].Top + thimbles[bPos].Height - 108;
                     ball_rect = new Rectangle(b_pos_x, b_pos_y, 88, 88);
                     DrawField();
+                    buttonSave.Enabled = true;
+                    buttonRules.Enabled = true;
+                    buttonAbout.Enabled = true;
                     pbBackground.Click += FormThimbles_Click;
                 }
                 return;
@@ -148,7 +167,7 @@ namespace Memory_Trainer {
         {
             for (int i = 0; i < 3; i++) {
                 int koef = isToTop ? -1 : 1;
-                thimbles[i] = new Rectangle(thimbles[i].Left, thimbles[i].Top - koef * dy / timer3.Interval, 
+                thimbles[i] = new Rectangle(thimbles[i].Left, thimbles[i].Top - koef * dy / timerAllToTop.Interval, 
                                             thimbles[i].Width, thimbles[i].Height);
             }
             if (isToTop && thimbles[0].Top == y2) {
@@ -156,8 +175,8 @@ namespace Memory_Trainer {
                 Thread.Sleep(400);
             }
             else if (!isToTop && thimbles[0].Top == y1) {
-                timer3.Stop();
-                timer3.Enabled = false;
+                timerAllToTop.Stop();
+                timerAllToTop.Enabled = false;
                 isAnimation = false;
                 IsFinish();
                 return;
@@ -179,28 +198,57 @@ namespace Memory_Trainer {
                 }
             }
             if (!flag) return;
+            buttonSave.Enabled = false;
+            buttonRules.Enabled = false;
+            buttonAbout.Enabled = false;
             y1 = thimbles[0].Top;
             y2 = y1 - 100;
             dy = y2 - y1;
             isToTop = true;
-            timer3.Enabled = true;
-            timer3.Start();
+            timerAllToTop.Enabled = true;
+            timerAllToTop.Start();
         }
 
         public void SaveGame() {
-            throw new NotImplementedException();
+            var bPosXOR = bPos ^ key;
+            var levelXOR = level ^ key;
+            var vXOR = v ^ key;
+            string[] lines = { bPosXOR.ToString(), levelXOR.ToString(), vXOR.ToString() };
+            System.IO.File.WriteAllLines(@"thimbles_save.txt", lines);
+            MessageBox.Show("Игра сохранена!");
         }
 
         public void OpenGame() {
-            throw new NotImplementedException();
+            string[] lines = System.IO.File.ReadAllLines(@"thimbles_save.txt");
+            int[] parameters = new int [lines.Length];
+            for (int i = 0; i < lines.Length; i++)
+                parameters[i] = Convert.ToInt32(lines[i].TrimEnd()) ^ key;
+            bPos = parameters[0];
+            level = parameters[1];
+            v = parameters[2];
+            buttonStartGame.Enabled = false;
+            buttonOpen.Enabled = false;
+            buttonSave.Enabled = false;
+            buttonRules.Enabled = false;
+            buttonAbout.Enabled = false;
+            DrawField();
+            Animate();
         }
 
         public void ShowRules() {
-            throw new NotImplementedException();
+            var formSR = new FormShowRulesThimbles {
+                Left = Left,
+                Top = Top
+            };
+            formSR.ShowDialog();
         }
 
         public void ShowInfo() {
-            throw new NotImplementedException();
+            var formAT = new FormAboutThimbles {
+                Left = Left,
+                Top = Top
+            };
+            formAT.ShowDialog();
         }
 
         public bool IsFinish() {
@@ -224,6 +272,20 @@ namespace Memory_Trainer {
                 Animate();
             }
             return false;
+        }
+
+        private void ButtonSave_Click(object sender, EventArgs e) {
+            SaveGame();
+        }
+        private void ButtonOpen_Click(object sender, EventArgs e) {
+            buttonStartGame.Enabled = false;
+            buttonRules.Enabled = false;
+            buttonAbout.Enabled = false;
+            OpenGame();
+        }
+
+        private void ButtonRules_Click(object sender, EventArgs e) {
+            ShowRules();
         }
     }
 }

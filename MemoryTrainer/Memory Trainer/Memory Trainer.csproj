@@ -44,11 +44,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormAboutThimbles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAboutThimbles.Designer.cs">
+      <DependentUpon>FormAboutThimbles.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMemoryTrainer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMemoryTrainer.Designer.cs">
       <DependentUpon>FormMemoryTrainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormShowRulesThimbles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormShowRulesThimbles.Designer.cs">
+      <DependentUpon>FormShowRulesThimbles.cs</DependentUpon>
     </Compile>
     <Compile Include="FormThimbles.cs">
       <SubType>Form</SubType>
@@ -59,8 +71,14 @@
     <Compile Include="IGameInterface.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormAboutThimbles.resx">
+      <DependentUpon>FormAboutThimbles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMemoryTrainer.resx">
       <DependentUpon>FormMemoryTrainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormShowRulesThimbles.resx">
+      <DependentUpon>FormShowRulesThimbles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormThimbles.resx">
       <DependentUpon>FormThimbles.cs</DependentUpon>
@@ -94,12 +112,6 @@
     <Folder Include="Memory matrix\" />
     <Folder Include="Quad Shulte\" />
     <Folder Include="Thimbles\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\depositphotos_1754594-Thimble-removebg-preview.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\15175-antistress-myachik-1-removebg-preview.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bg.jpg" />
