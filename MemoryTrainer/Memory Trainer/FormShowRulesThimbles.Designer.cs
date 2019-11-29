@@ -28,13 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormShowRulesThimbles));
             this.SuspendLayout();
             // 
             // FormShowRulesThimbles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(800, 466);
+            this.MaximumSize = new System.Drawing.Size(816, 505);
+            this.MinimumSize = new System.Drawing.Size(816, 505);
             this.Name = "FormShowRulesThimbles";
             this.Text = "Правила игры";
             this.ResumeLayout(false);

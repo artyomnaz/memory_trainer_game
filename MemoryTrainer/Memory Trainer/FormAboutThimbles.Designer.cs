@@ -30,12 +30,16 @@
         {
             this.SuspendLayout();
             // 
-            // FormAbout
+            // FormAboutThimbles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "FormAbout";
+            this.BackgroundImage = global::Memory_Trainer.Properties.Resources.bg_about;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(800, 466);
+            this.MaximumSize = new System.Drawing.Size(816, 505);
+            this.MinimumSize = new System.Drawing.Size(816, 505);
+            this.Name = "FormAboutThimbles";
             this.Text = "О программе";
             this.ResumeLayout(false);
 

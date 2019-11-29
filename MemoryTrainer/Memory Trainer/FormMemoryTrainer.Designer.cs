@@ -124,6 +124,8 @@
             this.Controls.Add(this.buttonLostWord);
             this.Controls.Add(this.buttonQuadShulte);
             this.Controls.Add(this.buttonFindAPair);
+            this.MaximumSize = new System.Drawing.Size(1028, 720);
+            this.MinimumSize = new System.Drawing.Size(1028, 720);
             this.Name = "FormMemoryTrainer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Тренажер памяти";

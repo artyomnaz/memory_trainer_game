@@ -15,10 +15,12 @@ namespace Memory_Trainer {
         Graphics g;
 
         private void ButtonAbout_Click(object sender, EventArgs e) {
+            // Показать информацию об игре
             ShowInfo();
         }
 
         public FormThimbles() {
+            // Инициализация переменных
             InitializeComponent();
             thimbles = new[] {
                 new Rectangle(107, 360, 180, 250),
@@ -31,6 +33,7 @@ namespace Memory_Trainer {
             label.Parent = pbBackground;
             label.BackColor = Color.Transparent;
             label.Text = "Уровень: 1";
+            // Открытие сохраненной игры при ее наличии
             if (System.IO.File.Exists(@"thimbles_save.txt")) {
                 DialogResult result = MessageBox.Show("Имеется сохраненная игра. Открыть?", "Открытие игры", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
@@ -41,17 +44,21 @@ namespace Memory_Trainer {
         }
 
         public void DrawField() {
+            // Прорисовка фона, наперстков, мяча
             pbBackground.Image = Properties.Resources.bg;
             g = Graphics.FromImage(pbBackground.Image);
+            // Мяч при анимации не рисуем
             if (!isAnimation)
                 g.DrawImage(ball_image, ball_rect);
             for (int i = 0; i < thimbles.Length; i++)
                 g.DrawImage(thimble_image, thimbles[i]);
             label.Text = "Уровень: " + level.ToString();
+            // Обновляем вид
             pbBackground.Invalidate();
         }
 
         private void ButtonStartGame_Click(object sender, EventArgs e) {
+            // Отключаем кнопки, анимируем
             buttonStartGame.Enabled = false;
             buttonSave.Enabled = false;
             buttonOpen.Enabled = false;
@@ -61,23 +68,29 @@ namespace Memory_Trainer {
         }
 
         private void Animate() {
+            // выбираем случайно позицию мяча
             Random rand = new Random();
             ind1 = rand.Next(0, 3);
             bPos = ind1;
             y1 = thimbles[bPos].Top;
+            // параметры анимации подъема
             y2 = y1 - 100;
             dy = y2 - y1;
+            // координаты мяча
             int b_pos_x = thimbles[bPos].Left + thimbles[bPos].Width / 2 - 44;
             int b_pos_y = thimbles[bPos].Top + thimbles[bPos].Height - 108;
             ball_rect = new Rectangle(b_pos_x, b_pos_y, 88, 88);
             isToTop = true;
             timerOneToTop.Enabled = true;
+            // Старт анимации
             timerOneToTop.Start();
         }
 
         private void Shuffle() {
+            // Перемешивание наперстков
             Random rand = new Random();
             isAnimation = true;
+            // Выбор смещаемых наперстков
             ind1 = rand.Next(0, 3);
             ind2 = rand.Next(0, 3);
             while (ind1 == ind2)
@@ -86,6 +99,7 @@ namespace Memory_Trainer {
                 bPos = ind2;
             else if (bPos == ind2)
                 bPos = ind1;
+            // Параметры анимации
             x1 = thimbles[ind1].Left;
             x2 = thimbles[ind2].Left;
             y1 = thimbles[ind1].Top;
@@ -96,34 +110,42 @@ namespace Memory_Trainer {
             thimble2_pos_x = x2;
             thimble1_pos_y = y1;
             thimble2_pos_y = y2;
+            // Включаем таймер анимации перемешивания
             timerShuffle.Enabled = true;
             timerShuffle.Start();
         }
 
-        private void TimerOneToTop_Tick(object sender, EventArgs e)
-        {
+        private void TimerOneToTop_Tick(object sender, EventArgs e) {
+            // таймер анимации подъема
             if (isToTop && thimbles[ind1].Top == y2) {
                 isToTop = false;
+                // подняли - подержим в воздухе
                 Thread.Sleep(400);
                 return;
             }
             else if (!isToTop && thimbles[ind1].Top == y1) {
+                // выключаем таймер
                 timerOneToTop.Stop();
                 timerOneToTop.Enabled = false;
                 isAnimation = false;
                 isToTop = true;
+                // перемешиваем
                 Shuffle();
                 return;
             }
 
+            // Запоминаем позицию наперстка
             int koef = isToTop ? -1 : 1;
             thimbles[ind1] = new Rectangle(thimbles[ind1].Left, thimbles[ind1].Top - koef * dy / timerOneToTop.Interval, 
                                            thimbles[ind1].Width, thimbles[ind1].Height);
+            // рисуем поле
             DrawField();
         }
 
         private void TimerShuffle_Tick(object sender, EventArgs e) {
+            // таймер случайного перемешивания
             if (thimbles[ind1].Left == x2 && thimbles[ind1].Top == y2) {
+                // нашли позицию - стоп таймера
                 timerShuffle.Stop();
                 timerShuffle.Enabled = false;
                 isAnimation = false;
@@ -132,18 +154,23 @@ namespace Memory_Trainer {
                 thimbles[ind1] = temp;
                 curstep += 1;
                 if (curstep < level + 2) {
+                    // перемешиваем
                     Shuffle();
                     return;
                 }
                 else {
+                    // параметры анимации
                     curstep = 0;
                     int b_pos_x = thimbles[bPos].Left + thimbles[bPos].Width / 2 - 44;
                     int b_pos_y = thimbles[bPos].Top + thimbles[bPos].Height - 108;
                     ball_rect = new Rectangle(b_pos_x, b_pos_y, 88, 88);
+                    // прорисовка поля
                     DrawField();
+                    // включение кнопок
                     buttonSave.Enabled = true;
                     buttonRules.Enabled = true;
                     buttonAbout.Enabled = true;
+                    // навешивание события клика
                     pbBackground.Click += FormThimbles_Click;
                 }
                 return;
@@ -165,19 +192,24 @@ namespace Memory_Trainer {
 
         private void TimerCheckWin_Tick(object sender, EventArgs e)
         {
+            // таймер проверки на победу - подъем всех вверх
             for (int i = 0; i < 3; i++) {
+                // перебор и подъем наперстка вверх - вниз (koef)
                 int koef = isToTop ? -1 : 1;
                 thimbles[i] = new Rectangle(thimbles[i].Left, thimbles[i].Top - koef * dy / timerAllToTop.Interval, 
                                             thimbles[i].Width, thimbles[i].Height);
             }
             if (isToTop && thimbles[0].Top == y2) {
+                // подняли - задержали
                 isToTop = !isToTop;
                 Thread.Sleep(400);
             }
             else if (!isToTop && thimbles[0].Top == y1) {
+                // остановили таймер
                 timerAllToTop.Stop();
                 timerAllToTop.Enabled = false;
                 isAnimation = false;
+                // проверка победы
                 IsFinish();
                 return;
             }
@@ -186,9 +218,11 @@ namespace Memory_Trainer {
 
         private void FormThimbles_Click(object sender, EventArgs e) {
             if (isAnimation) return;
+            // координаты мыши
             var mx = ((MouseEventArgs)e).Location.X;
             var my = ((MouseEventArgs)e).Location.Y;
             bool flag = false;
+            // запоминаем выбор
             for (int i = 0; i < 3; i++) {
                 if (mx >= thimbles[i].Left && mx <= thimbles[i].Left + thimbles[i].Width &&
                     my >= thimbles[i].Top  && my <= thimbles[i].Top + thimbles[i].Height) {
@@ -198,18 +232,22 @@ namespace Memory_Trainer {
                 }
             }
             if (!flag) return;
+            // выключаем кнопки
             buttonSave.Enabled = false;
             buttonRules.Enabled = false;
             buttonAbout.Enabled = false;
+            // параметры анимации
             y1 = thimbles[0].Top;
             y2 = y1 - 100;
             dy = y2 - y1;
             isToTop = true;
+            // анимируем подъем всех
             timerAllToTop.Enabled = true;
             timerAllToTop.Start();
         }
 
         public void SaveGame() {
+            // сохранение с шифрованием
             var bPosXOR = bPos ^ key;
             var levelXOR = level ^ key;
             var vXOR = v ^ key;
@@ -219,6 +257,7 @@ namespace Memory_Trainer {
         }
 
         public void OpenGame() {
+            // открытие сохраненной игры
             string[] lines = System.IO.File.ReadAllLines(@"thimbles_save.txt");
             int[] parameters = new int [lines.Length];
             for (int i = 0; i < lines.Length; i++)
@@ -226,16 +265,19 @@ namespace Memory_Trainer {
             bPos = parameters[0];
             level = parameters[1];
             v = parameters[2];
+            // выключение кнопок
             buttonStartGame.Enabled = false;
             buttonOpen.Enabled = false;
             buttonSave.Enabled = false;
             buttonRules.Enabled = false;
             buttonAbout.Enabled = false;
+            // прорисовка поля, включение игры
             DrawField();
             Animate();
         }
 
         public void ShowRules() {
+            // показываем правла
             var formSR = new FormShowRulesThimbles {
                 Left = Left,
                 Top = Top
@@ -244,6 +286,7 @@ namespace Memory_Trainer {
         }
 
         public void ShowInfo() {
+            // показываем информацию об игре
             var formAT = new FormAboutThimbles {
                 Left = Left,
                 Top = Top
@@ -252,15 +295,22 @@ namespace Memory_Trainer {
         }
 
         public bool IsFinish() {
+            // запрет клика
             pbBackground.Click += null;
+            // проверка выбора
+            // если верный
             if (choise == bPos) {
+                // увеличиваем уровень
                 level++;
                 label.Text = "Уровень: " + level.ToString();
+                // увеличиваем скорость
                 if (level % 4 == 0)
                     v++;
+                // перемешиваем
                 Shuffle();
             }
             else {
+                // диалог с пользователем
                 DialogResult result = MessageBox.Show("Начать новую игру?", "Неверно!", MessageBoxButtons.YesNo);
                 v = 2;
                 level = 1;
@@ -275,9 +325,12 @@ namespace Memory_Trainer {
         }
 
         private void ButtonSave_Click(object sender, EventArgs e) {
+            // сохранение игры
             SaveGame();
         }
+
         private void ButtonOpen_Click(object sender, EventArgs e) {
+            // открыть игру
             buttonStartGame.Enabled = false;
             buttonRules.Enabled = false;
             buttonAbout.Enabled = false;
@@ -285,6 +338,7 @@ namespace Memory_Trainer {
         }
 
         private void ButtonRules_Click(object sender, EventArgs e) {
+            // показать правила
             ShowRules();
         }
     }
