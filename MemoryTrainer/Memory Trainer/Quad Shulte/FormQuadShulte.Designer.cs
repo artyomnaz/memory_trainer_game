@@ -124,6 +124,7 @@
             this.Downloadbutton.TabStop = false;
             this.Downloadbutton.Text = "Загрузить игру";
             this.Downloadbutton.UseVisualStyleBackColor = false;
+            this.Downloadbutton.Click += new System.EventHandler(this.Downloadbutton_Click);
             // 
             // Rulebutton
             // 
@@ -161,6 +162,7 @@
             this.Savebutton.TabStop = false;
             this.Savebutton.Text = "Сохранить игру";
             this.Savebutton.UseVisualStyleBackColor = false;
+            this.Savebutton.Click += new System.EventHandler(this.Savebutton_Click);
             // 
             // Infobutton
             // 
@@ -191,9 +193,9 @@
             this.Infolabel.Font = new System.Drawing.Font("Magneto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Infolabel.Location = new System.Drawing.Point(374, 34);
             this.Infolabel.Name = "Infolabel";
-            this.Infolabel.Size = new System.Drawing.Size(167, 24);
+            this.Infolabel.Size = new System.Drawing.Size(198, 24);
             this.Infolabel.TabIndex = 10;
-            this.Infolabel.Text = "Текущее число:";
+            this.Infolabel.Text = "Текущее значение:";
             // 
             // Inflabel
             // 
