@@ -73,7 +73,7 @@ namespace Memory_Trainer.Find_a_pair
         private void ButtonMouseClick(object sender, MouseEventArgs e)
         {
             ((PictureBox) _control).Visible = false;
-            level = new Level(GetCountPair(Convert.ToInt32(((Button) sender).Text)),_control.Parent, _font);
+            level = new Level(GetCountPair(Convert.ToInt32(((Button) sender).Text)),_control, _font, this);
             level.Draw();
         }
 
@@ -88,17 +88,17 @@ namespace Memory_Trainer.Find_a_pair
                 case 3:
                     return 6;
                 case 4:
-                    return 2;
+                    return 9;
                 case 5:
-                    return 4;
+                    return 10;
                 case 6:
-                    return 6;
+                    return 12;
                 case 7:
-                    return 2;
+                    return 14;
                 case 8:
-                    return 4;
+                    return 16;
                 case 9:
-                    return 6;
+                    return 18;
             }
             return 0;
         }

@@ -123,6 +123,54 @@
   <ItemGroup>
     <None Include="Resources\Back.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\19.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

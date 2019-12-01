@@ -59,11 +59,6 @@ namespace Memory_Trainer.Find_a_pair
         private void FormFindAPair_Shown(object sender, EventArgs e)
         {
         }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            lvl.HideCards();
-        }
         private void OnFrameChanged(object sender, EventArgs e)
         {
             if (InvokeRequired)
