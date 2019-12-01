@@ -13,7 +13,7 @@ namespace Memory_Trainer.Find_a_pair
         private float _scalingFactor;
         private readonly Timer _timer;
         private bool _flip;
-
+        public event EventHandler MouseClick;
         public float ScalingFactor
         {
             get => _scalingFactor;
@@ -43,7 +43,7 @@ namespace Memory_Trainer.Find_a_pair
             }
         }
 
-        private readonly int _imageType;
+        public int ImageType { get; }
         public Card(Bitmap imageClose, Bitmap imageOpen, int imageType, Control control)
         {
             ImageClose = imageClose;
@@ -64,13 +64,13 @@ namespace Memory_Trainer.Find_a_pair
                 Width = Convert.ToInt32(imageClose.Width * ScalingFactor),
                 SizeMode = PictureBoxSizeMode.StretchImage,
                 Visible = true,
-                //BorderStyle = BorderStyle.FixedSingle,
                 Parent = control,
-                Location = new Point(0)
+                Location = new Point(0),
+                BackColor = Color.Transparent
             };
-            Image.Click += ImageClick;
-            _imageType = imageType;
-
+            Image.Click += OnMouseClick;
+            ImageType = imageType;
+            MouseClick += delegate { };
         }
 
         private void Animation(Bitmap image)
@@ -120,9 +120,11 @@ namespace Memory_Trainer.Find_a_pair
         {
             Animation(IsOpen ? ImageOpen : ImageClose);
         }
-        private void ImageClick(object sender, EventArgs e)
+
+        private void OnMouseClick(object sender, EventArgs e)
         {
-            IsOpen = true;
+            var handler = MouseClick;
+            handler?.Invoke(this, e);
         }
     }
 }

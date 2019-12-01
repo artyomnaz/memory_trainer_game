@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Memory_Trainer.Find_a_pair
 {
-    public partial class FormFindAPair : Form, IGameInterface
+    public partial class FormFindAPair : Form
     {
         private Level lvl;
         private readonly LevelManager _levelManager;
@@ -16,48 +16,13 @@ namespace Memory_Trainer.Find_a_pair
             InitializeComponent();
             _font = new PrivateFontCollection();
             LoadFont();
+            BackgroundPB.Parent = this;
             _levelManager = new LevelManager(BackgroundPB, _font);
-            //ImageAnimator.Animate(BackgroundImage, OnFrameChanged);
-            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.ResizeRedraw, true);
-        }
-        public void SaveGame()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OpenGame()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ShowRules()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ShowInfo()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DrawField()
-        {
-            _levelManager.Draw();
-        }
-
-        public bool IsFinish()
-        {
-            throw new NotImplementedException();
         }
 
         private void FormFindAPair_FormClosed(object sender, FormClosedEventArgs e)
         {
             Owner.Show();
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            // pictureBox1.Location = new Point(pictureBox1.Location.X + 1, pictureBox1.Location.Y);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -93,7 +58,6 @@ namespace Memory_Trainer.Find_a_pair
         }
         private void FormFindAPair_Shown(object sender, EventArgs e)
         {
-            DrawField();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
