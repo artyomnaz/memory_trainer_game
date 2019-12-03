@@ -53,11 +53,11 @@ namespace Memory_Trainer.Find_a_pair
                     Parent = _control,
                     Text = i.ToString(),
                     Font = new Font(_font.Families[0], 30),
-                    FlatStyle = System.Windows.Forms.FlatStyle.Flat,
+                    FlatStyle = FlatStyle.Flat,
                     TabStop = false,
-                    Location = new Point(379 + 100 * j, (680 - NameGame.Height - ChooseLevel.Height) / 2 + 100 * k)
+                    Location = new Point(379 + 100 * j, (680 - NameGame.Height - ChooseLevel.Height) / 2 + 100 * k),
+                    BackColor = Color.White,
                 };
-                btn.FlatAppearance.BorderSize = 0;
                 btn.MouseClick += ButtonMouseClick;
                 BtnsLvl.Add(btn);
                 
@@ -73,34 +73,9 @@ namespace Memory_Trainer.Find_a_pair
         private void ButtonMouseClick(object sender, MouseEventArgs e)
         {
             ((PictureBox) _control).Visible = false;
-            level = new Level(GetCountPair(Convert.ToInt32(((Button) sender).Text)),_control, _font, this);
-            level.Draw();
+            level = new Level(Convert.ToInt32(((Button)sender).Text), _control, _font, this);
+            level.DrawField();
         }
-
-        private int GetCountPair(int level)
-        {
-            switch (level)
-            {
-                case 1:
-                    return 2;
-                case 2:
-                    return 4;
-                case 3:
-                    return 6;
-                case 4:
-                    return 9;
-                case 5:
-                    return 10;
-                case 6:
-                    return 12;
-                case 7:
-                    return 14;
-                case 8:
-                    return 16;
-                case 9:
-                    return 18;
-            }
-            return 0;
-        }
+        
     }
 }

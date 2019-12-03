@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Net;
 using System.Windows.Forms;
@@ -11,6 +13,7 @@ namespace Memory_Trainer.Find_a_pair
         private Level lvl;
         private readonly LevelManager _levelManager;
         private readonly PrivateFontCollection _font;
+        private List<Button> Btns;
         public FormFindAPair()
         {
             InitializeComponent();
@@ -18,6 +21,34 @@ namespace Memory_Trainer.Find_a_pair
             LoadFont();
             BackgroundPB.Parent = this;
             _levelManager = new LevelManager(BackgroundPB, _font);
+            Btns = new List<Button>();
+            for (int i = 0; i < 4; i++)
+            {
+                var btn = new Button
+                {
+                    Visible = true,
+                    Parent = BackgroundPB,
+                    Font = new Font(_font.Families[0], 10),
+                    Width = 150,
+                    Height = 50,
+                    TabStop = false,
+                    FlatStyle = FlatStyle.Flat,
+                    BackColor = Color.White,
+                    Location = new Point(848, 440 + 60 * i)
+                };
+                Btns.Add(btn);
+            }
+            Btns[0].Text = "Загрузить игру";
+            Btns[1].Text = "Правила";
+            Btns[2].Text = "Об игре";
+            Btns[3].Text = "К играм";
+            Btns[3].Click += ReturnToMenu;
+        }
+
+        private void ReturnToMenu(object sender, EventArgs e)
+        {
+            Owner.Show();
+            Close();
         }
 
         private void FormFindAPair_FormClosed(object sender, FormClosedEventArgs e)
@@ -25,40 +56,6 @@ namespace Memory_Trainer.Find_a_pair
             Owner.Show();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            /*Bitmap bmp = new Bitmap(pictureBox2.Image);
-            Bitmap b = new Bitmap(pictureBox1.Image);
-            for (int i = 0; i < b.Height; i++)
-            {
-                for (int j = 0; j < b.Width; j++)
-                {
-                    if (b.GetPixel(j, i) == Color.FromArgb(17, 112, 184))
-                    {
-                        b.SetPixel(j,i,Color.Red);
-                    }
-                }
-            }
-            pictureBox1.Image = b;
-            Graphics g = Graphics.FromImage(pictureBox1.Image);
-            g.DrawImage(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
-            pictureBox1.Invalidate();
-            timer1.Enabled = true;*/
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            /*Bitmap bmp = new Bitmap(pictureBox1.Image);
-            PictureBox pb = new PictureBox();
-            pb.Image = bmp;
-            pb.Size = new Size(120,200);
-            pb.Location = new Point(pictureBox1.Location.X, pictureBox1.Location.Y + 210);
-            Controls.Add(pb);
-            pb.Show();*/
-        }
-        private void FormFindAPair_Shown(object sender, EventArgs e)
-        {
-        }
         private void OnFrameChanged(object sender, EventArgs e)
         {
             if (InvokeRequired)

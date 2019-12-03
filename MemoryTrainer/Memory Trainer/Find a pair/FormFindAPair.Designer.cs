@@ -35,11 +35,13 @@
             // 
             // BackgroundPB
             // 
+            this.BackgroundPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BackgroundPB.BackgroundImage")));
             this.BackgroundPB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BackgroundPB.Image = ((System.Drawing.Image)(resources.GetObject("BackgroundPB.Image")));
             this.BackgroundPB.Location = new System.Drawing.Point(0, 0);
             this.BackgroundPB.Name = "BackgroundPB";
             this.BackgroundPB.Size = new System.Drawing.Size(1012, 681);
+            this.BackgroundPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.BackgroundPB.TabIndex = 1;
             this.BackgroundPB.TabStop = false;
             // 
@@ -47,7 +49,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(178)))), ((int)(((byte)(209)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1012, 681);
             this.Controls.Add(this.BackgroundPB);
             this.DoubleBuffered = true;
@@ -57,7 +61,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Найди пару";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormFindAPair_FormClosed);
-            this.Shown += new System.EventHandler(this.FormFindAPair_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundPB)).EndInit();
             this.ResumeLayout(false);
 
