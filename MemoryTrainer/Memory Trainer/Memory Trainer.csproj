@@ -59,6 +59,14 @@
     <Compile Include="IGameInterface.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SmoothLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="FormLostWord.resx">
       <DependentUpon>FormLostWord.cs</DependentUpon>
     </EmbeddedResource>
@@ -74,6 +82,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="bin\Debug\fonts\Montserrat-ExtraBold.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +106,9 @@
     <Folder Include="Memory matrix\" />
     <Folder Include="Quad Shulte\" />
     <Folder Include="Thimbles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\words.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

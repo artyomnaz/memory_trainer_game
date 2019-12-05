@@ -17,9 +17,11 @@ namespace Memory_Trainer
 
         private void buttonLostWord_Click(object sender, EventArgs e)
         {
-            var formLostWord = new FormLostWord();
-            formLostWord.Left = Left;
-            formLostWord.Top = Top;
+            var formLostWord = new FormLostWord
+            {
+                Left = Left,
+                Top = Top
+            };
             Hide();
             formLostWord.ShowDialog();
             Show();
