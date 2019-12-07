@@ -36,9 +36,9 @@ namespace Memory_Trainer
         private void buttonMemoryMatrix_Click(object sender, EventArgs e)
         {
             FormMemoryMatrix formMemoryMatrix = new FormMemoryMatrix();
-            formMemoryMatrix.Show();
-            formMemoryMatrix.Owner = this;
             Hide();
+            formMemoryMatrix.ShowDialog();
+            Show();
         }
 
         private void buttonThimbles_Click(object sender, EventArgs e)
