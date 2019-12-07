@@ -14,10 +14,11 @@ namespace Memory_Trainer
         public int timerValue = 0;
         public bool setColor = true;
         public SmoothLabel label;
+        public SmoothLabel labelFind;
         public string[] words;
         public int[][] blockPositions;
         public int[][] timerPositions;
-        public int[][] blockPositions2;
+        public int[] blockPositions2 = {30, 150, 270, 390, 510};
         public int[] numberWords = { -1, -1, -1, -1, -1 };
         public int[] showBlocks = {1, 1, 1, 1, 1};
         public int indexHideWord;
@@ -235,36 +236,30 @@ namespace Memory_Trainer
             }
             else if (timerValue == -2)
             {
-                timerCountDown.Enabled = false;
                 for (int i = 0; i < 4; i++)
                     smoothTimers[i].Hide();
+            }
+            else if (timerValue == -3)
+            {
                 timerValue = 0;
-                Random rnd = new Random();
-                int indexHideWord = numberWords[rnd.Next(5)];
-                //shuffle array
-                int n = smoothLabels.Count;
-                while (n > 1)
+                timerCountDown.Enabled = false;
+                labelFind = new SmoothLabel
                 {
-                    n--;
-                    int k = rnd.Next(n);
-                    var left = numberWords[n];
-                    var top = numberWords[n];
-                    numberWords[n] = numberWords[k];
-                    numberWords[n] = numberWords[k];
-                    numberWords[k] = left;
-                    numberWords[k] = top;
-                }
-                int curIndex = Array.IndexOf(numberWords, indexHideWord);
-                for (int i = 0; i < smoothLabels.Count; i++)
-                {
-                    if (i == curIndex)
-                    {
-                        smoothLabels[curIndex].Text = "?";
-                        continue;
-                    }
-                    smoothLabels[i].Text = words[numberWords[i]];
-                }
-                timerShowBlock.Enabled = true;
+                    BackColor = Color.Transparent,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Font = new Font(private_fonts.Families[0], 80F),
+                    UseCompatibleTextRendering = true,
+                    TextRenderingHint = TextRenderingHint.AntiAlias,
+                    Text = "Найди!",
+                    Width = 800,
+                    Height = 200,
+                    ForeColor = Color.White
+                };
+
+                labelFind.Left = (Width / 2) - (labelFind.Width / 2);
+                labelFind.Top = (Height / 2) - (labelFind.Height / 2);
+                Controls.Add(labelFind);
+                timerFind.Enabled = true;
             }
         }
 
@@ -276,6 +271,52 @@ namespace Memory_Trainer
             {
                 timerValue = 0;
                 timerShowBlock.Enabled = false;
+            }
+        }
+
+        private void TimerFind_Tick(object sender, EventArgs e)
+        {
+            timerValue++;
+            if(timerValue == 5)
+            {
+                labelFind.Hide();
+            }
+            else if (timerValue == 6)
+            {   
+                Random rnd = new Random();
+                int indexHideWord = numberWords[rnd.Next(5)];
+                //shuffle array
+                int n = smoothLabels.Count;
+                while (n > 1)
+                {
+                    n--;
+                    ; ; ; ;  int k = rnd.Next(n);
+                    ; ; ; ; var tempLabel = smoothLabels[n];
+                    ; ; ; ; var tempNumberWord = numberWords[n];
+                    ; ; ; ; smoothLabels[n] = smoothLabels[k];
+                    numberWords[n] = numberWords[k];
+                    smoothLabels[k] = tempLabel;
+                    numberWords[k] = tempNumberWord;
+                }
+                int curIndex = Array.IndexOf(numberWords, indexHideWord);
+                for (int i = 0; i < smoothLabels.Count; i++)
+                {
+                    smoothLabels[i].Left = 364;
+                    smoothLabels[i].Top = blockPositions2[i];
+                    if (i == curIndex)
+                    {
+                        smoothLabels[curIndex].Text = "?";
+                        continue;
+                    }
+                }
+                timerFind.Enabled = false;
+                timerValue = 0;
+                timerShowBlock.Enabled = true;
+            }
+            else
+            {
+                BackColor = setColor ? Color.FromArgb(145, 189, 58) : Color.FromArgb(250, 66, 82);
+                setColor = !setColor;
             }
         }
     }

@@ -33,6 +33,7 @@
             this.timerCreateBlock = new System.Windows.Forms.Timer(this.components);
             this.timerCountDown = new System.Windows.Forms.Timer(this.components);
             this.timerShowBlock = new System.Windows.Forms.Timer(this.components);
+            this.timerFind = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // timerIntro
@@ -43,18 +44,23 @@
             // 
             // timerCreateBlock
             // 
-            this.timerCreateBlock.Interval = 1000;
+            this.timerCreateBlock.Interval = 800;
             this.timerCreateBlock.Tick += new System.EventHandler(this.TimerCreateBlock_Tick);
             // 
             // timerCountDown
             // 
-            this.timerCountDown.Interval = 1000;
+            this.timerCountDown.Interval = 800;
             this.timerCountDown.Tick += new System.EventHandler(this.TimerCountDown_Tick);
             // 
             // timerShowBlock
             // 
-            this.timerShowBlock.Interval = 1000;
+            this.timerShowBlock.Interval = 800;
             this.timerShowBlock.Tick += new System.EventHandler(this.TimerShowBlock_Tick);
+            // 
+            // timerFind
+            // 
+            this.timerFind.Interval = 1000;
+            this.timerFind.Tick += new System.EventHandler(this.TimerFind_Tick);
             // 
             // FormLostWord
             // 
@@ -78,5 +84,6 @@
         private System.Windows.Forms.Timer timerCreateBlock;
         private System.Windows.Forms.Timer timerCountDown;
         private System.Windows.Forms.Timer timerShowBlock;
+        private System.Windows.Forms.Timer timerFind;
     }
 }
