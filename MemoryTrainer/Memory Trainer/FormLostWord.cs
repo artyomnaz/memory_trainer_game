@@ -11,20 +11,23 @@ namespace Memory_Trainer
 {
     public partial class FormLostWord : Form, IGameInterface
     {
-        public int timerValue = 0;
+        public int timerValue;
         public bool setColor = true;
         public SmoothLabel label;
         public SmoothLabel labelFind;
         public string[] words;
         public int[][] blockPositions;
         public int[][] timerPositions;
-        public int[] blockPositions2 = {30, 150, 270, 390, 510};
+        public int[] blockPositions2 = {45, 165, 285, 405, 525};
+        public int[] answerPositions = {17, 696, 17, 696};
         public int[] numberWords = { -1, -1, -1, -1, -1 };
-        public int[] showBlocks = {1, 1, 1, 1, 1};
         public int indexHideWord;
+        public int curIndex;
 
         public List<SmoothLabel> smoothLabels;
         public List<SmoothLabel> smoothTimers;
+        public List<SmoothLabel> smoothAnswers;
+        public List<int> numberAnswers;
         public PrivateFontCollection private_fonts = new PrivateFontCollection();
 
         private void LoadFont()
@@ -180,7 +183,6 @@ namespace Memory_Trainer
             }
         }
 
-
         private void TimerCreateBlock_Tick(object sender, EventArgs e)
         {
             CreateBlocks(words[numberWords[timerValue]], blockPositions[timerValue][0], blockPositions[timerValue][1]);
@@ -265,13 +267,51 @@ namespace Memory_Trainer
 
         private void TimerShowBlock_Tick(object sender, EventArgs e)
         {
-            smoothLabels[timerValue].Show();
-            timerValue++;
-            if (timerValue == 5)
+            if (timerValue == 6)
             {
                 timerValue = 0;
                 timerShowBlock.Enabled = false;
+                Random rnd = new Random();
+                //creating buttons-answers
+                smoothAnswers = new List<SmoothLabel>();
+                numberAnswers = new List<int>();
+                for (int i = 0; i < 4; i++)
+                {
+                    label = new SmoothLabel
+                    {
+                        BackColor = Color.Red,
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Font = new Font(private_fonts.Families[0], 20F),
+                        UseCompatibleTextRendering = true,
+                        TextRenderingHint = TextRenderingHint.AntiAlias,
+                        Width = 300,
+                        Height = 40,
+                        ForeColor = Color.White
+                    };
+                    label.MouseEnter += ChangeBackMouseEnter;
+                    label.MouseLeave += ChangeBackMouseLeave;
+                    while (true)
+                    {
+                        var tempNumberWord = rnd.Next(words.Length);
+                        if (numberAnswers.IndexOf(tempNumberWord) == -1 && Array.IndexOf(numberWords, tempNumberWord) == -1)
+                        {
+                            label.Text = words[tempNumberWord];
+                            break;
+                        }
+                    }
+                    label.Left = answerPositions[i];
+                    label.Top = blockPositions2[curIndex] + 60 * (i / 2);
+                    smoothAnswers.Add(label);
+                    label.Show();
+                    Controls.Add(label);
+                }
+                return;
             }
+            else if (timerValue < 5)
+            {
+                smoothLabels[timerValue].Show();
+            }
+            timerValue++;
         }
 
         private void TimerFind_Tick(object sender, EventArgs e)
@@ -290,15 +330,15 @@ namespace Memory_Trainer
                 while (n > 1)
                 {
                     n--;
-                    ; ; ; ;  int k = rnd.Next(n);
-                    ; ; ; ; var tempLabel = smoothLabels[n];
-                    ; ; ; ; var tempNumberWord = numberWords[n];
-                    ; ; ; ; smoothLabels[n] = smoothLabels[k];
+                    int k = rnd.Next(n);
+                    var tempLabel = smoothLabels[n];
+                    var tempNumberWord = numberWords[n];
+                    smoothLabels[n] = smoothLabels[k];
                     numberWords[n] = numberWords[k];
                     smoothLabels[k] = tempLabel;
                     numberWords[k] = tempNumberWord;
                 }
-                int curIndex = Array.IndexOf(numberWords, indexHideWord);
+                curIndex = Array.IndexOf(numberWords, indexHideWord);
                 for (int i = 0; i < smoothLabels.Count; i++)
                 {
                     smoothLabels[i].Left = 364;
