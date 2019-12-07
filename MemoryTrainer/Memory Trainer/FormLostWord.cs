@@ -17,7 +17,11 @@ namespace Memory_Trainer
         public string[] words;
         public int[][] blockPositions;
         public int[][] timerPositions;
+        public int[][] blockPositions2;
         public int[] numberWords = { -1, -1, -1, -1, -1 };
+        public int[] showBlocks = {1, 1, 1, 1, 1};
+        public int indexHideWord;
+
         public List<SmoothLabel> smoothLabels;
         public List<SmoothLabel> smoothTimers;
         public PrivateFontCollection private_fonts = new PrivateFontCollection();
@@ -26,7 +30,7 @@ namespace Memory_Trainer
         {
             using (MemoryStream fontStream = new MemoryStream(Resource1.Montserrat_ExtraBold))
             {
-                System.IntPtr data = Marshal.AllocCoTaskMem((int)fontStream.Length);
+                IntPtr data = Marshal.AllocCoTaskMem((int)fontStream.Length);
                 byte[] fontdata = new byte[fontStream.Length];
                 fontStream.Read(fontdata, 0, (int)fontStream.Length);
                 Marshal.Copy(fontdata, 0, data, (int)fontStream.Length);
@@ -44,12 +48,12 @@ namespace Memory_Trainer
 
         public void DrawField()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public bool IsFinish()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void CreateBlocks(string word, int left, int top)
@@ -74,24 +78,22 @@ namespace Memory_Trainer
 
         public void OpenGame()
         {
-            //throw new System.NotImplementedException();
-            
             
         }
 
         public void SaveGame()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void ShowInfo()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void ShowRules()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         private void ChangeBackMouseEnter(object sender, EventArgs e)
@@ -237,6 +239,43 @@ namespace Memory_Trainer
                 for (int i = 0; i < 4; i++)
                     smoothTimers[i].Hide();
                 timerValue = 0;
+                Random rnd = new Random();
+                int indexHideWord = numberWords[rnd.Next(5)];
+                //shuffle array
+                int n = smoothLabels.Count;
+                while (n > 1)
+                {
+                    n--;
+                    int k = rnd.Next(n);
+                    var left = numberWords[n];
+                    var top = numberWords[n];
+                    numberWords[n] = numberWords[k];
+                    numberWords[n] = numberWords[k];
+                    numberWords[k] = left;
+                    numberWords[k] = top;
+                }
+                int curIndex = Array.IndexOf(numberWords, indexHideWord);
+                for (int i = 0; i < smoothLabels.Count; i++)
+                {
+                    if (i == curIndex)
+                    {
+                        smoothLabels[curIndex].Text = "?";
+                        continue;
+                    }
+                    smoothLabels[i].Text = words[numberWords[i]];
+                }
+                timerShowBlock.Enabled = true;
+            }
+        }
+
+        private void TimerShowBlock_Tick(object sender, EventArgs e)
+        {
+            smoothLabels[timerValue].Show();
+            timerValue++;
+            if (timerValue == 5)
+            {
+                timerValue = 0;
+                timerShowBlock.Enabled = false;
             }
         }
     }
