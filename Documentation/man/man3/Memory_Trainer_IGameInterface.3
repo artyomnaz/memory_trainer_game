@@ -1,0 +1,90 @@
+.TH "Memory_Trainer.IGameInterface" 3 "Вс 8 Дек 2019" "Тренажер памяти" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Memory_Trainer.IGameInterface
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Производные классы:\fBMemory_Trainer\&.FormThimbles\fP\&.
+.SS "Открытые члены"
+
+.in +1c
+.ti -1c
+.RI "void \fBSaveGame\fP ()"
+.br
+.RI "Функция сохранения игры "
+.ti -1c
+.RI "void \fBOpenGame\fP ()"
+.br
+.RI "Функция открытия сохраненной игры "
+.ti -1c
+.RI "void \fBShowRules\fP ()"
+.br
+.RI "Функция для отображения правил "
+.ti -1c
+.RI "void \fBShowInfo\fP ()"
+.br
+.RI "Функция для отображения информации об игре "
+.ti -1c
+.RI "void \fBDrawField\fP ()"
+.br
+.RI "Функция для прорисовки поля "
+.ti -1c
+.RI "bool \fBIsFinish\fP ()"
+.br
+.RI "Функция проверки завершения игры "
+.in -1c
+.SH "Подробное описание"
+.PP 
+См\&. определение в файле IGameInterface\&.cs строка 3
+.SH "Методы"
+.PP 
+.SS "void Memory_Trainer\&.IGameInterface\&.DrawField ()"
+
+.PP
+Функция для прорисовки поля 
+.PP
+Замещается в \fBMemory_Trainer\&.FormThimbles\fP\&.
+.SS "bool Memory_Trainer\&.IGameInterface\&.IsFinish ()"
+
+.PP
+Функция проверки завершения игры 
+.PP
+\fBВозвращает\fP
+.RS 4
+true - игра завершена, false - игра продолжается
+.RE
+.PP
+
+.PP
+Замещается в \fBMemory_Trainer\&.FormThimbles\fP\&.
+.SS "void Memory_Trainer\&.IGameInterface\&.OpenGame ()"
+
+.PP
+Функция открытия сохраненной игры 
+.PP
+Замещается в \fBMemory_Trainer\&.FormThimbles\fP\&.
+.SS "void Memory_Trainer\&.IGameInterface\&.SaveGame ()"
+
+.PP
+Функция сохранения игры 
+.PP
+Замещается в \fBMemory_Trainer\&.FormThimbles\fP\&.
+.SS "void Memory_Trainer\&.IGameInterface\&.ShowInfo ()"
+
+.PP
+Функция для отображения информации об игре 
+.PP
+Замещается в \fBMemory_Trainer\&.FormThimbles\fP\&.
+.SS "void Memory_Trainer\&.IGameInterface\&.ShowRules ()"
+
+.PP
+Функция для отображения правил 
+.PP
+Замещается в \fBMemory_Trainer\&.FormThimbles\fP\&.
+
+.SH "Автор"
+.PP 
+Автоматически создано Doxygen для Тренажер памяти из исходного текста\&.
