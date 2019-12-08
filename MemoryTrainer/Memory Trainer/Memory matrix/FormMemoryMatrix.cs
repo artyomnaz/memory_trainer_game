@@ -13,48 +13,62 @@ namespace Memory_Trainer.Memory_matrix
     public partial class FormMemoryMatrix : Form
     {
         private DataGridView FigureGrid;
-        private int Lives; 
+        private int n;
+        private int m;
+        private int[][] pos;
 
         public FormMemoryMatrix()
         {
             InitializeComponent();
             FigureGrid = new DataGridView();
             FigureGrid.Parent = this;
-        }
-
-        private void FormMemoryMatrix_Load(object sender, EventArgs e)
-        {
-            FigureGrid.ColumnCount = 3;
-            for (int i = 0; i < 3; i++)
+            n = 5;
+            m = (int)(n * n * 0.25);
+            pos = new int[n][];
+            FigureGrid.ColumnCount = n;
+            for (int i = 0; i < n; i++)
             {
+                pos[i] = new int[n];
                 var row = new DataGridViewRow();
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < n; j++)
                 {
+                    pos[i][j] = 0;
                     var cell = new DataGridViewTextBoxCell();
-                    cell.Value = " ";
                     row.Cells.Add(cell);
-
                 }
                 FigureGrid.Rows.Add(row);
-            }
-    
-            FigureGrid.Width = 530;
-            FigureGrid.Height = 530;
+            }  
+        }
+        
+        private void FormMemoryMatrix_Load(object sender, EventArgs e)
+        {
+            FigureGrid.Width = 2 * this.Height / 3;
+            FigureGrid.Height = 2 * this.Height / 3;
             FigureGrid.Top = this.Height / 2 - FigureGrid.Height / 2;
             FigureGrid.Left = this.Width / 2 - FigureGrid.Width / 2;
-            FigureGrid.GridColor = Color.MistyRose;
+            FigureGrid.GridColor = Color.DarkGray;
             FigureGrid.BorderStyle = BorderStyle.Fixed3D;
 
             FigureGrid.RowHeadersVisible = false;
             FigureGrid.ColumnHeadersVisible = false;
 
-            for (int i = 0; i < FigureGrid.RowCount - 1; i++){
-                FigureGrid.Rows[i].Height = FigureGrid.Width / 3 - 1;
-                FigureGrid.Columns[i].Width = FigureGrid.Height / 3 - 1;
-                for (int j = 0; j < FigureGrid.ColumnCount; j++)
-                    FigureGrid.Rows[i].Cells[j].Selected = false;
-            }
+            FigureGrid.ScrollBars = ScrollBars.None;
+            FigureGrid.MultiSelect = false;
+            FigureGrid.CellClick += onClick;
 
+            RandomPosition();
+
+            for (int i = 0; i < n; i++){
+                FigureGrid.Rows[i].Height = FigureGrid.Height / n;
+                FigureGrid.Columns[i].Width = FigureGrid.Width / n;
+                for (int j = 0; j < n; j++)
+                {
+                    FigureGrid.Rows[i].Cells[j].Selected = false;
+                    if (pos[i][j] == 1)
+                        FigureGrid.Rows[i].Cells[j].Style.BackColor = Color.IndianRed;
+                    else FigureGrid.Rows[i].Cells[j].Style.BackColor = Color.WhiteSmoke;
+                }
+            }
             FigureGrid.ReadOnly = true;
             FigureGrid.AllowUserToResizeRows = false;
             FigureGrid.AllowDrop = false;
@@ -63,8 +77,37 @@ namespace Memory_Trainer.Memory_matrix
             FigureGrid.AllowUserToOrderColumns = false;
             FigureGrid.AllowUserToResizeColumns = false;
             FigureGrid.AllowUserToResizeRows = false;
-            //FigureGrid.Rows[0].Cells[0].Style.BackColor = Color.Green;
+            FigureGrid.DefaultCellStyle.SelectionBackColor = Color.Transparent;
 
+        }
+
+        private void onClick(object sender, EventArgs e)
+        {
+            int i = (sender as DataGridView).CurrentCell.RowIndex;
+            int j = (sender as DataGridView).CurrentCell.ColumnIndex;
+            
+            FigureGrid.Rows[i].Cells[j].Style.SelectionBackColor = Color.Transparent;
+        }
+
+        private void RandomPosition()
+        {
+            var r = new int[m];
+            Random random = new Random();
+            for (int i = 0; i < m; i++) {
+                r[i] = random.Next(n * n);
+                for (int j = 0; j < i; j++)
+                    if (r[i] == r[j])
+                    {
+                        r[i] = random.Next(n * n);
+                        i--;
+                    }
+            }
+
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < n; j++)
+                    for (int k = 0; k < m; k++) 
+                        if (r[k] == i * n + j)
+                            pos[i][j] = 1;
         }
     }
 }
