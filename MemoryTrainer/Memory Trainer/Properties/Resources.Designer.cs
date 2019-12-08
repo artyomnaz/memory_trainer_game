@@ -273,16 +273,6 @@ namespace Memory_Trainer.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Back1 {
-            get {
-                object obj = ResourceManager.GetObject("Back1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Face {
             get {
                 object obj = ResourceManager.GetObject("Face", resourceCulture);
@@ -297,6 +287,46 @@ namespace Memory_Trainer.Properties {
             get {
                 object obj = ResourceManager.GetObject("fonto", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Об игре
+        ///
+        ///Цель игры: развивать наблюдательность, 
+        ///внимание, тонкость зрительного восприятия, 
+        ///умение подбирать парную картинку к каждому предмету.
+        ///
+        ///Именно зрение для человека является самым важным 
+        ///инструментом восприятия окружающего мира. 
+        ///Игра «Найди пару» - превосходное занятие после тяжелого рабочего дня, 
+        ///средство поддержания своего интеллекта в тонусе. 
+        ///Известно, что зрительное восприятие в большей степени ориентировано 
+        ///именно на анализ объектов, поэтому мы чаще всего 
+        ///применяем эти знания [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string Info {
+            get {
+                return ResourceManager.GetString("Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Правила
+        ///
+        ///Игроку предлагается поле с некоторым количеством разных по 
+        ///оформлению и форме карточек. 
+        ///Задача простая – найти две одинаковые карточки.
+        ///Если открываются две разные карточки, 
+        ///то через несколько секунд они закроются обратно,
+        ///иначе они исчезают.
+        ///
+        ///Для открытия карточки используйте
+        ///левую или правую кнопки мыши..
+        /// </summary>
+        internal static string Rules {
+            get {
+                return ResourceManager.GetString("Rules", resourceCulture);
             }
         }
     }

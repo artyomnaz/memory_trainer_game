@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,6 +52,7 @@
     <Compile Include="Find a pair\FormFindAPair.Designer.cs">
       <DependentUpon>FormFindAPair.cs</DependentUpon>
     </Compile>
+    <Compile Include="Find a pair\Info.cs" />
     <Compile Include="Find a pair\Level.cs" />
     <Compile Include="Find a pair\LevelManager.cs" />
     <Compile Include="FormMemoryTrainer.cs">
@@ -176,6 +178,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Image\Btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Info.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Rules.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

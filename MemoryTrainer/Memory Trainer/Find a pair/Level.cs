@@ -2,104 +2,138 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Memory_Trainer.Find_a_pair
 {
+    public enum OpeningРarameter
+    {
+        New,
+        Load
+    }
     public class Level : IGameInterface
     {
-        private readonly List<Card> _cards;
-        private readonly List<int> _openCard;
+        private List<Card> _cards;
+        private List<int> _openCard;
         private readonly Timer _timer;
         private readonly Timer _timerOpenCard;
+        private readonly Timer _timerSaveGame;
         private int _time;
+        private int _timeSaveGame;
         private int _timeOpenCard;
         private int _clicks;
         private int _openPair;
-        private readonly int _countPair;
-        private readonly Label _timeLbl;
-        private readonly Label _levelLbl;
+        private int _countPair;
+        private Label _timeLbl;
+        private Label _levelLbl;
         private readonly Label _clicksLbl;
         private readonly Label _endGameLbl;
+        private readonly Label _saveGameLbl;
         private PrivateFontCollection _font;
         private LevelManager _parent;
         private readonly Control _control;
         private Button _endGameBtn;
         private Button _menuBtn;
-        public Level(int level, Control control, PrivateFontCollection font, LevelManager parent)
+        private Button _saveBtn;
+        public Level(int level, Control control, PrivateFontCollection font, LevelManager parent, OpeningРarameter op)
         {
-            _countPair = GetCountPair(level);
             _control = control;
-            _parent = parent;
-            _openCard = new List<int> { -1, -1 };
             _font = font;
-            _cards = new List<Card>();
-            var indexes = new List<int>();
-            while (indexes.Count != _countPair)
+            if (op == OpeningРarameter.New)
             {
-                int index = new Random().Next(1, 21);
-                bool flag = false;
-                foreach (var index1 in indexes)
+                _openCard = new List<int> { -1, -1 };
+                _countPair = GetCountPair(level);
+                var indexes = new List<int>();
+                while (indexes.Count != _countPair)
                 {
-                    if (index1 != index) continue;
-                    flag = true;
-                    break;
+                    int index = new Random().Next(1, 21);
+                    bool flag = false;
+                    foreach (var index1 in indexes)
+                    {
+                        if (index1 != index) continue;
+                        flag = true;
+                        break;
+                    }
+                    if (!flag)
+                    {
+                        indexes.Add(index);
+                    }
                 }
-                if (!flag)
+                _cards = new List<Card>();
+                for (int i = 0; i < _countPair; i++)
                 {
-                    indexes.Add(index);
-                }
-            }
-            for (int i = 0; i < _countPair; i++)
-            {
-                Bitmap faceImage = new Bitmap(Properties.Resources.Face);
-                Bitmap innerImage = new Bitmap((Bitmap)Properties.Resources.ResourceManager.GetObject("_" + indexes[i]));
-                Graphics g = Graphics.FromImage(faceImage);
-                g.DrawImage(innerImage, new Point(22, 62));
+                    Bitmap faceImage = new Bitmap(Properties.Resources.Face);
+                    Bitmap innerImage = new Bitmap((Bitmap)Properties.Resources.ResourceManager.GetObject("_" + indexes[i]));
+                    Graphics g = Graphics.FromImage(faceImage);
+                    g.DrawImage(innerImage, new Point(22, 62));
 
-                _cards.Add(new Card(Properties.Resources.Back1, faceImage, indexes[i], control.Parent));
-                _cards.Add(new Card(Properties.Resources.Back1, faceImage, indexes[i], control.Parent));
+                    _cards.Add(new Card(Properties.Resources.Back, faceImage, indexes[i], control.Parent));
+                    _cards.Add(new Card(Properties.Resources.Back, faceImage, indexes[i], control.Parent));
+                }
+                _time = 0;
+                _clicks = 0;
+                _timeLbl = new Label
+                {
+                    Visible = true,
+                    Location = new Point(30, 10),
+                    Font = new Font(font.Families[0], 20),
+                    Parent = control.Parent,
+                    AutoSize = true,
+                    BackColor = Color.Transparent,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Text = @"Время: 00:00"
+                };
+                _levelLbl = new Label
+                {
+                    Visible = true,
+                    Location = new Point(75 + _timeLbl.Width, 10),
+                    Font = new Font(font.Families[0], 20),
+                    Parent = control.Parent,
+                    AutoSize = true,
+                    BackColor = Color.Transparent,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Text = @"Уровень: " + level
+                };
             }
+            else
+                OpenGame();
+            _timerSaveGame = new Timer
+            {
+                Enabled = false,
+                Interval = 800
+            };
+            _timerSaveGame.Tick += TimerSaveGameTick;
+            _timeSaveGame = 0;
+            _parent = parent;
             _timer = new Timer
             {
                 Interval = 1000,
                 Enabled = true
             };
+            _timer.Tick += TimerOnTick;
             _timerOpenCard = new Timer
             {
                 Interval = 300,
                 Enabled = false
             };
-            _time = 0;
             _timeOpenCard = 0;
-            _timer.Tick += TimerOnTick;
             _timerOpenCard.Tick += TimerOpenCardOnTick;
-            _timeLbl = new Label
+            _saveGameLbl = new Label
             {
-                Visible = true,
-                Location = new Point(30, 10),
-                Font = new Font(_font.Families[0], 20),
+                Visible = false,
+                Font = new Font(font.Families[0], 20),
                 Parent = control.Parent,
                 AutoSize = true,
-                BackColor = Color.Transparent,
+                BackColor = Color.CornflowerBlue,
                 TextAlign = ContentAlignment.MiddleCenter,
-                Text = @"Время: 00:00"
+                Text = @"Игра сохранена"
             };
-            _levelLbl = new Label
-            {
-                Visible = true,
-                Location = new Point(75 + _timeLbl.Width, 10),
-                Font = new Font(_font.Families[0], 20),
-                Parent = control.Parent,
-                AutoSize = true,
-                BackColor = Color.Transparent,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Text = @"Уровень: " + level
-            };
+            _saveGameLbl.Location = new Point((1028 - _saveGameLbl.Width) / 2 , 635);
             _clicksLbl = new Label
             {
                 Visible = false,
-                Font = new Font(_font.Families[0], 20),
+                Font = new Font(font.Families[0], 20),
                 Parent = control.Parent,
                 AutoSize = true,
                 BackColor = Color.Transparent,
@@ -109,7 +143,7 @@ namespace Memory_Trainer.Find_a_pair
             _endGameLbl = new Label
             {
                 Visible = false,
-                Font = new Font(_font.Families[0], 40),
+                Font = new Font(font.Families[0], 40),
                 Parent = control.Parent,
                 AutoSize = true,
                 BackColor = Color.Transparent,
@@ -124,7 +158,7 @@ namespace Memory_Trainer.Find_a_pair
             _endGameBtn = new Button
             {
                 Visible = false,
-                Font = new Font(_font.Families[0], 20),
+                Font = new Font(font.Families[0], 20),
                 AutoSize = true,
                 Parent = _control.Parent,
                 Text = @"Завершить",
@@ -136,17 +170,55 @@ namespace Memory_Trainer.Find_a_pair
             _menuBtn = new Button
             {
                 Visible = true,
-                Font = new Font(_font.Families[0], 15),
+                Font = new Font(font.Families[0], 15),
                 AutoSize = true,
                 Parent = _control.Parent,
                 Text = @"Меню",
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.White
             };
-            _menuBtn.Location = new Point(1028 - _menuBtn.Width - 30, 10);
+            _menuBtn.Location = new Point(998 - _menuBtn.Width, 10);
             _menuBtn.Click += EndGameBtnClick;
-            _clicks = 0;
+            _saveBtn = new Button
+            {
+                Visible = true,
+                Font = new Font(font.Families[0], 15),
+                AutoSize = true,
+                Parent = _control.Parent,
+                Text = @"Сохранить",
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.White
+            };
+            _saveBtn.Location = new Point(968 - _menuBtn.Width - _saveBtn.Width, 10);
+            _saveBtn.Click += SaveBtnClick;
+            
         }
+
+        private void TimerSaveGameTick(object sender, EventArgs e)
+        {
+            if (_timeSaveGame++ != 1) return;
+            _timerSaveGame.Enabled = false;
+            _timeSaveGame = 0;
+            _timer.Enabled = true;
+            ChangeEnabled(true);
+            _saveGameLbl.Visible = false;
+        }
+
+        private void ChangeEnabled(bool state)
+        {
+            foreach (var card in _cards)
+            {
+                card.Image.Enabled = state;
+            }
+
+            _menuBtn.Enabled = state;
+            _saveBtn.Enabled = state;
+        }
+        private void SaveBtnClick(object sender, EventArgs e)
+        {
+            SaveGame();
+        }
+
         private int GetCountPair(int level)
         {
             switch (level)
@@ -233,6 +305,7 @@ namespace Memory_Trainer.Find_a_pair
             _clicksLbl.Dispose();
             _endGameLbl.Dispose();
             _menuBtn.Dispose();
+            _saveBtn.Dispose();
             _levelLbl.Dispose();
         }
         private void MouseClick(object sender, EventArgs e)
@@ -269,12 +342,160 @@ namespace Memory_Trainer.Find_a_pair
         }
         public void SaveGame()
         {
-            throw new NotImplementedException();
+            string text = "";
+            text += "Level: " + _levelLbl.Text.Split(' ')[1] + "\n";
+            text += "Count cards: " + _cards.Count + "\n";
+            foreach (var card in _cards)
+            {
+                text += "{\n";
+                text += "\tIsDisposed: " + card.Image.IsDisposed + "\n";
+                text += "\tLocation: " + card.Image.Location + "\n";
+                text += "\tIndexImage: " + card.ImageType + "\n";
+                text += "\tIsOpen: " + card.IsOpen + "\n";
+                text += "\tScalingFactor: " + card.ScalingFactor + "\n";
+                text += "}\n";
+            }
+            text += "OpenCard: " + _openCard[0] + "\n";
+            text += "Time: " + _time + "\n";
+            text += "Clicks: " + _clicks + "\n";
+            text += "OpenPair: " + _openPair + "\n";
+            text += "Successful save!";
+            using (FileStream fstream = new FileStream("SaveFindAPair", FileMode.Create))
+            {
+                byte[] array = System.Text.Encoding.Default.GetBytes(text);
+                fstream.Write(array, 0, array.Length);
+            }
+            _timerSaveGame.Enabled = true;
+            _saveGameLbl.Visible = true;
+            _timer.Enabled = false;
+            ChangeEnabled(false);
         }
 
         public void OpenGame()
         {
-            throw new NotImplementedException();
+            string path = "SaveFindAPair";
+            if (!File.Exists(path))
+            {
+                throw new Exception("Файл сохранения не найден.");
+            }
+
+            string textFromFile;
+            using (FileStream fstream = File.OpenRead(path))
+            {
+                byte[] array = new byte[fstream.Length];
+                fstream.Read(array, 0, array.Length);
+                textFromFile = System.Text.Encoding.Default.GetString(array);
+            }
+
+            textFromFile = textFromFile.Replace("\t","");
+            var Lines = textFromFile.Split('\n');
+            if (Lines[Lines.Length - 1] != "Successful save!")
+            {
+                throw new Exception("Файл сохранения повреждён.");
+            }
+
+            _countPair = GetCountPair(Convert.ToInt32(Lines[0].Split(' ')[1]));
+            _cards = new List<Card>();
+            _openCard = new List<int> { -1, -1 };
+            
+            int j = 1;
+            int countCard = Convert.ToInt32(Lines[1].Split(' ')[2]);
+            
+            for (int i = 0; i < countCard; i++)
+            {
+                int x = 0;
+                int y = 0;
+                int index = 0;
+                bool isOpen = false;
+                float scalingFactor = 1;
+                bool isDisposed = true;
+                while (Lines[j] != "}")
+                {
+                    j++;
+                    if(Lines[j] == "{")
+                        continue;
+
+                    switch (Lines[j].Split(' ')[0])
+                    {
+                        case "IsDisposed:":
+                            isDisposed = Convert.ToBoolean(Lines[j].Split(' ')[1]);
+                            break;
+                        case "Location:":
+                            x = Convert.ToInt32(Lines[j].Split(' ')[1].Split(',')[0].Split('=')[1]);
+                            y = Convert.ToInt32(Lines[j].Split(' ')[1].Split(',')[1].Split('=')[1].Split('}')[0]);
+                            break;
+                        case "IndexImage:":
+                            index = Convert.ToInt32(Lines[j].Split(' ')[1]);
+                            break;
+                        case "IsOpen:":
+                            isOpen = Convert.ToBoolean(Lines[j].Split(' ')[1]);
+                            break;
+                        case "ScalingFactor:":
+                            scalingFactor = (float)(Convert.ToDouble(Lines[j].Split(' ')[1]));
+                            break;
+                    }
+                }
+
+                Bitmap faceImage = new Bitmap(Properties.Resources.Face);
+                Bitmap innerImage =
+                    new Bitmap((Bitmap)Properties.Resources.ResourceManager.GetObject("_" + index.ToString()));
+                Graphics g = Graphics.FromImage(faceImage);
+                g.DrawImage(innerImage, new Point(22, 62));
+                var card = new Card(Properties.Resources.Back, faceImage, index, _control.Parent)
+                {
+                    IsOpen = isOpen,
+                    ScalingFactor = scalingFactor,
+                    Image = { Location = new Point(x, y) }
+                };
+                if (isDisposed)
+                {
+                    card.Image.Dispose();
+                }
+                _cards.Add(card);
+                j++;
+            }
+            while(Lines[j] != "Successful save!")
+            {
+                switch (Lines[j].Split(' ')[0])
+                {
+                    case "OpenCard:":
+                        _openCard[0] = Convert.ToInt32(Lines[j].Split(' ')[1]);
+                        break;
+                    case "Time:":
+                        _time = Convert.ToInt32(Lines[j].Split(' ')[1]);
+                        break;
+                    case "Clicks:":
+                        _clicks = Convert.ToInt32(Lines[j].Split(' ')[1]);
+                        break;
+                    case "OpenPair:":
+                        _openPair = Convert.ToInt32(Lines[j].Split(' ')[1]);
+                        break;
+                }
+
+                j++;
+            }
+            _timeLbl = new Label
+            {
+                Visible = true,
+                Location = new Point(30, 10),
+                Font = new Font(_font.Families[0], 20),
+                Parent = _control.Parent,
+                AutoSize = true,
+                BackColor = Color.Transparent,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Text = @"Время: " + CreateTimeString(_time)
+        };
+            _levelLbl = new Label
+            {
+                Visible = true,
+                Location = new Point(75 + _timeLbl.Width, 10),
+                Font = new Font(_font.Families[0], 20),
+                Parent = _control.Parent,
+                AutoSize = true,
+                BackColor = Color.Transparent,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Text = @"Уровень: " + Lines[0].Split(' ')[1]
+            };
         }
 
         public void ShowRules()
@@ -370,6 +591,7 @@ namespace Memory_Trainer.Find_a_pair
             _timeLbl.Location = new Point((1028 - _timeLbl.Width) / 2, 200);
             _endGameLbl.Visible = true;
             _menuBtn.Visible = false;
+            _saveBtn.Visible = false;
             _levelLbl.Visible = false;
         }
 

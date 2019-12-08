@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
+using System.IO;
 using System.Net;
 using System.Windows.Forms;
 
@@ -12,8 +13,14 @@ namespace Memory_Trainer.Find_a_pair
     {
         private Level lvl;
         private readonly LevelManager _levelManager;
+        private Info _info;
         private readonly PrivateFontCollection _font;
         private List<Button> Btns;
+        private string _infoText;
+        private string _rulesText;
+        private Timer _timer;
+        private Label _exeptMsgLbl;
+        private int _time;
         public FormFindAPair()
         {
             InitializeComponent();
@@ -39,10 +46,88 @@ namespace Memory_Trainer.Find_a_pair
                 Btns.Add(btn);
             }
             Btns[0].Text = "Загрузить игру";
+            Btns[0].Click += LoadGame;
             Btns[1].Text = "Правила";
+            Btns[1].Click += OpenRules;
             Btns[2].Text = "Об игре";
+            Btns[2].Click += OpenInfo;
             Btns[3].Text = "К играм";
             Btns[3].Click += ReturnToMenu;
+            _infoText = "";
+            _rulesText = "";
+            _time = 0;
+            _timer = new Timer
+            {
+                Interval = 800,
+                Enabled = false
+            };
+            _timer.Tick += TimerTick;
+            _exeptMsgLbl = new Label
+            {
+                Visible = false,
+                Font = new Font(_font.Families[0], 20),
+                Parent = BackgroundPB,
+                AutoSize = true,
+                BackColor = Color.CornflowerBlue,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Text = ""
+            };
+        }
+
+        private void TimerTick(object sender, EventArgs e)
+        {
+            if (_time++ != 1) return;
+            _timer.Enabled = false;
+            _exeptMsgLbl.Visible = false;
+            _time = 0;
+            _levelManager.Enabled = true;
+            ChangeEnabled(true);
+        }
+
+        private void LoadGame(object sender, EventArgs e)
+        {
+            try
+            {
+                _levelManager.LoadGame();
+            }
+            catch (Exception exception)
+            {
+                BackgroundPB.Visible = true;
+                _levelManager.Enabled = false;
+                ChangeEnabled(false);
+                _exeptMsgLbl.Text = exception.Message;
+                _exeptMsgLbl.Location = new Point((1028 - _exeptMsgLbl.Width) / 2, 550);
+                _exeptMsgLbl.Visible = true;
+                _timer.Enabled = true;
+                
+            }
+            
+        }
+        private void ChangeEnabled(bool state)
+        {
+            foreach (var button in Btns)
+            {
+                button.Enabled = state;
+            }
+        }
+        private void OpenRules(object sender, EventArgs e)
+        {
+            if (_rulesText == "")
+            {
+                _rulesText = Properties.Resources.Rules;
+            }
+            _info = new Info(BackgroundPB, _rulesText, _font);
+            BackgroundPB.Visible = false;
+        }
+
+        private void OpenInfo(object sender, EventArgs e)
+        {
+            if (_infoText == "")
+            {
+                _infoText = Properties.Resources.Info;
+            }
+            _info = new Info(BackgroundPB, _infoText, _font);
+            BackgroundPB.Visible = false;
         }
 
         private void ReturnToMenu(object sender, EventArgs e)

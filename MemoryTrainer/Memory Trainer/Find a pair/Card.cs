@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Memory_Trainer.Find_a_pair
 {
+
     public class Card
     {
         public PictureBox Image;

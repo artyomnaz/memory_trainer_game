@@ -17,6 +17,16 @@ namespace Memory_Trainer.Find_a_pair
         private Label ChooseLevel;
         private List<Button> BtnsLvl;
         private PrivateFontCollection _font;
+        private bool _enabled;
+        public bool Enabled
+        {
+            get => _enabled;
+            set
+            {
+                ChangeEnabled(value);
+                _enabled = value;
+            }
+        }
 
         public LevelManager(Control control, PrivateFontCollection font)
         {
@@ -73,9 +83,22 @@ namespace Memory_Trainer.Find_a_pair
         private void ButtonMouseClick(object sender, MouseEventArgs e)
         {
             ((PictureBox) _control).Visible = false;
-            level = new Level(Convert.ToInt32(((Button)sender).Text), _control, _font, this);
+            level = new Level(Convert.ToInt32(((Button)sender).Text), _control, _font, this, OpeningРarameter.New);
             level.DrawField();
         }
-        
+
+        public void LoadGame()
+        {
+            ((PictureBox)_control).Visible = false;
+            level = new Level(1, _control, _font, this, OpeningРarameter.Load);
+        }
+
+        private void ChangeEnabled(bool state)
+        {
+            foreach (var button in BtnsLvl)
+            {
+                button.Enabled = state;
+            }
+        }
     }
 }
