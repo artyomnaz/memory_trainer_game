@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,6 +17,7 @@ namespace Memory_Trainer.Memory_matrix
         private int n;
         private int m;
         private int[][] pos;
+        private int timerValue;
 
         public FormMemoryMatrix()
         {
@@ -42,6 +44,8 @@ namespace Memory_Trainer.Memory_matrix
         
         private void FormMemoryMatrix_Load(object sender, EventArgs e)
         {
+            timerValue = 0;
+
             FigureGrid.Width = 2 * this.Height / 3;
             FigureGrid.Height = 2 * this.Height / 3;
             FigureGrid.Top = this.Height / 2 - FigureGrid.Height / 2;
@@ -64,9 +68,7 @@ namespace Memory_Trainer.Memory_matrix
                 for (int j = 0; j < n; j++)
                 {
                     FigureGrid.Rows[i].Cells[j].Selected = false;
-                    if (pos[i][j] == 1)
-                        FigureGrid.Rows[i].Cells[j].Style.BackColor = Color.IndianRed;
-                    else FigureGrid.Rows[i].Cells[j].Style.BackColor = Color.WhiteSmoke;
+                    FigureGrid.Rows[i].Cells[j].Style.BackColor = Color.WhiteSmoke;
                 }
             }
             FigureGrid.ReadOnly = true;
@@ -107,7 +109,45 @@ namespace Memory_Trainer.Memory_matrix
                 for (int j = 0; j < n; j++)
                     for (int k = 0; k < m; k++) 
                         if (r[k] == i * n + j)
-                            pos[i][j] = 1;
+                            pos[i][j] = 2;
+
         }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+
+            for (int i = 0; i < n; i++) {
+                var flag = false;
+                for (int j = 0; j < n; j++)
+                    if (pos[i][j] == 2) {
+                        FigureGrid.Rows[i].Cells[j].Style.BackColor = Color.IndianRed;
+                        pos[i][j] = 1;
+                        flag = true;
+                        break;
+                    }
+                if (flag)
+                    break;
+            }
+
+            timerValue++;
+            if (timerValue == m + 1)
+            {
+                Thread.Sleep(3000);
+                ClearGrid();
+                timerValue = 0;
+                timer.Enabled = false;
+                timer.Stop();   
+            }
+
+        }
+
+        private void ClearGrid()
+        {
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < n; j++)
+                    FigureGrid.Rows[i].Cells[j].Style.BackColor = Color.WhiteSmoke;
+
+        }
+
     }
 }
