@@ -12,17 +12,18 @@ namespace Memory_Trainer
     public partial class FormLostWord : Form, IGameInterface
     {
         public int timerValue;
-        public bool setColor = true;
+        public bool setColor;
         public SmoothLabel label;
         public SmoothLabel labelFind;
         public string[] words;
         public int[][] blockPositions;
         public int[][] timerPositions;
-        public int[] blockPositions2 = {45, 165, 285, 405, 525};
-        public int[] answerPositions = {17, 696, 17, 696};
-        public int[] numberWords = { -1, -1, -1, -1, -1 };
+        public int[] blockPositions2;
+        public int[] answerPositions;
+        public int[] numberWords;
         public int indexHideWord;
         public int curIndex;
+        public Random rnd;
 
         public List<SmoothLabel> smoothLabels;
         public List<SmoothLabel> smoothTimers;
@@ -48,16 +49,87 @@ namespace Memory_Trainer
         {
             InitializeComponent();
             LoadFont();
+
+            rnd = new Random();
+            setColor = true;
+            words = Regex.Split(Resource1.words, "\r\n");
+
+            blockPositions = new int[5][];
+            blockPositions[0] = new int[] { 107, 100 };
+            blockPositions[1] = new int[] { 621, 100 };
+            blockPositions[2] = new int[] { 364, 300 };
+            blockPositions[3] = new int[] { 107, 500 };
+            blockPositions[4] = new int[] { 621, 500 };
+
+            timerPositions = new int[4][];
+            timerPositions[0] = new int[] { 464, 100 };
+            timerPositions[1] = new int[] { 207, 300 };
+            timerPositions[2] = new int[] { 721, 300 };
+            timerPositions[3] = new int[] { 464, 500 };
+
+            blockPositions2 = new int[] { 45, 165, 285, 405, 525 };
+            answerPositions = new int[] { 17, 696, 17, 696 };
+            InitGame();
+
+        }
+
+        public void InitGame()
+        {
+            numberWords = new int[] { -1, -1, -1, -1, -1 };
+            if (smoothLabels != null)
+                Dispose();
+            smoothLabels = new List<SmoothLabel>();
+            smoothTimers = new List<SmoothLabel>();
+            smoothAnswers = new List<SmoothLabel>();
+            numberAnswers = new List<int>();
+            label = new SmoothLabel
+            {
+                BackColor = Color.Transparent,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Font = new Font(private_fonts.Families[0], 80F),
+                UseCompatibleTextRendering = true,
+                TextRenderingHint = TextRenderingHint.AntiAlias,
+                Text = "Запомни!",
+                Width = 800,
+                Height = 200,
+                ForeColor = Color.White,
+                Parent = this
+            };
+            label.Left = (Width / 2) - (label.Width / 2);
+            label.Top = (Height / 2) - (label.Height / 2);
+
+            int curTemp = 0;
+            while (curTemp != 5)
+            {
+                int tempNumber = rnd.Next(words.Length);
+                bool find = false;
+                for (int i = 0; i < curTemp; i++)
+                {
+                    if (tempNumber == numberWords[i])
+                    {
+                        find = true;
+                        break;
+                    }
+                }
+                if (!find)
+                {
+                    numberWords[curTemp] = tempNumber;
+                    curTemp++;
+                }
+            }
         }
 
         public void DrawField()
         {
             throw new NotImplementedException();
+
+
         }
 
         public bool IsFinish()
         {
-            throw new NotImplementedException();
+            timerValue++;
+            return 2 * 2 == 2 + 2;
         }
 
         public void CreateBlocks(string word, int left, int top)
@@ -75,14 +147,14 @@ namespace Memory_Trainer
                 ForeColor = Color.White,
                 Left = left,
                 Top = top,
+                Parent = this
             };
             smoothLabels.Add(label2);
-            Controls.Add(label2);
         }
 
         public void OpenGame()
         {
-            
+            int k = 20;
         }
 
         public void SaveGame()
@@ -122,64 +194,22 @@ namespace Memory_Trainer
                 timerValue = 0;
                 label.Hide();
                 timerCreateBlock.Enabled = true;
-                OpenGame();
             }
         }
 
-        private void FormLostWord_Load(object sender, System.EventArgs e)
+        public void Dispose()
         {
-            Random rnd = new Random();
-            smoothLabels = new List<SmoothLabel>();
-            smoothTimers = new List<SmoothLabel>();
-            label = new SmoothLabel
+            foreach (var item in smoothLabels)
             {
-                BackColor = Color.Transparent,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Font = new Font(private_fonts.Families[0], 80F),
-                UseCompatibleTextRendering = true,
-                TextRenderingHint = TextRenderingHint.AntiAlias,
-                Text = "Запомни!",
-                Width = 800,
-                Height = 200,
-                ForeColor = Color.White
-            };
-            label.Left = (Width / 2) - (label.Width / 2);
-            label.Top = (Height / 2) - (label.Height / 2);
-            Controls.Add(label);
-
-            words = Regex.Split(Resource1.words, "\r\n");
-
-            blockPositions = new int[5][];
-            blockPositions[0] = new int[] { 107, 100 };
-            blockPositions[1] = new int[] { 621, 100 };
-            blockPositions[2] = new int[] { 364, 300 };
-            blockPositions[3] = new int[] { 107, 500 };
-            blockPositions[4] = new int[] { 621, 500 };
-
-            timerPositions = new int[4][];
-            timerPositions[0] = new int[] { 464, 100 };
-            timerPositions[1] = new int[] { 207, 300 };
-            timerPositions[2] = new int[] { 721, 300 };
-            timerPositions[3] = new int[] { 464, 500 };
-
-            int curTemp = 0;
-            while (curTemp != 5)
+                item.Dispose();
+            }
+            foreach (var item in smoothTimers)
             {
-                int tempNumber = rnd.Next(words.Length);
-                bool find = false;
-                for (int i = 0; i < curTemp; i++)
-                {
-                    if (tempNumber == numberWords[i])
-                    {
-                        find = true;
-                        break;
-                    }
-                }
-                if (!find)
-                {
-                    numberWords[curTemp] = tempNumber;
-                    curTemp++;
-                }
+                item.Dispose();
+            }
+            foreach (var item in smoothAnswers)
+            {
+                item.Dispose();
             }
         }
 
@@ -203,12 +233,12 @@ namespace Memory_Trainer
                         Text = "",
                         Width = 100,
                         Height = 100,
-                        ForeColor = Color.White
+                        ForeColor = Color.White,
+                        Parent = this
                     };
                     label.Left = timerPositions[i][0];
                     label.Top = timerPositions[i][1];
                     smoothTimers.Add(label);
-                    Controls.Add(label);
                 }
             }
             timerValue++;
@@ -217,7 +247,7 @@ namespace Memory_Trainer
         private void TimerCountDown_Tick(object sender, EventArgs e)
         {
             timerValue--;
-            if (timerValue >= 0)
+            if (timerValue > 0)
             {
                 for (int i = 0; i < 4; i++)
                 {
@@ -255,76 +285,25 @@ namespace Memory_Trainer
                     Text = "Найди!",
                     Width = 800,
                     Height = 200,
-                    ForeColor = Color.White
+                    ForeColor = Color.White,
+                    Parent = this
                 };
-
                 labelFind.Left = (Width / 2) - (labelFind.Width / 2);
                 labelFind.Top = (Height / 2) - (labelFind.Height / 2);
-                Controls.Add(labelFind);
                 timerFind.Enabled = true;
             }
-        }
-
-        private void TimerShowBlock_Tick(object sender, EventArgs e)
-        {
-            if (timerValue == 6)
-            {
-                timerValue = 0;
-                timerShowBlock.Enabled = false;
-                Random rnd = new Random();
-                //creating buttons-answers
-                smoothAnswers = new List<SmoothLabel>();
-                numberAnswers = new List<int>();
-                for (int i = 0; i < 4; i++)
-                {
-                    label = new SmoothLabel
-                    {
-                        BackColor = Color.Red,
-                        TextAlign = ContentAlignment.MiddleCenter,
-                        Font = new Font(private_fonts.Families[0], 20F),
-                        UseCompatibleTextRendering = true,
-                        TextRenderingHint = TextRenderingHint.AntiAlias,
-                        Width = 300,
-                        Height = 40,
-                        ForeColor = Color.White
-                    };
-                    label.MouseEnter += ChangeBackMouseEnter;
-                    label.MouseLeave += ChangeBackMouseLeave;
-                    while (true)
-                    {
-                        var tempNumberWord = rnd.Next(words.Length);
-                        if (numberAnswers.IndexOf(tempNumberWord) == -1 && Array.IndexOf(numberWords, tempNumberWord) == -1)
-                        {
-                            label.Text = words[tempNumberWord];
-                            break;
-                        }
-                    }
-                    label.Left = answerPositions[i];
-                    label.Top = blockPositions2[curIndex] + 60 * (i / 2);
-                    smoothAnswers.Add(label);
-                    label.Show();
-                    Controls.Add(label);
-                }
-                return;
-            }
-            else if (timerValue < 5)
-            {
-                smoothLabels[timerValue].Show();
-            }
-            timerValue++;
         }
 
         private void TimerFind_Tick(object sender, EventArgs e)
         {
             timerValue++;
-            if(timerValue == 5)
+            if (timerValue == 5)
             {
                 labelFind.Hide();
             }
             else if (timerValue == 6)
-            {   
-                Random rnd = new Random();
-                int indexHideWord = numberWords[rnd.Next(5)];
+            {
+                indexHideWord = numberWords[rnd.Next(5)];
                 //shuffle array
                 int n = smoothLabels.Count;
                 while (n > 1)
@@ -344,10 +323,7 @@ namespace Memory_Trainer
                     smoothLabels[i].Left = 364;
                     smoothLabels[i].Top = blockPositions2[i];
                     if (i == curIndex)
-                    {
                         smoothLabels[curIndex].Text = "?";
-                        continue;
-                    }
                 }
                 timerFind.Enabled = false;
                 timerValue = 0;
@@ -358,6 +334,73 @@ namespace Memory_Trainer
                 BackColor = setColor ? Color.FromArgb(145, 189, 58) : Color.FromArgb(250, 66, 82);
                 setColor = !setColor;
             }
+        }
+
+        private void TimerShowBlock_Tick(object sender, EventArgs e)
+        {
+            if (timerValue == 6)
+            {
+                timerValue = 0;
+                timerShowBlock.Enabled = false;
+                //creating buttons-answers
+                for (int i = 0; i < 4; i++)
+                {
+                    label = new SmoothLabel
+                    {
+                        BackColor = Color.Red,
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Font = new Font(private_fonts.Families[0], 20F),
+                        UseCompatibleTextRendering = true,
+                        TextRenderingHint = TextRenderingHint.AntiAlias,
+                        Width = 300,
+                        Height = 40,
+                        ForeColor = Color.White,
+                        Parent = this
+                    };
+                    label.MouseEnter += ChangeBackMouseEnter;
+                    label.MouseLeave += ChangeBackMouseLeave;
+                    label.Click += Answer_Click;
+                    while (true)
+                    {
+                        var tempNumberWord = rnd.Next(words.Length);
+                        if (numberAnswers.IndexOf(tempNumberWord) == -1 && Array.IndexOf(numberWords, tempNumberWord) == -1)
+                        {
+                            label.Text = words[tempNumberWord];
+                            break;
+                        }
+                    }
+                    label.Left = answerPositions[i];
+                    label.Top = blockPositions2[curIndex] + 60 * (i / 2);
+                    smoothAnswers.Add(label);
+                    label.Show();
+                }
+                smoothAnswers[rnd.Next(4)].Text = words[numberWords[curIndex]];
+                return;
+            }
+            else if (timerValue < 5)
+            {
+                smoothLabels[timerValue].Show();
+            }
+            timerValue++;
+        }
+
+        private void Answer_Click(object sender, EventArgs e)
+        {
+            if ((sender as SmoothLabel).Text == words[numberWords[curIndex]])
+                timerValue++;
+
+            for (int i = 0; i < smoothAnswers.Count; i++)
+            {
+                if (smoothAnswers[i].Text == words[numberWords[curIndex]])
+                    smoothAnswers[i].BackColor = Color.LightSeaGreen;
+                else
+                    smoothAnswers[i].BackColor = Color.Yellow;
+                smoothAnswers[i].MouseEnter -= ChangeBackMouseEnter;
+                smoothAnswers[i].MouseLeave -= ChangeBackMouseLeave;
+                smoothAnswers[i].Click -= Answer_Click;
+            }
+            smoothLabels[curIndex].Text = words[numberWords[curIndex]];
+            IsFinish();
         }
     }
 }

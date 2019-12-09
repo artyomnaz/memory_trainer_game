@@ -39,27 +39,27 @@
             // timerIntro
             // 
             this.timerIntro.Enabled = true;
-            this.timerIntro.Interval = 850;
+            this.timerIntro.Interval = 300;
             this.timerIntro.Tick += new System.EventHandler(this.TimerIntro_Tick);
             // 
             // timerCreateBlock
             // 
-            this.timerCreateBlock.Interval = 800;
+            this.timerCreateBlock.Interval = 300;
             this.timerCreateBlock.Tick += new System.EventHandler(this.TimerCreateBlock_Tick);
             // 
             // timerCountDown
             // 
-            this.timerCountDown.Interval = 800;
+            this.timerCountDown.Interval = 300;
             this.timerCountDown.Tick += new System.EventHandler(this.TimerCountDown_Tick);
             // 
             // timerShowBlock
             // 
-            this.timerShowBlock.Interval = 800;
+            this.timerShowBlock.Interval = 300;
             this.timerShowBlock.Tick += new System.EventHandler(this.TimerShowBlock_Tick);
             // 
             // timerFind
             // 
-            this.timerFind.Interval = 1000;
+            this.timerFind.Interval = 300;
             this.timerFind.Tick += new System.EventHandler(this.TimerFind_Tick);
             // 
             // FormLostWord
@@ -73,7 +73,6 @@
             this.MinimumSize = new System.Drawing.Size(1028, 720);
             this.Name = "FormLostWord";
             this.Text = "Тренажер памяти";
-            this.Load += new System.EventHandler(this.FormLostWord_Load);
             this.ResumeLayout(false);
 
         }
