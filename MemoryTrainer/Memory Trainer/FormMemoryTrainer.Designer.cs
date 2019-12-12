@@ -124,7 +124,11 @@
             this.Controls.Add(this.buttonLostWord);
             this.Controls.Add(this.buttonQuadShulte);
             this.Controls.Add(this.buttonFindAPair);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1028, 720);
+            this.MinimumSize = new System.Drawing.Size(1028, 720);
             this.Name = "FormMemoryTrainer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Тренажер памяти";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
