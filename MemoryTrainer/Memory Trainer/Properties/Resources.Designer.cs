@@ -25,9 +25,9 @@ namespace Memory_Trainer.Properties {
     internal class Resources {
 
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
@@ -274,7 +274,7 @@ namespace Memory_Trainer.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-
+        
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
@@ -346,7 +346,7 @@ namespace Memory_Trainer.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-
+        
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
@@ -496,6 +496,26 @@ namespace Memory_Trainer.Properties {
         {
             get {
                 return ResourceManager.GetString("RulesFindAPair", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fonfon {
+            get {
+                object obj = ResourceManager.GetObject("fonfon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fonfon1 {
+            get {
+                object obj = ResourceManager.GetObject("fonfon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
