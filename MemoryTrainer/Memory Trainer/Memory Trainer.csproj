@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,6 +51,16 @@
     <Compile Include="Thimbles\FormAboutThimbles.Designer.cs">
       <DependentUpon>FormAboutThimbles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Find a pair\Card.cs" />
+    <Compile Include="Find a pair\FormFindAPair.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Find a pair\FormFindAPair.Designer.cs">
+      <DependentUpon>FormFindAPair.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Find a pair\Info.cs" />
+    <Compile Include="Find a pair\Level.cs" />
+    <Compile Include="Find a pair\LevelManager.cs" />
     <Compile Include="FormMemoryTrainer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +116,9 @@
     <Compile Include="Quad Shulte\Win.Designer.cs">
       <DependentUpon>Win.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Find a pair\FormFindAPair.resx">
+      <DependentUpon>FormFindAPair.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMemoryTrainer.resx">
       <DependentUpon>FormMemoryTrainer.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +153,7 @@
     <EmbeddedResource Include="Quad Shulte\Win.resx">
       <DependentUpon>Win.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Find a pair\Fonts\fonto.TTF" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -153,9 +168,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Find a pair\" />
     <Folder Include="Lost word\" />
     <Folder Include="Memory matrix\" />
+    <Folder Include="Quad Shulte\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Thimbles\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bg.jpg" />
@@ -194,8 +211,110 @@
   <ItemGroup>
     <None Include="Resources\Rules.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Info.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Rules.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\Face.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\Back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\23.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\27.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\28.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
