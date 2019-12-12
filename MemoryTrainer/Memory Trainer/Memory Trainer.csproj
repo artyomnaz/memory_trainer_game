@@ -191,6 +191,102 @@
   <ItemGroup>
     <None Include="Resources\Image1.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\Face.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\Back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\23.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\27.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\28.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Find a pair\Images\29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

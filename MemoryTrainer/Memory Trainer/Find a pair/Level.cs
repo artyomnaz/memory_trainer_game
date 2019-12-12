@@ -31,7 +31,6 @@ namespace Memory_Trainer.Find_a_pair
         private readonly Label _endGameLbl;
         private readonly Label _saveGameLbl;
         private PrivateFontCollection _font;
-        private LevelManager _parent;
         private readonly Control _control;
         private Button _endGameBtn;
         private Button _menuBtn;
@@ -47,7 +46,7 @@ namespace Memory_Trainer.Find_a_pair
                 var indexes = new List<int>();
                 while (indexes.Count != _countPair)
                 {
-                    int index = new Random().Next(1, 21);
+                    int index = new Random().Next(1, 31);
                     bool flag = false;
                     foreach (var index1 in indexes)
                     {
@@ -105,7 +104,6 @@ namespace Memory_Trainer.Find_a_pair
             };
             _timerSaveGame.Tick += TimerSaveGameTick;
             _timeSaveGame = 0;
-            _parent = parent;
             _timer = new Timer
             {
                 Interval = 1000,
