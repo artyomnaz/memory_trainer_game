@@ -44,10 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormAboutThimbles.cs">
+    <Compile Include="Thimbles\FormAboutThimbles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAboutThimbles.Designer.cs">
+    <Compile Include="Thimbles\FormAboutThimbles.Designer.cs">
       <DependentUpon>FormAboutThimbles.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMemoryTrainer.cs">
@@ -56,22 +56,22 @@
     <Compile Include="FormMemoryTrainer.Designer.cs">
       <DependentUpon>FormMemoryTrainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormShowRulesThimbles.cs">
+    <Compile Include="Thimbles\FormShowRulesThimbles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormShowRulesThimbles.Designer.cs">
+    <Compile Include="Thimbles\FormShowRulesThimbles.Designer.cs">
       <DependentUpon>FormShowRulesThimbles.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormThimbles.cs">
+    <Compile Include="Thimbles\FormThimbles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormThimbles.Designer.cs">
+    <Compile Include="Thimbles\FormThimbles.Designer.cs">
       <DependentUpon>FormThimbles.cs</DependentUpon>
     </Compile>
     <Compile Include="IGameInterface.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormAboutThimbles.resx">
+    <EmbeddedResource Include="Thimbles\FormAboutThimbles.resx">
       <DependentUpon>FormAboutThimbles.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Quad Shulte\FormInfo.cs">
@@ -108,10 +108,10 @@
     <EmbeddedResource Include="FormMemoryTrainer.resx">
       <DependentUpon>FormMemoryTrainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormShowRulesThimbles.resx">
+    <EmbeddedResource Include="Thimbles\FormShowRulesThimbles.resx">
       <DependentUpon>FormShowRulesThimbles.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormThimbles.resx">
+    <EmbeddedResource Include="Thimbles\FormThimbles.resx">
       <DependentUpon>FormThimbles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -156,7 +156,6 @@
     <Folder Include="Find a pair\" />
     <Folder Include="Lost word\" />
     <Folder Include="Memory matrix\" />
-    <Folder Include="Thimbles\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bg.jpg" />
