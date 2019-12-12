@@ -423,14 +423,14 @@ namespace Memory_Trainer.Memory_matrix
 
         public void ShowRules()
         {
-            FormRules formRules = new FormRules();
+            FormRules formRules = new FormRules(private_fonts);
             formRules.ShowDialog();
             Show();
         }
 
         public void ShowInfo()
         {
-            FormInfo formInfo = new FormInfo();
+            FormInfo formInfo = new FormInfo(private_fonts);
             formInfo.ShowDialog();
             Show();
         }

@@ -96,6 +96,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Resource2.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -121,6 +122,12 @@
     <Folder Include="Lost word\" />
     <Folder Include="Quad Shulte\" />
     <Folder Include="Thimbles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fonfon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fonfon1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
