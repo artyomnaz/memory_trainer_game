@@ -51,11 +51,23 @@
       <DependentUpon>FormMemoryTrainer.cs</DependentUpon>
     </Compile>
     <Compile Include="IGameInterface.cs" />
+    <Compile Include="Memory matrix\FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Memory matrix\FormAbout.Designer.cs">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Memory matrix\FormMemoryMatrix.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Memory matrix\FormMemoryMatrix.Designer.cs">
       <DependentUpon>FormMemoryMatrix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Memory matrix\FormRules.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Memory matrix\FormRules.Designer.cs">
+      <DependentUpon>FormRules.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,8 +79,14 @@
     <EmbeddedResource Include="FormMemoryTrainer.resx">
       <DependentUpon>FormMemoryTrainer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Memory matrix\FormAbout.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Memory matrix\FormMemoryMatrix.resx">
       <DependentUpon>FormMemoryMatrix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Memory matrix\FormRules.resx">
+      <DependentUpon>FormRules.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -83,6 +101,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource2.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Memory matrix\fonts\MyFont.ttf" />
     <None Include="Memory matrix\fonts\orange juice 2.0.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

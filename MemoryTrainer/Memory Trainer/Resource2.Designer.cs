@@ -63,6 +63,16 @@ namespace Memory_Trainer {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] MyFont {
+            get {
+                object obj = ResourceManager.GetObject("MyFont", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] OrangeJuice {
             get {
                 object obj = ResourceManager.GetObject("OrangeJuice", resourceCulture);

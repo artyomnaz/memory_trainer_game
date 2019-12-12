@@ -1,6 +1,6 @@
 ﻿namespace Memory_Trainer.Memory_matrix
 {
-    partial class FormMemoryMatrix
+    partial class FormInfo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMemoryMatrix));
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // timer
-            // 
-            this.timer.Interval = 700;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // FormMemoryMatrix
+            // FormInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1012, 681);
-            this.MaximumSize = new System.Drawing.Size(1028, 720);
-            this.MinimumSize = new System.Drawing.Size(1028, 720);
-            this.Name = "FormMemoryMatrix";
-            this.Text = "Матрицы памяти";
-            this.Load += new System.EventHandler(this.FormMemoryMatrix_Load);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Name = "FormInfo";
+            this.Text = "О программе";
+            this.Load += new System.EventHandler(this.FormInfo_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Timer timer;
     }
 }

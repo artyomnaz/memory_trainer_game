@@ -21,6 +21,10 @@ namespace Memory_Trainer.Memory_matrix
         private DataGridView FigureGrid;
         private Label LevelLabel;
         private Label label;
+        private Button SaveButton;
+        private Button OpenButton;
+        private Button RulesButton;
+        private Button AboutButton;
         private int n;
         private int m;
         private int Level;
@@ -29,13 +33,13 @@ namespace Memory_Trainer.Memory_matrix
         private int key = 22;
         private int delta;
 
-        enum pos_state {NoColor, WithColor, ForAnimation, Chosen};
+        enum pos_state { NoColor, WithColor, ForAnimation, Chosen };
 
         public PrivateFontCollection private_fonts = new PrivateFontCollection();
 
         private void LoadFont()
         {
-            using (MemoryStream fontStream = new MemoryStream(Resource2.OrangeJuice))
+            using (MemoryStream fontStream = new MemoryStream(Resource2.MyFont))
             {
                 IntPtr data = Marshal.AllocCoTaskMem((int)fontStream.Length);
                 byte[] fontdata = new byte[fontStream.Length];
@@ -56,9 +60,17 @@ namespace Memory_Trainer.Memory_matrix
             LevelLabel = new Label();
             LevelLabel.Parent = this;
             label = new Label();
+            SaveButton = new Button();
+            OpenButton = new Button();
+            SaveButton.Parent = this;
+            OpenButton.Parent = this;
+            RulesButton = new Button();
+            AboutButton = new Button();
+            RulesButton.Parent = this;
+            AboutButton.Parent = this;
             label.Parent = this;
         }
-       
+
         private void FormMemoryMatrix_Load(object sender, EventArgs e)
         {
             Level = 1;
@@ -66,21 +78,53 @@ namespace Memory_Trainer.Memory_matrix
             LevelLabel.BackColor = Color.Transparent;
             LevelLabel.TextAlign = ContentAlignment.MiddleCenter;
             LevelLabel.UseCompatibleTextRendering = true;
-            LevelLabel.Left = 20;
+            LevelLabel.Left = 10;
             LevelLabel.Top = 20;
+            LevelLabel.Width = 180;
+            LevelLabel.Height = 60;
             LevelLabel.ForeColor = Color.Black;
             LevelLabel.Font = new Font(private_fonts.Families[0], 20F);
             LevelLabel.Text = "Уровень: " + Level.ToString();
             LevelLabel.BackColor = Color.Transparent;
 
             label.TextAlign = ContentAlignment.MiddleCenter;
-
             label.UseCompatibleTextRendering = true;
-            label.Left = this.Width / 2 - 7;
+            label.Font = new Font(private_fonts.Families[0], 22F);
+            label.Width = 160;
+            label.Height = 60;
+            label.Left = this.Width / 2 - 75;
             label.Top = 20;
             label.ForeColor = Color.Red;
             label.Text = "Запомни!";
             label.BackColor = Color.Transparent;
+
+            SaveButton.Left = this.Width - 170;
+            SaveButton.Top = 30;
+            SaveButton.Click += Save;
+            SaveButton.Height = 50;
+            SaveButton.Width = 130;
+            SaveButton.Text = "Сохранить игру";
+
+            OpenButton.Left = this.Width - 170;
+            OpenButton.Top = 100;
+            OpenButton.Click += Open;
+            OpenButton.Height = 50;
+            OpenButton.Width = 130;
+            OpenButton.Text = "Открыть игру";
+
+            RulesButton.Left = this.Width - 170;
+            RulesButton.Top = this.Height - 140;
+            RulesButton.Click += Rules;
+            RulesButton.Height = 50;
+            RulesButton.Width = 130;
+            RulesButton.Text = "Правила";
+
+            AboutButton.Left = this.Width - 170;
+            AboutButton.Top = this.Height - 210;
+            AboutButton.Click += Info;
+            AboutButton.Height = 50;
+            AboutButton.Width = 130;
+            AboutButton.Text = "Об игре";
 
             timerValue = 0;
             delta = 0;
@@ -160,7 +204,7 @@ namespace Memory_Trainer.Memory_matrix
         }
 
         private void RandomPosition()
-        { 
+        {
             var r = new int[m];
             Random random = new Random();
             for (int i = 0; i < m; i++) {
@@ -175,7 +219,7 @@ namespace Memory_Trainer.Memory_matrix
 
             for (int i = 0; i < n; i++)
                 for (int j = 0; j < n; j++)
-                    for (int k = 0; k < m; k++) 
+                    for (int k = 0; k < m; k++)
                         if (r[k] == i * n + j)
                             pos[i][j] = (int)pos_state.ForAnimation;
         }
@@ -226,7 +270,7 @@ namespace Memory_Trainer.Memory_matrix
                 pos[i][j] = (int)pos_state.Chosen;
                 if (IsFinish())
                 {
-                    MessageBox.Show("Все верно");
+                    MessageBox.Show("Верно!");
                     Level++;
                     if (Level % 4 == 0)
                     {
@@ -316,9 +360,11 @@ namespace Memory_Trainer.Memory_matrix
 
         public void SaveGame()
         {
-            List<string> SaveList = new List<string>();
+            if (timer.Enabled)
+                return;
 
-            var level_shifr = Level^key;
+            List<string> SaveList = new List<string>();
+            var level_shifr = Level ^ key;
             var n_shifr = n ^ key;
             var m_shifr = m ^ key;
             var delta_shifr = delta ^ key;
@@ -342,6 +388,8 @@ namespace Memory_Trainer.Memory_matrix
 
         public void OpenGame()
         {
+            if (timer.Enabled)
+                return;
             var Lines = System.IO.File.ReadAllLines("MemoryMatrix_save.txt");
             Level = int.Parse(Lines[0].TrimEnd()) ^ key;
             n = int.Parse(Lines[1].TrimEnd()) ^ key;
@@ -362,8 +410,8 @@ namespace Memory_Trainer.Memory_matrix
                 for (int j = 0; j < n; j++)
                     pos[i][j] = int.Parse(tmp[j]) ^ key;
             }
-            
-            SetSettings();           
+
+            SetSettings();
             LevelLabel.Text = "Уровень: " + Level.ToString();
             label.Text = "Запомни!";
             FigureGrid.Refresh();
@@ -375,22 +423,37 @@ namespace Memory_Trainer.Memory_matrix
 
         public void ShowRules()
         {
-            throw new NotImplementedException();
+            FormRules formRules = new FormRules();
+            formRules.ShowDialog();
+            Show();
         }
 
         public void ShowInfo()
         {
-            throw new NotImplementedException();
+            FormInfo formInfo = new FormInfo();
+            formInfo.ShowDialog();
+            Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        public void Save(object sender, EventArgs e)
         {
             SaveGame();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void Open(object sender, EventArgs e)
         {
             OpenGame();
         }
+
+        public void Rules(object sender, EventArgs e)
+        {
+            ShowRules();
+        }
+
+        public void Info(object sender, EventArgs e)
+        {
+            ShowInfo();
+        }
+
     }
 }
