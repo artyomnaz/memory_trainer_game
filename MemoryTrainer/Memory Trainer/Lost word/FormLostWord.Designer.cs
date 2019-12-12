@@ -34,11 +34,12 @@
             this.timerCountDown = new System.Windows.Forms.Timer(this.components);
             this.timerShowBlock = new System.Windows.Forms.Timer(this.components);
             this.timerFind = new System.Windows.Forms.Timer(this.components);
+            this.timerFinish = new System.Windows.Forms.Timer(this.components);
+            this.timerSave = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // timerIntro
             // 
-            this.timerIntro.Enabled = true;
             this.timerIntro.Interval = 300;
             this.timerIntro.Tick += new System.EventHandler(this.TimerIntro_Tick);
             // 
@@ -62,11 +63,21 @@
             this.timerFind.Interval = 300;
             this.timerFind.Tick += new System.EventHandler(this.TimerFind_Tick);
             // 
+            // timerFinish
+            // 
+            this.timerFinish.Interval = 500;
+            this.timerFinish.Tick += new System.EventHandler(this.TimerFinish_Tick);
+            // 
+            // timerSave
+            // 
+            this.timerSave.Interval = 1000;
+            this.timerSave.Tick += new System.EventHandler(this.TimerSave_Tick);
+            // 
             // FormLostWord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(74)))), ((int)(((byte)(114)))));
             this.ClientSize = new System.Drawing.Size(1012, 681);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1028, 720);
@@ -84,5 +95,7 @@
         private System.Windows.Forms.Timer timerCountDown;
         private System.Windows.Forms.Timer timerShowBlock;
         private System.Windows.Forms.Timer timerFind;
+        private System.Windows.Forms.Timer timerFinish;
+        private System.Windows.Forms.Timer timerSave;
     }
 }
