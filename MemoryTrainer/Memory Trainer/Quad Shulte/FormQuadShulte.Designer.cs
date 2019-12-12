@@ -81,20 +81,20 @@
             // TimeLabel
             // 
             this.TimeLabel.AutoSize = true;
-            this.TimeLabel.Font = new System.Drawing.Font("Magneto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TimeLabel.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TimeLabel.Location = new System.Drawing.Point(12, 101);
             this.TimeLabel.Name = "TimeLabel";
-            this.TimeLabel.Size = new System.Drawing.Size(218, 24);
+            this.TimeLabel.Size = new System.Drawing.Size(212, 24);
             this.TimeLabel.TabIndex = 1;
             this.TimeLabel.Text = "Длительность  игры:";
             // 
             // Errorlabel
             // 
             this.Errorlabel.AutoSize = true;
-            this.Errorlabel.Font = new System.Drawing.Font("Magneto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Errorlabel.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Errorlabel.Location = new System.Drawing.Point(12, 260);
             this.Errorlabel.Name = "Errorlabel";
-            this.Errorlabel.Size = new System.Drawing.Size(214, 24);
+            this.Errorlabel.Size = new System.Drawing.Size(202, 24);
             this.Errorlabel.TabIndex = 2;
             this.Errorlabel.Text = "Количество ошибок:";
             // 
@@ -102,7 +102,7 @@
             // 
             this.NewGamebutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.NewGamebutton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.NewGamebutton.Font = new System.Drawing.Font("Magneto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewGamebutton.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.NewGamebutton.Location = new System.Drawing.Point(809, 101);
             this.NewGamebutton.Name = "NewGamebutton";
             this.NewGamebutton.Size = new System.Drawing.Size(179, 61);
@@ -116,7 +116,7 @@
             // 
             this.Downloadbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Downloadbutton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Downloadbutton.Font = new System.Drawing.Font("Magneto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Downloadbutton.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Downloadbutton.Location = new System.Drawing.Point(809, 209);
             this.Downloadbutton.Name = "Downloadbutton";
             this.Downloadbutton.Size = new System.Drawing.Size(179, 61);
@@ -130,7 +130,7 @@
             // 
             this.Rulebutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Rulebutton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Rulebutton.Font = new System.Drawing.Font("Magneto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Rulebutton.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Rulebutton.Location = new System.Drawing.Point(809, 317);
             this.Rulebutton.Name = "Rulebutton";
             this.Rulebutton.Size = new System.Drawing.Size(179, 61);
@@ -143,7 +143,7 @@
             // TimerLabel
             // 
             this.TimerLabel.AutoSize = true;
-            this.TimerLabel.Font = new System.Drawing.Font("Magneto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TimerLabel.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TimerLabel.Location = new System.Drawing.Point(97, 150);
             this.TimerLabel.Name = "TimerLabel";
             this.TimerLabel.Size = new System.Drawing.Size(39, 24);
@@ -154,7 +154,7 @@
             // 
             this.Savebutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Savebutton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Savebutton.Font = new System.Drawing.Font("Magneto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Savebutton.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Savebutton.Location = new System.Drawing.Point(809, 537);
             this.Savebutton.Name = "Savebutton";
             this.Savebutton.Size = new System.Drawing.Size(179, 61);
@@ -168,7 +168,7 @@
             // 
             this.Infobutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Infobutton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Infobutton.Font = new System.Drawing.Font("Magneto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Infobutton.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Infobutton.Location = new System.Drawing.Point(809, 428);
             this.Infobutton.Name = "Infobutton";
             this.Infobutton.Size = new System.Drawing.Size(179, 61);
@@ -181,7 +181,7 @@
             // CountLabel
             // 
             this.CountLabel.AutoSize = true;
-            this.CountLabel.Font = new System.Drawing.Font("Magneto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CountLabel.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CountLabel.Location = new System.Drawing.Point(106, 301);
             this.CountLabel.Name = "CountLabel";
             this.CountLabel.Size = new System.Drawing.Size(0, 24);
@@ -190,17 +190,17 @@
             // Infolabel
             // 
             this.Infolabel.AutoSize = true;
-            this.Infolabel.Font = new System.Drawing.Font("Magneto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Infolabel.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Infolabel.Location = new System.Drawing.Point(374, 34);
             this.Infolabel.Name = "Infolabel";
-            this.Infolabel.Size = new System.Drawing.Size(198, 24);
+            this.Infolabel.Size = new System.Drawing.Size(183, 24);
             this.Infolabel.TabIndex = 10;
             this.Infolabel.Text = "Текущее значение:";
             // 
             // Inflabel
             // 
             this.Inflabel.AutoSize = true;
-            this.Inflabel.Font = new System.Drawing.Font("Magneto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Inflabel.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Inflabel.Location = new System.Drawing.Point(570, 34);
             this.Inflabel.Name = "Inflabel";
             this.Inflabel.Size = new System.Drawing.Size(21, 24);

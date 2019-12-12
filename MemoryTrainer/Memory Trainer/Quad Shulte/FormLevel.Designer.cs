@@ -63,10 +63,10 @@
             // 
             this.LevelLabel.AutoSize = true;
             this.LevelLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.LevelLabel.Font = new System.Drawing.Font("Magneto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LevelLabel.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LevelLabel.Location = new System.Drawing.Point(175, 20);
             this.LevelLabel.Name = "LevelLabel";
-            this.LevelLabel.Size = new System.Drawing.Size(203, 24);
+            this.LevelLabel.Size = new System.Drawing.Size(188, 24);
             this.LevelLabel.TabIndex = 2;
             this.LevelLabel.Text = "Выберите уровень:";
             // 
@@ -74,7 +74,7 @@
             // 
             this.Level11Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Level11Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Level11Button.Font = new System.Drawing.Font("Magneto", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Level11Button.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Level11Button.Location = new System.Drawing.Point(23, 117);
             this.Level11Button.Name = "Level11Button";
             this.Level11Button.Size = new System.Drawing.Size(76, 70);
@@ -88,7 +88,7 @@
             // 
             this.Level12Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Level12Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Level12Button.Font = new System.Drawing.Font("Magneto", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Level12Button.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Level12Button.Location = new System.Drawing.Point(106, 117);
             this.Level12Button.Name = "Level12Button";
             this.Level12Button.Size = new System.Drawing.Size(76, 70);
@@ -102,7 +102,7 @@
             // 
             this.Level13Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Level13Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Level13Button.Font = new System.Drawing.Font("Magneto", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Level13Button.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Level13Button.Location = new System.Drawing.Point(188, 117);
             this.Level13Button.Name = "Level13Button";
             this.Level13Button.Size = new System.Drawing.Size(76, 70);
@@ -116,7 +116,7 @@
             // 
             this.Level23Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.Level23Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Level23Button.Font = new System.Drawing.Font("Magneto", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Level23Button.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Level23Button.Location = new System.Drawing.Point(455, 117);
             this.Level23Button.Name = "Level23Button";
             this.Level23Button.Size = new System.Drawing.Size(76, 70);
@@ -130,7 +130,7 @@
             // 
             this.Level22Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.Level22Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Level22Button.Font = new System.Drawing.Font("Magneto", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Level22Button.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Level22Button.Location = new System.Drawing.Point(373, 117);
             this.Level22Button.Name = "Level22Button";
             this.Level22Button.Size = new System.Drawing.Size(76, 70);
@@ -144,7 +144,7 @@
             // 
             this.Level21Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.Level21Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Level21Button.Font = new System.Drawing.Font("Magneto", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Level21Button.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Level21Button.Location = new System.Drawing.Point(290, 117);
             this.Level21Button.Name = "Level21Button";
             this.Level21Button.Size = new System.Drawing.Size(76, 70);
@@ -158,7 +158,7 @@
             // 
             this.Level43Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.Level43Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Level43Button.Font = new System.Drawing.Font("Magneto", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Level43Button.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Level43Button.Location = new System.Drawing.Point(455, 255);
             this.Level43Button.Name = "Level43Button";
             this.Level43Button.Size = new System.Drawing.Size(76, 70);
@@ -172,7 +172,7 @@
             // 
             this.Level42Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.Level42Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Level42Button.Font = new System.Drawing.Font("Magneto", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Level42Button.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Level42Button.Location = new System.Drawing.Point(373, 255);
             this.Level42Button.Name = "Level42Button";
             this.Level42Button.Size = new System.Drawing.Size(76, 70);
@@ -186,7 +186,7 @@
             // 
             this.Level41Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.Level41Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Level41Button.Font = new System.Drawing.Font("Magneto", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Level41Button.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Level41Button.Location = new System.Drawing.Point(290, 255);
             this.Level41Button.Name = "Level41Button";
             this.Level41Button.Size = new System.Drawing.Size(76, 70);
@@ -200,7 +200,7 @@
             // 
             this.Level33Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Level33Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Level33Button.Font = new System.Drawing.Font("Magneto", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Level33Button.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Level33Button.Location = new System.Drawing.Point(188, 255);
             this.Level33Button.Name = "Level33Button";
             this.Level33Button.Size = new System.Drawing.Size(76, 70);
@@ -214,7 +214,7 @@
             // 
             this.Level32Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Level32Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Level32Button.Font = new System.Drawing.Font("Magneto", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Level32Button.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Level32Button.Location = new System.Drawing.Point(106, 255);
             this.Level32Button.Name = "Level32Button";
             this.Level32Button.Size = new System.Drawing.Size(76, 70);
@@ -228,7 +228,7 @@
             // 
             this.Level31Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Level31Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Level31Button.Font = new System.Drawing.Font("Magneto", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Level31Button.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Level31Button.Location = new System.Drawing.Point(23, 255);
             this.Level31Button.Name = "Level31Button";
             this.Level31Button.Size = new System.Drawing.Size(76, 70);
@@ -242,10 +242,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label1.Font = new System.Drawing.Font("Magneto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(57, 64);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(179, 24);
+            this.label1.Size = new System.Drawing.Size(175, 24);
             this.label1.TabIndex = 16;
             this.label1.Text = "Таблицы Шульте";
             // 
@@ -253,10 +253,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label2.Font = new System.Drawing.Font("Magneto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(305, 64);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(212, 24);
+            this.label2.Size = new System.Drawing.Size(200, 24);
             this.label2.TabIndex = 17;
             this.label2.Text = "Буквенные таблицы";
             // 
@@ -264,10 +264,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label3.Font = new System.Drawing.Font("Magneto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(19, 211);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(244, 24);
+            this.label3.Size = new System.Drawing.Size(236, 24);
             this.label3.TabIndex = 18;
             this.label3.Text = "Разноцветные таблицы";
             // 
@@ -275,10 +275,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label4.Font = new System.Drawing.Font("Magneto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.Location = new System.Drawing.Point(286, 211);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(267, 24);
+            this.label4.Size = new System.Drawing.Size(255, 24);
             this.label4.TabIndex = 19;
             this.label4.Text = "Таблицы Горбова-Шульте";
             // 
