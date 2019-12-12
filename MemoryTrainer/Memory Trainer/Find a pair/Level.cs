@@ -16,7 +16,7 @@ namespace Memory_Trainer.Find_a_pair
         Load
     }
     /// <summary>
-    /// Класс, описывающий уровни игры
+    /// Класс, описывающий уровни игры +
     /// </summary>
     public class Level : IGameInterface
     {

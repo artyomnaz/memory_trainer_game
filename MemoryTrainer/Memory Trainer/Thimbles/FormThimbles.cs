@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -441,6 +442,10 @@ namespace Memory_Trainer {
         /// </summary>
         public void OpenGame()
         {
+            if (!File.Exists(@"thimbles_save.txt"))
+            {
+                return;
+            }
             // открытие сохраненной игры
             string[] lines = System.IO.File.ReadAllLines(@"thimbles_save.txt");
             int[] parameters = new int[lines.Length];

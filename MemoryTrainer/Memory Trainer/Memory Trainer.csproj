@@ -181,10 +181,6 @@
       <DependentUpon>Win.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Find a pair\Fonts\fonto.TTF" />
-    <EmbeddedResource Include="Resource2.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource2.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="Memory matrix\fonts\MyFont.ttf" />
     <None Include="Memory matrix\fonts\orange juice 2.0.ttf" />
     <None Include="Properties\Settings.settings">
