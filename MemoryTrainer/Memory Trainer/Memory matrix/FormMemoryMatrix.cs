@@ -9,62 +9,83 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-//using System.Drawing.Text;
-//using System.IO;
-//using System.Runtime.InteropServices;
-//using System.Text.RegularExpressions;
+using System.Drawing.Text;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace Memory_Trainer.Memory_matrix
 {
     public partial class FormMemoryMatrix : Form, IGameInterface
     {
         private DataGridView FigureGrid;
+        private Label LevelLabel;
         private Label label;
         private int n;
         private int m;
         private int Level;
         private int[][] pos;
         private int timerValue;
+        private int key = 22;
+        private int delta;
 
         enum pos_state {NoColor, WithColor, ForAnimation, Chosen};
-        //public PrivateFontCollection private_fonts = new PrivateFontCollection();
+
+        public PrivateFontCollection private_fonts = new PrivateFontCollection();
+
+        private void LoadFont()
+        {
+            using (MemoryStream fontStream = new MemoryStream(Resource2.OrangeJuice))
+            {
+                IntPtr data = Marshal.AllocCoTaskMem((int)fontStream.Length);
+                byte[] fontdata = new byte[fontStream.Length];
+                fontStream.Read(fontdata, 0, (int)fontStream.Length);
+                Marshal.Copy(fontdata, 0, data, (int)fontStream.Length);
+                private_fonts.AddMemoryFont(data, (int)fontStream.Length);
+                fontStream.Close();
+                Marshal.FreeCoTaskMem(data);
+            }
+        }
 
         public FormMemoryMatrix()
         {
             InitializeComponent();
+            LoadFont();
+            FigureGrid = new DataGridView();
+            FigureGrid.Parent = this;
+            LevelLabel = new Label();
+            LevelLabel.Parent = this;
+            label = new Label();
+            label.Parent = this;
         }
-
-        //private void LoadFont()
-        //{
-            //using (MemoryStream fontStream = new MemoryStream(Resource1.Montserrat_ExtraBold))
-           // {
-               // IntPtr data = Marshal.AllocCoTaskMem((int)fontStream.Length);
-               // byte[] fontdata = new byte[fontStream.Length];
-               // fontStream.Read(fontdata, 0, (int)fontStream.Length);
-               // Marshal.Copy(fontdata, 0, data, (int)fontStream.Length);
-               // private_fonts.AddMemoryFont(data, (int)fontStream.Length);
-               // fontStream.Close();
-               // Marshal.FreeCoTaskMem(data);
-            //}
-        //}
-
+       
         private void FormMemoryMatrix_Load(object sender, EventArgs e)
         {
             Level = 1;
-            label = new Label();
-            label.Parent = this;
-            label.BackColor = Color.Transparent;
+
+            LevelLabel.BackColor = Color.Transparent;
+            LevelLabel.TextAlign = ContentAlignment.MiddleCenter;
+            LevelLabel.UseCompatibleTextRendering = true;
+            LevelLabel.Left = 20;
+            LevelLabel.Top = 20;
+            LevelLabel.ForeColor = Color.Black;
+            LevelLabel.Font = new Font(private_fonts.Families[0], 20F);
+            LevelLabel.Text = "Уровень: " + Level.ToString();
+            LevelLabel.BackColor = Color.Transparent;
+
             label.TextAlign = ContentAlignment.MiddleCenter;
-            //label.Font = new Font(private_fonts.Families[0], 25F);
+
             label.UseCompatibleTextRendering = true;
-            //label.TextRenderingHint = TextRenderingHint.AntiAlias;
-            label.Width = 200;
-            label.Height = 200;
-            label.ForeColor = Color.Black;
-            label.Text = "Уровень: " + Level.ToString();
+            label.Left = this.Width / 2 - 7;
+            label.Top = 20;
+            label.ForeColor = Color.Red;
+            label.Text = "Запомни!";
+            label.BackColor = Color.Transparent;
+
             timerValue = 0;
+            delta = 0;
             n = 3;
-            m = (int)(n * n * 0.25);
+            m = (int)(n * n * 0.25) + delta;
             pos = new int[n][];
             CreateFormGrid();
             RandomPosition();
@@ -73,8 +94,6 @@ namespace Memory_Trainer.Memory_matrix
 
         private void CreateFormGrid()
         {
-            FigureGrid = new DataGridView();
-            FigureGrid.Parent = this;
             FigureGrid.ColumnCount = n;
             for (int i = 0; i < n; i++)
             {
@@ -88,7 +107,6 @@ namespace Memory_Trainer.Memory_matrix
                 }
                 FigureGrid.Rows.Add(row);
             }
-
             SetSettings();
         }
 
@@ -116,6 +134,7 @@ namespace Memory_Trainer.Memory_matrix
 
             FigureGrid.ScrollBars = ScrollBars.None;
             FigureGrid.MultiSelect = false;
+            FigureGrid.DoubleClick += null;
 
             for (int i = 0; i < n; i++)
             {
@@ -128,7 +147,6 @@ namespace Memory_Trainer.Memory_matrix
                     FigureGrid.Rows[i].Cells[j].Style.BackColor = Color.WhiteSmoke;
                 }
             }
-
         }
 
         private void onClick(object sender, EventArgs e)
@@ -160,7 +178,6 @@ namespace Memory_Trainer.Memory_matrix
                     for (int k = 0; k < m; k++) 
                         if (r[k] == i * n + j)
                             pos[i][j] = (int)pos_state.ForAnimation;
-
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -171,12 +188,12 @@ namespace Memory_Trainer.Memory_matrix
             if (timerValue == m + 1)
             {
                 Thread.Sleep(1500);
+                label.Text = "Повтори!";
                 ClearGrid();
                 FigureGrid.CellClick += onClick;
                 timerValue = 0;
                 Stop();
             }
-
         }
 
         private void Stop()
@@ -198,7 +215,6 @@ namespace Memory_Trainer.Memory_matrix
             for (int i = 0; i < n; i++)
                 for (int j = 0; j < n; j++)
                     FigureGrid.Rows[i].Cells[j].Style.BackColor = Color.WhiteSmoke;
-
         }
 
         private void GameProcess(int i, int j)
@@ -210,15 +226,19 @@ namespace Memory_Trainer.Memory_matrix
                 pos[i][j] = (int)pos_state.Chosen;
                 if (IsFinish())
                 {
-                    //Thread.Sleep(800);
                     MessageBox.Show("Все верно");
                     Level++;
-                    if (Level % 4 == 0) { 
+                    if (Level % 4 == 0)
+                    {
                         n++;
+                        delta = -1;
                         FigureGrid.Click += null;
                         AddCells();
                     }
-                    label.Text = "Уровень: " + Level.ToString();
+                    delta++;
+                    m = (int)(n * n * 0.25) + delta;
+                    LevelLabel.Text = "Уровень: " + Level.ToString();
+                    label.Text = "Запомни!";
                     ClearGrid();
                     RandomPosition();
                     Start();
@@ -230,19 +250,19 @@ namespace Memory_Trainer.Memory_matrix
                 if (result == DialogResult.No)
                     Close();
                 Level = 1;
-                label.Text = "Уровень: " + Level.ToString();
+                LevelLabel.Text = "Уровень: " + Level.ToString();
+                label.Text = "Запомни!";
                 n = 3;
+                delta = 0;
+                m = (int)(n * n * 0.25) + delta;
                 FigureGrid.ColumnCount = n;
                 FigureGrid.RowCount = n;
                 ClearGrid();
                 SetSettings();
                 RandomPosition();
                 Start();
-
             }
-
             FigureGrid.ClearSelection();
-
         }
 
         private void AddCells()
@@ -251,20 +271,16 @@ namespace Memory_Trainer.Memory_matrix
 
             pos = null;
             pos = new int[n][];
-           // pos[n - 1] = new int[n];
             var row = new DataGridViewRow();
             for (int j = 0; j < n; j++)
             {
                 pos[j] = new int[n];
-                //pos[j][n - 1] = (int)pos_state.NoColor;
-                //pos[n - 1][j] = (int)pos_state.NoColor;
                 var cell = new DataGridViewTextBoxCell();
                 row.Cells.Add(cell);
             }
             FigureGrid.Rows.Add(row);
 
             SetSettings();
-
         }
 
         public void DrawField()
@@ -300,12 +316,61 @@ namespace Memory_Trainer.Memory_matrix
 
         public void SaveGame()
         {
-            throw new NotImplementedException();
+            List<string> SaveList = new List<string>();
+
+            var level_shifr = Level^key;
+            var n_shifr = n ^ key;
+            var m_shifr = m ^ key;
+            var delta_shifr = delta ^ key;
+            SaveList.Add(level_shifr.ToString());
+            SaveList.Add(n_shifr.ToString());
+            SaveList.Add(m_shifr.ToString());
+            SaveList.Add(delta_shifr.ToString());
+            for (int i = 0; i < n; i++)
+            {
+                string tmp = "";
+                for (int j = 0; j < n; j++)
+                    tmp += (pos[i][j] ^ key).ToString() + " ";
+                SaveList.Add(tmp);
+            }
+
+            var SaveArray = SaveList.ToArray();
+
+            System.IO.File.WriteAllLines("MemoryMatrix_save.txt", SaveArray);
+            MessageBox.Show("Игра сохранена. Тёма, иди кушать.");
         }
 
         public void OpenGame()
         {
-            throw new NotImplementedException();
+            var Lines = System.IO.File.ReadAllLines("MemoryMatrix_save.txt");
+            Level = int.Parse(Lines[0].TrimEnd()) ^ key;
+            n = int.Parse(Lines[1].TrimEnd()) ^ key;
+            m = int.Parse(Lines[2].TrimEnd()) ^ key;
+            delta = int.Parse(Lines[3].TrimEnd()) ^ key;
+
+            pos = null;
+            FigureGrid.RowCount = n;
+
+            pos = new int[n][];
+            FigureGrid.ColumnCount = n;
+            FigureGrid.RowCount = n + 1;
+
+            for (int i = 0; i < n; i++)
+            {
+                var tmp = Lines[i + 4].TrimEnd().Split(' ');
+                pos[i] = new int[n];
+                for (int j = 0; j < n; j++)
+                    pos[i][j] = int.Parse(tmp[j]) ^ key;
+            }
+            
+            SetSettings();           
+            LevelLabel.Text = "Уровень: " + Level.ToString();
+            label.Text = "Запомни!";
+            FigureGrid.Refresh();
+            timerValue = 0;
+            ClearGrid();
+            RandomPosition();
+            Start();
         }
 
         public void ShowRules()
@@ -318,5 +383,14 @@ namespace Memory_Trainer.Memory_matrix
             throw new NotImplementedException();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SaveGame();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenGame();
+        }
     }
 }
