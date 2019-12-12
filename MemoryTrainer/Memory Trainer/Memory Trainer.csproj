@@ -202,9 +202,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Lost word\" />
-    <Folder Include="Quad Shulte\" />
-    <Folder Include="Resources\" />
-    <Folder Include="Thimbles\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bg.jpg" />
@@ -346,10 +343,10 @@
     <None Include="Find a pair\Images\29.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\fonfon.jpg" />
+    <None Include="Resources\fonfon1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\fonfon1.jpg" />
+    <None Include="Resources\fonfon.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

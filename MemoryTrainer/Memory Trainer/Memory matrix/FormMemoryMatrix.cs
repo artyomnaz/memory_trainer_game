@@ -39,7 +39,7 @@ namespace Memory_Trainer.Memory_matrix
 
         private void LoadFont()
         {
-            using (MemoryStream fontStream = new MemoryStream(Resource2.MyFont))
+            using (MemoryStream fontStream = new MemoryStream(Properties.Resources.MyFont))
             {
                 IntPtr data = Marshal.AllocCoTaskMem((int)fontStream.Length);
                 byte[] fontdata = new byte[fontStream.Length];
