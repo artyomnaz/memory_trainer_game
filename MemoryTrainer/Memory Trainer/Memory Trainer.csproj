@@ -61,6 +61,12 @@
     <Compile Include="Find a pair\Info.cs" />
     <Compile Include="Find a pair\Level.cs" />
     <Compile Include="Find a pair\LevelManager.cs" />
+    <Compile Include="Lost word\FormLostWord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lost word\FormLostWord.Designer.cs">
+      <DependentUpon>FormLostWord.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMemoryTrainer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,12 @@
     <EmbeddedResource Include="Find a pair\FormFindAPair.resx">
       <DependentUpon>FormFindAPair.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="Lost word\SmoothLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="Lost word\FormLostWord.resx">
+      <DependentUpon>FormLostWord.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMemoryTrainer.resx">
       <DependentUpon>FormMemoryTrainer.cs</DependentUpon>
     </EmbeddedResource>
@@ -183,6 +195,7 @@
     <None Include="Find a pair\Fonts\fonto.TTF" />
     <None Include="Memory matrix\fonts\MyFont.ttf" />
     <None Include="Memory matrix\fonts\orange juice 2.0.ttf" />
+    <None Include="Resources\Montserrat-ExtraBold.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -197,7 +210,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Lost word\" />
+    <Folder Include="bin\Debug\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bg.jpg" />
@@ -238,9 +251,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Find a pair\Info.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Find a pair\Rules.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Find a pair\Images\20.png" />
@@ -343,6 +353,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\fonfon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\words.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
