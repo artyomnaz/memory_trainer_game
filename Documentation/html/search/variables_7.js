@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['pbbackground_176',['pbBackground',['../class_memory___trainer_1_1_form_thimbles.html#a6db2dd891bbdf76286847867be2eceec',1,'Memory_Trainer::FormThimbles']]],
-  ['picturebox1_177',['pictureBox1',['../class_memory___trainer_1_1_form_memory_trainer.html#a12149038bcf80428ed52e86ce5285b56',1,'Memory_Trainer::FormMemoryTrainer']]]
+  ['key_310',['key',['../class_memory___trainer_1_1_form_thimbles.html#a74540a1c3e45ed18ce9ecbb8323ee9f3',1,'Memory_Trainer.FormThimbles.key()'],['../class_memory___trainer_1_1_quad___shulte_1_1_form_quad_shulte.html#a3b211f4284209dd72087e8457727d0be',1,'Memory_Trainer.Quad_Shulte.FormQuadShulte.key()']]]
 ];

@@ -5,14 +5,42 @@ using System.Windows.Forms;
 
 namespace Memory_Trainer.Quad_Shulte
 {
+    /// <summary>
+    /// Класс для формы с игрой Квадрат Шульте
+    /// </summary>
     public partial class FormQuadShulte : Form, IGameInterface
     {
-        int time, key;
+        /// <summary>
+        /// Переменная для хранения времени
+        /// </summary>
+        private int time;
+        /// <summary>
+        /// Переменная для шифрования
+        /// </summary>
+        private int key;
+        /// <summary>
+        /// Переменная для хранения уровня
+        /// </summary>
         public int Level { get; set; }
+        /// <summary>
+        /// Переменная для хранения номера игры
+        /// </summary>
         public int NameGame { get; set; }
-        int count = 0;
-        int num = 1;
-        int x;
+        /// <summary>
+        /// Переменная для хранения количества ошибок
+        /// </summary>
+        private int count = 0;
+        /// <summary>
+        /// Переменная для хранения текущего значения для выбора в игре
+        /// </summary>
+        private int num = 1;
+        /// <summary>
+        /// Переменная для хранения текущего значения черной ячейки в 4ой игре
+        /// </summary>
+        private int x;
+        /// <summary>
+        /// Конструктор FormQuadShulte
+        /// </summary>
         public FormQuadShulte()
         {
             InitializeComponent();
@@ -25,6 +53,11 @@ namespace Memory_Trainer.Quad_Shulte
             key = 2;
             Game(Level, NameGame);
         }
+        /// <summary>
+        /// Функция для открытия игры
+        /// </summary>
+        /// <param name="level">Переменная для хранения уровня</param>
+        /// <param name="name">Переменная для хранения номера игры</param>
         public void Game(int level, int name)
         {
             DataGridViewButtonColumn[] buttonColumn = new DataGridViewButtonColumn[level];
@@ -39,6 +72,9 @@ namespace Memory_Trainer.Quad_Shulte
             DrawField();
 
         }
+        /// <summary>
+        /// Функция для отрисовки поля
+        /// </summary>
         public void DrawField()
         {
             dataGridView1.RowCount = Level;
@@ -204,7 +240,10 @@ namespace Memory_Trainer.Quad_Shulte
                 }
             }
         }
-
+        /// <summary>
+        /// Функция для проверки на победу
+        /// </summary>
+        /// <returns>Возвращает True, когда игра окончена</returns>
         public bool IsFinish()
         {
             if (NameGame == 2 && num == 1072 + Math.Pow(Level, 2))
@@ -227,7 +266,9 @@ namespace Memory_Trainer.Quad_Shulte
             }
             return true;
         }
-
+        /// <summary>
+        /// Функция для загрузки игры
+        /// </summary>
         public void OpenGame()
         {
             string[] lines = System.IO.File.ReadAllLines(@"QuadShulte_save.txt");
@@ -316,7 +357,9 @@ namespace Memory_Trainer.Quad_Shulte
                 }
             }
         }
-
+        /// <summary>
+        /// Функция для сохранения игры
+        /// </summary>
         public void SaveGame()
         {
             var lvl = Level ^ key;
@@ -394,24 +437,36 @@ namespace Memory_Trainer.Quad_Shulte
             System.IO.File.WriteAllLines(@"QuadShulte_save.txt", musStr);
             MessageBox.Show("Игра сохранена!");
         }
-
+        /// <summary>
+        /// Функция для показа информации об игре
+        /// </summary>
         public void ShowInfo()
         {
             FormInfo info = new FormInfo();
             info.ShowDialog(this);
         }
-
+        /// <summary>
+        /// Функция для показа правил
+        /// </summary>
         public void ShowRules()
         {
             FormRules rules = new FormRules();
             rules.ShowDialog(this);
         }
-
+        /// <summary>
+        /// Функция для закрытия игры
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void FormQuadShulte_FormClosed(object sender, FormClosedEventArgs e)
         {
             Owner.Show();
         }
-
+        /// <summary>
+        /// Функция для отобраения таймера
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void timer1_Tick(object sender, EventArgs e)
         {
             int minute, sec;
@@ -420,20 +475,32 @@ namespace Memory_Trainer.Quad_Shulte
             TimerLabel.Text = minute.ToString() + ':' + sec.ToString();
             time++;
         }
-
+        /// <summary>
+        /// Функция для вызова окна с правилами
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void button3_Click(object sender, EventArgs e)
         {
             ActiveControl = null;
             ShowRules();
         }
-
+        /// <summary>
+        /// Функция для вызова окна с информацией об авторах
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void button5_Click(object sender, EventArgs e)
         {
             ActiveControl = null;
             ShowInfo();
         }
 
-
+        /// <summary>
+        /// Функция для обработки событий нажатия на ячейки
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             ActiveControl = null;
@@ -507,10 +574,20 @@ namespace Memory_Trainer.Quad_Shulte
                 }
             }
         }
+        /// <summary>
+        /// Функция для очистки содержимого окна
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void dataGridView1_SelectionChanged_1(object sender, EventArgs e)
         {
             dataGridView1.ClearSelection();
         }
+        /// <summary>
+        /// Функция для обработки события при нажатия на кнопку-Новая игра
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void NewGamebutton_Click(object sender, EventArgs e)
         {
             ActiveControl = null;
@@ -553,12 +630,20 @@ namespace Memory_Trainer.Quad_Shulte
                 Game(Level, NameGame);
             }
         }
-
+        /// <summary>
+        /// Функция для вызова открытия игры
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void Downloadbutton_Click(object sender, EventArgs e)
         {
             OpenGame();
         }
-
+        /// <summary>
+        /// Функция для вызова сохранения игры
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void Savebutton_Click(object sender, EventArgs e)
         {
             SaveGame();

@@ -1,5 +1,11 @@
 var searchData=
 [
-  ['x1_91',['x1',['../class_memory___trainer_1_1_form_thimbles.html#ad288e87e2d52a05bd621584d8fef795d',1,'Memory_Trainer::FormThimbles']]],
-  ['x2_92',['x2',['../class_memory___trainer_1_1_form_thimbles.html#a8e986c54808f851e830842991e2c1f43',1,'Memory_Trainer::FormThimbles']]]
+  ['savebutton_139',['Savebutton',['../class_memory___trainer_1_1_quad___shulte_1_1_form_quad_shulte.html#a38379970e1535ebc1c06146018c0da9a',1,'Memory_Trainer::Quad_Shulte::FormQuadShulte']]],
+  ['savebutton_5fclick_140',['Savebutton_Click',['../class_memory___trainer_1_1_quad___shulte_1_1_form_quad_shulte.html#a4aac52682bc6546df29287b97cee925e',1,'Memory_Trainer::Quad_Shulte::FormQuadShulte']]],
+  ['savegame_141',['SaveGame',['../class_memory___trainer_1_1_form_thimbles.html#a6fd104c106792294925ddbcf71d5e3a7',1,'Memory_Trainer.FormThimbles.SaveGame()'],['../interface_memory___trainer_1_1_i_game_interface.html#ac67f92ca742ffd1ca5a02635ad11f5a6',1,'Memory_Trainer.IGameInterface.SaveGame()'],['../class_memory___trainer_1_1_quad___shulte_1_1_form_quad_shulte.html#abc786ef802a04fc50cafb226c8e3cd42',1,'Memory_Trainer.Quad_Shulte.FormQuadShulte.SaveGame()']]],
+  ['settings_142',['Settings',['../class_memory___trainer_1_1_properties_1_1_settings.html',1,'Memory_Trainer::Properties']]],
+  ['settings_2edesigner_2ecs_143',['Settings.Designer.cs',['../_settings_8_designer_8cs.html',1,'']]],
+  ['showinfo_144',['ShowInfo',['../class_memory___trainer_1_1_form_thimbles.html#ad28caad59bb671598aa5fe1af41fe34c',1,'Memory_Trainer.FormThimbles.ShowInfo()'],['../interface_memory___trainer_1_1_i_game_interface.html#a4beb375895ecd7b7a10a970af668f204',1,'Memory_Trainer.IGameInterface.ShowInfo()'],['../class_memory___trainer_1_1_quad___shulte_1_1_form_quad_shulte.html#a572961d152e3c8045a2620e846d454e4',1,'Memory_Trainer.Quad_Shulte.FormQuadShulte.ShowInfo()']]],
+  ['showrules_145',['ShowRules',['../class_memory___trainer_1_1_form_thimbles.html#ac226a523ee4ffc34548fd9ba5f38c60f',1,'Memory_Trainer.FormThimbles.ShowRules()'],['../interface_memory___trainer_1_1_i_game_interface.html#af84a896f211a900bbf5acfaf9f0149fd',1,'Memory_Trainer.IGameInterface.ShowRules()'],['../class_memory___trainer_1_1_quad___shulte_1_1_form_quad_shulte.html#a5b1df2995b5ee0d9768ef82b0299269c',1,'Memory_Trainer.Quad_Shulte.FormQuadShulte.ShowRules()']]],
+  ['shuffle_146',['Shuffle',['../class_memory___trainer_1_1_form_thimbles.html#a2b5a03473fb0ed375c1004ebb55a88d3',1,'Memory_Trainer::FormThimbles']]]
 ];

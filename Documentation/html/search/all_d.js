@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['savegame_72',['SaveGame',['../class_memory___trainer_1_1_form_thimbles.html#a6fd104c106792294925ddbcf71d5e3a7',1,'Memory_Trainer.FormThimbles.SaveGame()'],['../interface_memory___trainer_1_1_i_game_interface.html#ac67f92ca742ffd1ca5a02635ad11f5a6',1,'Memory_Trainer.IGameInterface.SaveGame()']]],
-  ['settings_73',['Settings',['../class_memory___trainer_1_1_properties_1_1_settings.html',1,'Memory_Trainer::Properties']]],
-  ['settings_2edesigner_2ecs_74',['Settings.Designer.cs',['../_settings_8_designer_8cs.html',1,'']]],
-  ['showinfo_75',['ShowInfo',['../class_memory___trainer_1_1_form_thimbles.html#ad28caad59bb671598aa5fe1af41fe34c',1,'Memory_Trainer.FormThimbles.ShowInfo()'],['../interface_memory___trainer_1_1_i_game_interface.html#a4beb375895ecd7b7a10a970af668f204',1,'Memory_Trainer.IGameInterface.ShowInfo()']]],
-  ['showrules_76',['ShowRules',['../class_memory___trainer_1_1_form_thimbles.html#ac226a523ee4ffc34548fd9ba5f38c60f',1,'Memory_Trainer.FormThimbles.ShowRules()'],['../interface_memory___trainer_1_1_i_game_interface.html#af84a896f211a900bbf5acfaf9f0149fd',1,'Memory_Trainer.IGameInterface.ShowRules()']]],
-  ['shuffle_77',['Shuffle',['../class_memory___trainer_1_1_form_thimbles.html#a2b5a03473fb0ed375c1004ebb55a88d3',1,'Memory_Trainer::FormThimbles']]]
+  ['pbbackground_124',['pbBackground',['../class_memory___trainer_1_1_form_thimbles.html#a6db2dd891bbdf76286847867be2eceec',1,'Memory_Trainer::FormThimbles']]],
+  ['picturebox1_125',['pictureBox1',['../class_memory___trainer_1_1_form_memory_trainer.html#a12149038bcf80428ed52e86ce5285b56',1,'Memory_Trainer.FormMemoryTrainer::pictureBox1()'],['../class_memory___trainer_1_1_quad___shulte_1_1_form_info.html#a76c5692f68585f12c11494730cb2361c',1,'Memory_Trainer.Quad_Shulte.FormInfo::pictureBox1()'],['../class_memory___trainer_1_1_quad___shulte_1_1_form_level.html#a28abe2a7c0a48beb92809f4486f88092',1,'Memory_Trainer.Quad_Shulte.FormLevel::pictureBox1()'],['../class_memory___trainer_1_1_quad___shulte_1_1_form_rules.html#ab1a451537e3ca3cf06d461efbd2108cb',1,'Memory_Trainer.Quad_Shulte.FormRules::pictureBox1()'],['../class_memory___trainer_1_1_quad___shulte_1_1_form_win.html#a8c8408b843538df5e22aea2ae48845a6',1,'Memory_Trainer.Quad_Shulte.FormWin::pictureBox1()']]],
+  ['program_126',['Program',['../class_memory___trainer_1_1_program.html',1,'Memory_Trainer']]],
+  ['program_2ecs_127',['Program.cs',['../_program_8cs.html',1,'']]]
 ];

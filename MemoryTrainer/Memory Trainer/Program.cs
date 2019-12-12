@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace Memory_Trainer
 {
+    /// <summary>
+    /// Класс Program
+    /// </summary>
     internal static class Program
     {
 
