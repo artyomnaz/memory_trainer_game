@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Memory_Trainer.Find_a_pair;
+using Memory_Trainer.Memory_matrix;
 
 namespace Memory_Trainer
 {
@@ -36,7 +37,10 @@ namespace Memory_Trainer
 
         private void buttonMemoryMatrix_Click(object sender, EventArgs e)
         {
-            return;
+            FormMemoryMatrix formMemoryMatrix = new FormMemoryMatrix();
+            Hide();
+            formMemoryMatrix.ShowDialog();
+            Show();
         }
 
         private void buttonThimbles_Click(object sender, EventArgs e)
