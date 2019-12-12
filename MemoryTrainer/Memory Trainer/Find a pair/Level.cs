@@ -7,35 +7,111 @@ using System.Windows.Forms;
 
 namespace Memory_Trainer.Find_a_pair
 {
+    /// <summary>
+    /// Параметры открытия игры
+    /// </summary>
     public enum OpeningРarameter
     {
         New,
         Load
     }
+    /// <summary>
+    /// Класс, описывающий уровни игры
+    /// </summary>
     public class Level : IGameInterface
     {
+        /// <summary>
+        /// Список карт
+        /// </summary>
         private List<Card> _cards;
+        /// <summary>
+        /// Хранит номер текущих открытых карт
+        /// </summary>
         private List<int> _openCard;
+        /// <summary>
+        /// Таймер отвечающий за время игры
+        /// </summary>
         private readonly Timer _timer;
+        /// <summary>
+        /// Таймер отвечающий за задержку перед закрытием или исчезновением карт
+        /// </summary>
         private readonly Timer _timerOpenCard;
+        /// <summary>
+        /// Таймер отвечающий за задержку перед продолжением игры после сохранения
+        /// </summary>
         private readonly Timer _timerSaveGame;
+        /// <summary>
+        /// Текущее время от начала игры
+        /// </summary>
         private int _time;
+        /// <summary>
+        /// Время задержки после сохранения
+        /// </summary>
         private int _timeSaveGame;
+        /// <summary>
+        /// Время задержки перед закрытием или удалением карт
+        /// </summary>
         private int _timeOpenCard;
+        /// <summary>
+        /// Количество нажатий за игру
+        /// </summary>
         private int _clicks;
+        /// <summary>
+        /// Количество открытых пар
+        /// </summary>
         private int _openPair;
+        /// <summary>
+        /// Общее количество пар
+        /// </summary>
         private int _countPair;
+        /// <summary>
+        /// Выводит текущее время
+        /// </summary>
         private Label _timeLbl;
+        /// <summary>
+        /// Вывлдит текущий уровень
+        /// </summary>
         private Label _levelLbl;
+        /// <summary>
+        /// Выводит количество нажатий за игру
+        /// </summary>
         private readonly Label _clicksLbl;
+        /// <summary>
+        /// Выводит надпиь об окончании игры
+        /// </summary>
         private readonly Label _endGameLbl;
+        /// <summary>
+        /// Выводит надпись о сохранении игры
+        /// </summary>
         private readonly Label _saveGameLbl;
-        private PrivateFontCollection _font;
+        /// <summary>
+        /// Коллекция настраиваемых шрифтов
+        /// </summary>
+        private readonly PrivateFontCollection _font;
+        /// <summary>
+        /// Контрол на котором необходимо отрисовать уровень
+        /// </summary>
         private readonly Control _control;
+        /// <summary>
+        /// Кнопка завершения игры
+        /// </summary>
         private Button _endGameBtn;
+        /// <summary>
+        /// Кнопка выход в меню
+        /// </summary>
         private Button _menuBtn;
+        /// <summary>
+        /// Кнопка сохранения игры
+        /// </summary>
         private Button _saveBtn;
-        public Level(int level, Control control, PrivateFontCollection font, LevelManager parent, OpeningРarameter op)
+        /// <summary>
+        /// Конструктор Level
+        /// </summary>
+        /// <param name="level">Текущий уровень</param>
+        /// <param name="control">Контрол на котором необходимо отрисовать уровень</param>
+        /// <param name="font">Коллекция настраиваемых шрифтов</param>
+        /// <param name="op">Параметр открытия</param>
+        public Level(int level, Control control, PrivateFontCollection font, OpeningРarameter op)
         {
             _control = control;
             _font = font;
@@ -191,7 +267,11 @@ namespace Memory_Trainer.Find_a_pair
             _saveBtn.Click += SaveBtnClick;
             
         }
-
+        /// <summary>
+        /// Функция убирающая надпись о сохранении игры
+        /// </summary>
+        /// <param name="sender">Объект вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void TimerSaveGameTick(object sender, EventArgs e)
         {
             if (_timeSaveGame++ != 1) return;
@@ -201,7 +281,10 @@ namespace Memory_Trainer.Find_a_pair
             ChangeEnabled(true);
             _saveGameLbl.Visible = false;
         }
-
+        /// <summary>
+        /// Функция делающая активными или не активными кнопки сохранения, меню и карты
+        /// </summary>
+        /// <param name="state">Состояние в которое перейдут кнопки</param>
         private void ChangeEnabled(bool state)
         {
             foreach (var card in _cards)
@@ -212,11 +295,20 @@ namespace Memory_Trainer.Find_a_pair
             _menuBtn.Enabled = state;
             _saveBtn.Enabled = state;
         }
+        /// <summary>
+        /// Функция выполняющая сохранение при нажатии на кнопку
+        /// </summary>
+        /// <param name="sender">Объект вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void SaveBtnClick(object sender, EventArgs e)
         {
             SaveGame();
         }
-
+        /// <summary>
+        /// Функция получения количества пар
+        /// </summary>
+        /// <param name="level">Уровень</param>
+        /// <returns>Количество пар</returns>
         private int GetCountPair(int level)
         {
             switch (level)
@@ -242,6 +334,11 @@ namespace Memory_Trainer.Find_a_pair
             }
             return 0;
         }
+        /// <summary>
+        /// Функция проверяющая конец игры при открытии карт и закрывающая или убирающая карты
+        /// </summary>
+        /// <param name="sender">Объект вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void TimerOpenCardOnTick(object sender, EventArgs e)
         {
 
@@ -268,12 +365,20 @@ namespace Memory_Trainer.Find_a_pair
             _timeOpenCard = 0;
             _timerOpenCard.Enabled = false;
         }
-
+        /// <summary>
+        /// Функция изменяющая время игры
+        /// </summary>
+        /// <param name="sender">Объект вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void TimerOnTick(object sender, EventArgs e)
         {
             _timeLbl.Text = @"Время: " + CreateTimeString(++_time);
         }
-
+        /// <summary>
+        /// Функция переводящая время из одного формата в другой
+        /// </summary>
+        /// <param name="time">Текущее время</param>
+        /// <returns></returns>
         private static string CreateTimeString(int time)
         {
             int sec = time % 60;
@@ -291,7 +396,9 @@ namespace Memory_Trainer.Find_a_pair
                    (min.ToString().Length == 2 ? min.ToString() : "0" + min) + ":" +
                    (sec.ToString().Length == 2 ? sec.ToString() : "0" + sec);
         }
-
+        /// <summary>
+        /// Очищающая все контролы для данного уровня
+        /// </summary>
         public void Dispose()
         {
             foreach (var t in _cards)
@@ -306,6 +413,11 @@ namespace Memory_Trainer.Find_a_pair
             _saveBtn.Dispose();
             _levelLbl.Dispose();
         }
+        /// <summary>
+        /// Функция открывающая карты при нажатии на них мышью
+        /// </summary>
+        /// <param name="sender">Объект вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void MouseClick(object sender, EventArgs e)
         {
             if (_openCard[0] != -1 && _openCard[1] != -1)
@@ -338,6 +450,9 @@ namespace Memory_Trainer.Find_a_pair
                 _timerOpenCard.Enabled = true;
             }
         }
+        /// <summary>
+        /// Функция выполняющая сохранение игры
+        /// </summary>
         public void SaveGame()
         {
             string text = "";
@@ -368,7 +483,9 @@ namespace Memory_Trainer.Find_a_pair
             _timer.Enabled = false;
             ChangeEnabled(false);
         }
-
+        /// <summary>
+        /// Функция выполняющая открытие игры
+        /// </summary>
         public void OpenGame()
         {
             string path = "SaveFindAPair";
@@ -505,7 +622,9 @@ namespace Memory_Trainer.Find_a_pair
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// Функция расставляющая и отрисывавающая карты в зависимости от уровня
+        /// </summary>
         public void DrawField()
         {
             List<Point> positions = new List<Point>();
@@ -573,12 +692,17 @@ namespace Memory_Trainer.Find_a_pair
                 }
             }
         }
-
+        /// <summary>
+        /// Функция проверяющая окончание игры
+        /// </summary>
+        /// <returns>true - если игра окончена, false - если нет</returns>
         public bool IsFinish()
         {
             return _countPair == _openPair;
         }
-
+        /// <summary>
+        /// Функция выводящая надпись об окончании игры и статистику в конце игры
+        /// </summary>
         private void EndGame()
         {
             _timer.Enabled = false;
@@ -592,7 +716,11 @@ namespace Memory_Trainer.Find_a_pair
             _saveBtn.Visible = false;
             _levelLbl.Visible = false;
         }
-
+        /// <summary>
+        /// Функция завершающая игру при клике на кнопку в конце игры
+        /// </summary>
+        /// <param name="sender">Объект вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void EndGameBtnClick(object sender, EventArgs e)
         {
             _control.Visible = true;

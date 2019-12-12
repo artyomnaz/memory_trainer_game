@@ -81,7 +81,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Find a pair\Fonts\fonto.TTF" />
-    <None Include="Image\dollar.TTF" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,97 +98,14 @@
     <Folder Include="Lost word\" />
     <Folder Include="Memory matrix\" />
     <Folder Include="Quad Shulte\" />
+    <Folder Include="Resources\" />
     <Folder Include="Thimbles\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Find a pair\1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\Back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\Face.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\9.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\11.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\12.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\20.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\13.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\14.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\15.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\17.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\18.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\19.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\Back1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Image\Btn.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Find a pair\Info.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Find a pair\Rules.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\1.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Image1.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Find a pair\Images\20.png" />

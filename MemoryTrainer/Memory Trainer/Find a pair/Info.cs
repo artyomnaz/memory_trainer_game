@@ -5,11 +5,29 @@ using System.Windows.Forms;
 
 namespace Memory_Trainer.Find_a_pair
 {
+    /// <summary>
+    /// Класс, отвечающий за отображение информации об игре
+    /// </summary>
     class Info
     {
+        /// <summary>
+        /// Выводит информацию об игре
+        /// </summary>
         private Label _infoLbl;
+        /// <summary>
+        /// Кнопка возврата в меню
+        /// </summary>
         private Button _backBtn;
+        /// <summary>
+        /// Контрол на котором необходимо отрисовать уровень
+        /// </summary>
         private Control _control;
+        /// <summary>
+        /// Класс Info
+        /// </summary>
+        /// <param name="control">Контрол на котором необходимо отрисовать уровень</param>
+        /// <param name="text">Текст с информацией об игре</param>
+        /// <param name="font">Коллекция настраиваемых шрифтов</param>
         public Info(Control control, string text, PrivateFontCollection font)
         {
             _control = control;
@@ -36,13 +54,19 @@ namespace Memory_Trainer.Find_a_pair
             };
             _backBtn.Click += ButtonMouseClick;
         }
-
+        /// <summary>
+        /// Очищающая все контролы для данного класса
+        /// </summary>
         private void Dispose()
         {
             _infoLbl.Dispose();
             _backBtn.Dispose();
         }
-
+        /// <summary>
+        /// Функция возвращающая в меню
+        /// </summary>
+        /// <param name="sender">Объект вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void ButtonMouseClick(object sender, EventArgs e)
         {
             Dispose();

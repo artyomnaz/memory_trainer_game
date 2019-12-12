@@ -5,17 +5,46 @@ using System.Windows.Forms;
 
 namespace Memory_Trainer.Find_a_pair
 {
-
+    /// <summary>
+    /// Класс, описывающий карту на игровом поле
+    /// </summary>
     public class Card
     {
+        /// <summary>
+        /// Рисует карту
+        /// </summary>
         public PictureBox Image;
+        /// <summary>
+        /// Хранит картинку открытой карты
+        /// </summary>
         public Bitmap ImageOpen { get; set; }
+        /// <summary>
+        /// Хранит картинку закрытой карты
+        /// </summary>
         public Bitmap ImageClose { get; set; }
+        /// <summary>
+        /// Открыта ли карта
+        /// </summary>
         private bool _isOpen;
+        /// <summary>
+        /// Коэффициент масштабирования карты
+        /// </summary>
         private float _scalingFactor;
+        /// <summary>
+        /// Таймер отвечающий за анимацию
+        /// </summary>
         private readonly Timer _timer;
+        /// <summary>
+        /// Перевернута ли карта
+        /// </summary>
         private bool _flip;
+        /// <summary>
+        /// Хранит события клика на мышь
+        /// </summary>
         public event EventHandler MouseClick;
+        /// <summary>
+        /// Коэффициент масштабирования карты
+        /// </summary>
         public float ScalingFactor
         {
             get => _scalingFactor;
@@ -26,6 +55,9 @@ namespace Memory_Trainer.Find_a_pair
                 Image.Width = Convert.ToInt32(Image.Width * _scalingFactor);
             }
         }
+        /// <summary>
+        /// Открыта ли карта
+        /// </summary>
         public bool IsOpen
         {
             get => _isOpen;
@@ -44,8 +76,17 @@ namespace Memory_Trainer.Find_a_pair
                 _isOpen = value;
             }
         }
-
+        /// <summary>
+        /// Тип карты
+        /// </summary>
         public int ImageType { get; }
+        /// <summary>
+        /// Конструктор Card
+        /// </summary>
+        /// <param name="imageClose">Картинка закрытой карты</param>
+        /// <param name="imageOpen">Картинка открытой карты</param>
+        /// <param name="imageType">Тип карты</param>
+        /// <param name="control">Контрол на котором необходимо отрисовать карту</param>
         public Card(Bitmap imageClose, Bitmap imageOpen, int imageType, Control control)
         {
             ImageClose = imageClose;
@@ -74,7 +115,10 @@ namespace Memory_Trainer.Find_a_pair
             ImageType = imageType;
             MouseClick += delegate { };
         }
-
+        /// <summary>
+        /// Функция отвечающая за анимацию переворота карты
+        /// </summary>
+        /// <param name="image">Текущая картинка карты</param>
         private void Animation(Bitmap image)
         {
             if (Image.Size.Width <= 0 && !_flip)
@@ -118,11 +162,20 @@ namespace Memory_Trainer.Find_a_pair
             }
             Image.Invalidate();
         }
+        /// <summary>
+        /// Функция вызывающая анимацию при каждом тике таймера
+        /// </summary>
+        /// <param name="sender">Объект вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void TimerTick(object sender, EventArgs e)
         {
             Animation(IsOpen ? ImageOpen : ImageClose);
         }
-
+        /// <summary>
+        /// Функция вызывающая все события поля MouseClick
+        /// </summary>
+        /// <param name="sender">Объект вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void OnMouseClick(object sender, EventArgs e)
         {
             var handler = MouseClick;
