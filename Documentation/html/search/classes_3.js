@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['quad_186',['Quad',['../class_memory___trainer_1_1_quad___shulte_1_1_quad.html',1,'Memory_Trainer::Quad_Shulte']]]
+  ['level_367',['Level',['../class_memory___trainer_1_1_find__a__pair_1_1_level.html',1,'Memory_Trainer::Find_a_pair']]],
+  ['levelmanager_368',['LevelManager',['../class_memory___trainer_1_1_find__a__pair_1_1_level_manager.html',1,'Memory_Trainer::Find_a_pair']]]
 ];

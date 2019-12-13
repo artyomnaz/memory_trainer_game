@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['resources_187',['Resources',['../class_memory___trainer_1_1_properties_1_1_resources.html',1,'Memory_Trainer::Properties']]]
+  ['program_369',['Program',['../class_memory___trainer_1_1_program.html',1,'Memory_Trainer']]]
 ];
