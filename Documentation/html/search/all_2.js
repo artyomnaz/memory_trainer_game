@@ -26,7 +26,7 @@ var searchData=
   ['buttonquadshulte_5fclick_63',['buttonQuadShulte_Click',['../class_memory___trainer_1_1_form_memory_trainer.html#a9acbcc07871102abdf68c65b762e864f',1,'Memory_Trainer::FormMemoryTrainer']]],
   ['buttonrules_64',['buttonRules',['../class_memory___trainer_1_1_form_thimbles.html#a64e1cda6d60c8363bc12927563a4346e',1,'Memory_Trainer::FormThimbles']]],
   ['buttonrules_5fclick_65',['ButtonRules_Click',['../class_memory___trainer_1_1_form_thimbles.html#a8599005042667116a9934fef094f991d',1,'Memory_Trainer::FormThimbles']]],
-  ['buttons_5fclick_66',['Buttons_Click',['../class_memory___trainer_1_1_form_lost_word.html#a5056aa2290b1212726a2505c1efd97f2',1,'Memory_Trainer::FormLostWord']]],
+  ['buttons_5fclick_66',['Buttons_Click',['../class_memory___trainer_1_1_form_lost_word.html#a5056aa2290b1212726a2505c1efd97f2',1,'Memory_Trainer.FormLostWord.Buttons_Click(object sender, EventArgs e)'],['../class_memory___trainer_1_1_form_lost_word.html#a5056aa2290b1212726a2505c1efd97f2',1,'Memory_Trainer.FormLostWord.Buttons_Click(object sender, EventArgs e)']]],
   ['buttonsave_67',['buttonSave',['../class_memory___trainer_1_1_form_thimbles.html#a54852531e32522c6cb8b6601cbaf6963',1,'Memory_Trainer::FormThimbles']]],
   ['buttonsave_5fclick_68',['ButtonSave_Click',['../class_memory___trainer_1_1_form_thimbles.html#ad642f71321ce47394f6aabf751dbb561',1,'Memory_Trainer::FormThimbles']]],
   ['buttonstartgame_69',['buttonStartGame',['../class_memory___trainer_1_1_form_thimbles.html#a8ac62231cb1f276576335e4aff221a70',1,'Memory_Trainer::FormThimbles']]],

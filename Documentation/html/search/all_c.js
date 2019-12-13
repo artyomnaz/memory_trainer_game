@@ -7,6 +7,6 @@ var searchData=
   ['newgamebutton_5fclick_235',['NewGamebutton_Click',['../class_memory___trainer_1_1_quad___shulte_1_1_form_quad_shulte.html#ab7c84ea43f4d95ebf9968610ec4d116d',1,'Memory_Trainer::Quad_Shulte::FormQuadShulte']]],
   ['nocolor_236',['NoColor',['../class_memory___trainer_1_1_memory__matrix_1_1_form_memory_matrix.html#ad6bd5632006aafb7fc95dedbb2ee5c41a745ff66e655ea022e59182e15f301c8c',1,'Memory_Trainer::Memory_matrix::FormMemoryMatrix']]],
   ['num_237',['num',['../class_memory___trainer_1_1_quad___shulte_1_1_form_quad_shulte.html#a20fdf46ff5e74572dd2ba24ba59911a8',1,'Memory_Trainer::Quad_Shulte::FormQuadShulte']]],
-  ['numberanswers_238',['numberAnswers',['../class_memory___trainer_1_1_form_lost_word.html#a52f4396dd37db062aca63e249c8efb20',1,'Memory_Trainer::FormLostWord']]],
+  ['numberanswers_238',['numberAnswers',['../class_memory___trainer_1_1_form_lost_word.html#aa302abbc9255de440a250afe6ab86b24',1,'Memory_Trainer::FormLostWord']]],
   ['numberwords_239',['numberWords',['../class_memory___trainer_1_1_form_lost_word.html#a3d0752f5f90160257f48782059df62cf',1,'Memory_Trainer::FormLostWord']]]
 ];
