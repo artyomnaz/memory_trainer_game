@@ -11,6 +11,8 @@
     <AssemblyName>Memory Trainer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -195,6 +197,7 @@
     <None Include="Find a pair\Fonts\fonto.TTF" />
     <None Include="Memory matrix\fonts\MyFont.ttf" />
     <None Include="Memory matrix\fonts\orange juice 2.0.ttf" />
+    <None Include="packages.config" />
     <None Include="Resources\Montserrat-ExtraBold.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

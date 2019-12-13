@@ -121,6 +121,8 @@ namespace Memory_Trainer.Find_a_pair
         /// <param name="image">Текущая картинка карты</param>
         private void Animation(Bitmap image)
         {
+            Point location = Image.Location;
+            Size size = Image.Size;
             if (Image.Size.Width <= 0 && !_flip)
             {
                 Image.Image = image;
@@ -128,8 +130,6 @@ namespace Memory_Trainer.Find_a_pair
             }
             else
             {
-                Point location = Image.Location;
-                Size size = Image.Size;
                 if (!_flip)
                 {
                     Image.Location = new Point(location.X + 10, location.Y);

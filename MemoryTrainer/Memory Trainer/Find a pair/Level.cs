@@ -142,9 +142,11 @@ namespace Memory_Trainer.Find_a_pair
                     Bitmap innerImage = new Bitmap((Bitmap)Properties.Resources.ResourceManager.GetObject("_" + indexes[i]));
                     Graphics g = Graphics.FromImage(faceImage);
                     g.DrawImage(innerImage, new Point(22, 62));
-
-                    _cards.Add(new Card(Properties.Resources.Back, faceImage, indexes[i], control.Parent));
-                    _cards.Add(new Card(Properties.Resources.Back, faceImage, indexes[i], control.Parent));
+                    if(Properties.Resources.Back != null)
+                    {
+                        _cards.Add(new Card(Properties.Resources.Back, faceImage, indexes[i], control.Parent));
+                        _cards.Add(new Card(Properties.Resources.Back, faceImage, indexes[i], control.Parent));
+                    }
                 }
                 _time = 0;
                 _clicks = 0;
