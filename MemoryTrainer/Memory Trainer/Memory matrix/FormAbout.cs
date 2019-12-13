@@ -11,11 +11,24 @@ using System.Windows.Forms;
 
 namespace Memory_Trainer.Memory_matrix
 {
+    /// <summary>
+    /// Класс для информации об игре "Матрицы памяти"
+    /// </summary>
     public partial class FormInfo : Form
     {
+        /// <summary>
+        /// Label для информации об игре
+        /// </summary>
         private Label Label;
+        /// <summary>
+        /// Шрифты
+        /// </summary>
         private PrivateFontCollection private_fonts;
 
+        /// <summary>
+        /// Конструктор FormAbout
+        /// </summary>
+        /// <param name="fonts">Шрифты</param>
         public FormInfo(PrivateFontCollection fonts)
         {
             InitializeComponent();
@@ -24,6 +37,11 @@ namespace Memory_Trainer.Memory_matrix
             Label.Parent = this;
         }
 
+        /// <summary>
+        /// Функция загрузки формы
+        /// </summary>
+        /// <param name="sender">Объект, который в обработке</param>
+        /// <param name="e">Аргументы события</param>
         private void FormInfo_Load(object sender, EventArgs e)
         {
             Label.BackColor = Color.Transparent;

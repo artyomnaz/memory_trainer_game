@@ -16,27 +16,94 @@ using System.Text.RegularExpressions;
 
 namespace Memory_Trainer.Memory_matrix
 {
+    /// <summary>
+    /// Класс для формы с игрой "Memory matrix"
+    /// </summary>
     public partial class FormMemoryMatrix : Form, IGameInterface
     {
+        /// <summary>
+        /// Игровая сетка
+        /// </summary>
         private DataGridView FigureGrid;
+
+        /// <summary>
+        /// Поле для вывода уровня
+        /// </summary>
         private Label LevelLabel;
+
+        /// <summary>
+        /// Поле для вывода подсказки для пользователя
+        /// </summary>
         private Label label;
+
+        /// <summary>
+        /// Кнопка сохранения игры
+        /// </summary>
         private Button SaveButton;
+
+        /// <summary>
+        /// Кнопка открытия игры
+        /// </summary>
         private Button OpenButton;
+
+        /// <summary>
+        /// Кнопка открытия правил игры
+        /// </summary>
         private Button RulesButton;
+
+        /// <summary>
+        /// Кнопка открытия информации об игре
+        /// </summary>
         private Button AboutButton;
+
+        /// <summary>
+        /// Размерность сетки
+        /// </summary>
         private int n;
+
+        /// <summary>
+        /// Количество закрашенных квадратиков
+        /// </summary>
         private int m;
+
+        /// <summary>
+        /// Уровень игры
+        /// </summary>
         private int Level;
+
+        /// <summary>
+        /// Массив со значениями ячеек сетки
+        /// </summary>
         private int[][] pos;
+
+        /// <summary>
+        /// Счетчик для таймера
+        /// </summary>
         private int timerValue;
+
+        /// <summary>
+        /// Ключ шифрования
+        /// </summary>
         private int key = 22;
+
+        /// <summary>
+        /// Число на которое изменяется количество закрашенных квадратиков при увеличения уровня
+        /// </summary>
         private int delta;
 
+        /// <summary>
+        /// Перечисление состояний массива со значениями ячеек
+        /// </summary>
         enum pos_state { NoColor, WithColor, ForAnimation, Chosen };
 
+        /// <summary>
+        /// Шрифты
+        /// </summary>
         public PrivateFontCollection private_fonts = new PrivateFontCollection();
 
+        /// <summary>
+        /// Функция для загрузки шрифтов
+        /// </summary>
         private void LoadFont()
         {
             using (MemoryStream fontStream = new MemoryStream(Properties.Resources.MyFont))
@@ -51,6 +118,9 @@ namespace Memory_Trainer.Memory_matrix
             }
         }
 
+        /// <summary>
+        /// Конструктор FormMemoryMatrix
+        /// </summary>
         public FormMemoryMatrix()
         {
             InitializeComponent();
@@ -71,6 +141,11 @@ namespace Memory_Trainer.Memory_matrix
             label.Parent = this;
         }
 
+        /// <summary>
+        /// Функция загрузки формы FormMemoryMatrix
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void FormMemoryMatrix_Load(object sender, EventArgs e)
         {
             Level = 1;
@@ -141,6 +216,9 @@ namespace Memory_Trainer.Memory_matrix
             Start();
         }
 
+        /// <summary>
+        /// Функция для создания игровой сетки
+        /// </summary>
         private void CreateFormGrid()
         {
             FigureGrid.ColumnCount = n;
@@ -159,6 +237,9 @@ namespace Memory_Trainer.Memory_matrix
             SetSettings();
         }
 
+        /// <summary>
+        /// Функция для установки настроек для игровой сетки
+        /// </summary>
         private void SetSettings()
         {
             FigureGrid.AllowUserToResizeRows = false;
@@ -198,6 +279,11 @@ namespace Memory_Trainer.Memory_matrix
             }
         }
 
+        /// <summary>
+        /// Функция для обработки события при нажатии на ячейку
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void onClick(object sender, EventArgs e)
         {
             if (timer.Enabled)
@@ -208,6 +294,9 @@ namespace Memory_Trainer.Memory_matrix
             GameProcess(i, j);
         }
 
+        /// <summary>
+        /// Функция, рандомно задающая позиции для закрашенных квадратиков
+        /// </summary>
         private void RandomPosition()
         {
             var r = new int[m];
@@ -229,6 +318,11 @@ namespace Memory_Trainer.Memory_matrix
                             pos[i][j] = (int)pos_state.ForAnimation;
         }
 
+        /// <summary>
+        /// Таймер для закрашивания квадратов
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         private void timer_Tick(object sender, EventArgs e)
         {
             DrawField();
@@ -245,12 +339,18 @@ namespace Memory_Trainer.Memory_matrix
             }
         }
 
+        /// <summary>
+        /// Функция, останавливающая таймер
+        /// </summary>
         private void Stop()
         {
             timer.Stop();
             timer.Enabled = false;
         }
 
+        /// <summary>
+        /// Функция, запускающая таймер
+        /// </summary>
         private void Start()
         {
             FigureGrid.CellClick += null;
@@ -258,6 +358,9 @@ namespace Memory_Trainer.Memory_matrix
             timer.Start();
         }
 
+        /// <summary>
+        /// Функция, очищающая сетку
+        /// </summary>
         private void ClearGrid()
         {
 
@@ -266,6 +369,11 @@ namespace Memory_Trainer.Memory_matrix
                     FigureGrid.Rows[i].Cells[j].Style.BackColor = Color.FromArgb(231, 245, 222); ;
         }
 
+        /// <summary>
+        /// Функция, реализующая игровой процесс после нажатия на ячейку
+        /// </summary>
+        /// <param name="i">Координата ячейки по оси x</param>
+        /// <param name="j">Координата ячейки по оси y</param>
         private void GameProcess(int i, int j)
         {
             if (pos[i][j] == (int)pos_state.WithColor)
@@ -314,6 +422,9 @@ namespace Memory_Trainer.Memory_matrix
             FigureGrid.ClearSelection();
         }
 
+        /// <summary>
+        /// Функция для добавления ячеек в сетку
+        /// </summary>
         private void AddCells()
         {
             FigureGrid.ColumnCount = n;
@@ -332,6 +443,9 @@ namespace Memory_Trainer.Memory_matrix
             SetSettings();
         }
 
+        /// <summary>
+        /// Функция отрисовки одного закрашенного квадратика
+        /// </summary>
         public void DrawField()
         {
             for (int i = 0; i < n; i++)
@@ -350,6 +464,10 @@ namespace Memory_Trainer.Memory_matrix
             }
         }
 
+        /// <summary>
+        /// Функция проверки окончания игры
+        /// </summary>
+        /// <returns>true - в случае финиша, false - в случае продолжения игры</returns>
         public bool IsFinish()
         {
             bool IsFinish = true;
@@ -363,6 +481,11 @@ namespace Memory_Trainer.Memory_matrix
             return IsFinish;
         }
 
+        /// <summary>
+        /// Функция для обработки события при нажатии на кнопку "Сохранить игру"
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         public void SaveGame()
         {
             List<string> SaveList = new List<string>();
@@ -388,6 +511,11 @@ namespace Memory_Trainer.Memory_matrix
             MessageBox.Show("Игра сохранена. Тёма, иди кушать.");
         }
 
+        /// <summary>
+        /// Функция для обработки события при нажатии на кнопку "Открыть игру"
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         public void OpenGame()
         {
             if (timer.Enabled)
@@ -423,6 +551,11 @@ namespace Memory_Trainer.Memory_matrix
             Start();
         }
 
+        /// <summary>
+        /// Функция для обработки события при нажатии на кнопку "Правила"
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         public void ShowRules()
         {
             FormRules formRules = new FormRules(private_fonts);
@@ -430,6 +563,11 @@ namespace Memory_Trainer.Memory_matrix
             Show();
         }
 
+        /// <summary>
+        /// Функция для обработки события при нажатии на кнопку "О программе"
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         public void ShowInfo()
         {
             FormInfo formInfo = new FormInfo(private_fonts);
@@ -437,6 +575,11 @@ namespace Memory_Trainer.Memory_matrix
             Show();
         }
 
+        /// <summary>
+        /// Функция для вызова сохранения игры
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         public void Save(object sender, EventArgs e)
         {
             if (timer.Enabled)
@@ -444,6 +587,11 @@ namespace Memory_Trainer.Memory_matrix
             SaveGame();
         }
 
+        /// <summary>
+        /// Функция для вызова открытия игры
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         public void Open(object sender, EventArgs e)
         {
             if (timer.Enabled)
@@ -451,6 +599,11 @@ namespace Memory_Trainer.Memory_matrix
             OpenGame();
         }
 
+        /// <summary>
+        /// Функция для вызова правил игры
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         public void Rules(object sender, EventArgs e)
         {
             if (timer.Enabled)
@@ -458,6 +611,11 @@ namespace Memory_Trainer.Memory_matrix
             ShowRules();
         }
 
+        /// <summary>
+        /// Функция для вызова информации об игре
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Аргументы события</param>
         public void Info(object sender, EventArgs e)
         {
             if (timer.Enabled)

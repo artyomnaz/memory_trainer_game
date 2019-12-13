@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['errorlabel_300',['Errorlabel',['../class_memory___trainer_1_1_quad___shulte_1_1_form_quad_shulte.html#ac25e0ff6a985fae0b9fba72de7ca1bf9',1,'Memory_Trainer::Quad_Shulte::FormQuadShulte']]]
+  ['quad_5fshulte_60',['Quad_Shulte',['../_form_memory_trainer_8cs.html#a86d77b8665b823861bf1bb7d5eb3e56d',1,'FormMemoryTrainer.cs']]]
 ];
