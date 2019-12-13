@@ -9,44 +9,152 @@ using System.Collections.Generic;
 
 namespace Memory_Trainer
 {
+    /// <summary>
+    /// Класс для формы с игрой
+    /// </summary>
     public partial class FormLostWord : Form, IGameInterface
     {
+        /// <summary>
+        /// Текущее значение таймера
+        /// </summary>
         public int timerValue;
+        /// <summary>
+        /// Значение интервала для всех таймеров
+        /// </summary>
         public int timerInterval;
+        /// <summary>
+        /// Проверка установки цвета
+        /// </summary>
         public bool setColor;
+        /// <summary>
+        /// Надпись с названием игры
+        /// </summary>
         public SmoothLabel gameName;
+        /// <summary>
+        /// Надпись в разделе Об игре
+        /// </summary>
         public SmoothLabel gameInfo;
+        /// <summary>
+        /// Надпись в разделе Правила игры
+        /// </summary>
         public SmoothLabel gameRules;
+        /// <summary>
+        /// Кнопка Закрыть в разделе Об игре
+        /// </summary>
         public SmoothLabel closeWindow;
+        /// <summary>
+        /// Кнопка Закрыть в разделе Правила
+        /// </summary>
         public SmoothLabel closeWindow2;
+        /// <summary>
+        /// Временная надпись
+        /// </summary>
         public SmoothLabel label;
+        /// <summary>
+        /// Надпись Найди!
+        /// </summary>
         public SmoothLabel labelFind;
+        /// <summary>
+        /// Надпись о результате игры
+        /// </summary>
         public SmoothLabel labelRes;
+        /// <summary>
+        /// Надпись о успешном сохранении игры
+        /// </summary>
         public SmoothLabel labelSave;
+        /// <summary>
+        /// Надпись о количестве набранных очков
+        /// </summary>
         public SmoothLabel scoreLabel;
+        /// <summary>
+        /// Текст кнопок в меню
+        /// </summary>
         public string[] buttonsText;
+        /// <summary>
+        /// Текст кнопок после прохождения уровня
+        /// </summary>
         public string[] buttonsText2;
+        /// <summary>
+        /// Слова, из которых будут выбираться загаданные слова
+        /// </summary>
         public string[] words;
+        /// <summary>
+        /// Позиции блоков при инициализации уровня
+        /// </summary>
         public int[][] blockPositions;
+        /// <summary>
+        /// Позиции таймеров
+        /// </summary>
         public int[][] timerPositions;
+        /// <summary>
+        /// Позиции блоков при повторном отображении
+        /// </summary>
         public int[] blockPositions2;
+        /// <summary>
+        /// Позиции кнопок после прохождения уровня
+        /// </summary>
         public int[] buttonPositions2;
+        /// <summary>
+        /// Позиции блоков с вариантами ответов
+        /// </summary>
         public int[] answerPositions;
+        /// <summary>
+        /// Индексы слов, учатсвующих в игре, в словаре
+        /// </summary>
         public int[] numberWords;
+        /// <summary>
+        /// Индекс спрятанного слова в словаре
+        /// </summary>
         public int indexHideWord;
+        /// <summary>
+        /// Индекс спрятанного блока
+        /// </summary>
         public int curIndex;
+        /// <summary>
+        /// Объект для использования рандома
+        /// </summary>
         public Random rnd;
+        /// <summary>
+        /// Проверка победил или нет?
+        /// </summary>
         public bool win;
+        /// <summary>
+        /// Количество набранных очков
+        /// </summary>
         public int score;
 
+        /// <summary>
+        /// Блоки с загаданными словами
+        /// </summary>
         public List<SmoothLabel> smoothLabels;
+        /// <summary>
+        /// Таймеры
+        /// </summary>
         public List<SmoothLabel> smoothTimers;
+        /// <summary>
+        /// Блоки с вариантами ответов
+        /// </summary>
         public List<SmoothLabel> smoothAnswers;
+        /// <summary>
+        /// Кнопки меню
+        /// </summary>
         public List<SmoothLabel> smoothButtons;
+        /// <summary>
+        /// Кнопки меню после прохождения уровня
+        /// </summary>
         public List<SmoothLabel> smoothButtons2;
+        /// <summary>
+        /// Индекс вариантов ответов в словаре
+        /// </summary>
         public List<int> numberAnswers;
+        /// <summary>
+        /// Объект для использования сторонних шрифтов
+        /// </summary>
         public PrivateFontCollection private_fonts = new PrivateFontCollection();
 
+        /// <summary>
+        /// Функция загрузки шрифта Montserrat из словаря
+        /// </summary>
         private void LoadFont()
         {
             using (MemoryStream fontStream = new MemoryStream(Properties.Resources.Montserrat_ExtraBold))
@@ -61,6 +169,9 @@ namespace Memory_Trainer
             }
         }
 
+        /// <summary>
+        /// Конструктор формы
+        /// </summary>
         public FormLostWord()
         {
             InitializeComponent();
@@ -234,11 +345,21 @@ namespace Memory_Trainer
             }
         }
 
+        /// <summary>
+        /// Закрытие всплывающих окон
+        /// </summary>
+        /// <param name="sender">Объект, который в обработке</param>
+        /// <param name="e">Аргументы события</param>
         private void Window_Close(object sender, EventArgs e)
         {
             (sender as SmoothLabel).Parent.Hide();
         }
 
+        /// <summary>
+        /// Обработчик нажатия по кнопке меню
+        /// </summary>
+        /// <param name="sender">Объект, который в обработке</param>
+        /// <param name="e">Аргументы события</param>
         private void Buttons_Click(object sender, EventArgs e)
         {
             string buttonText = (sender as SmoothLabel).Text;
@@ -285,6 +406,9 @@ namespace Memory_Trainer
             }
         }
 
+        /// <summary>
+        /// Инициализация уровня
+        /// </summary>
         public void InitGame()
         {
             if (labelSave != null)
@@ -342,16 +466,26 @@ namespace Memory_Trainer
             }
         }
 
+        /// <summary>
+        /// Функция прорисовывает игровое поле.
+        /// </summary>
         public void DrawField()
         {
             throw new NotImplementedException();
         }
+
 
         public bool IsFinish()
         {
             return 2 * 2 == 2 + 2;
         }
 
+        /// <summary>
+        /// Создания блока
+        /// </summary>
+        /// <param name="word">Слово на блоке</param>
+        /// <param name="left">Позиция для вставки по х</param>
+        /// <param name="top">Позиция для вставки по у</param>
         public void CreateBlocks(string word, int left, int top)
         {
             SmoothLabel label2 = new SmoothLabel
@@ -372,6 +506,9 @@ namespace Memory_Trainer
             smoothLabels.Add(label2);
         }
 
+        /// <summary>
+        /// Функция для открытия сохраненной игры
+        /// </summary>
         public void OpenGame()
         {
             string s;
@@ -405,7 +542,10 @@ namespace Memory_Trainer
             timerIntro.Enabled = true;
             InitGame();
         }
-
+        
+        /// <summary>
+        /// Функция для сохранения игры
+        /// </summary>
         public void SaveGame()
         {
             using(FileStream file = new FileStream("lostWordSave", FileMode.Create))
@@ -433,26 +573,47 @@ namespace Memory_Trainer
             timerSave.Enabled = true;
         }
 
+        /// <summary>
+        /// Функция для отображения информации об игре
+        /// </summary>
         public void ShowInfo()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Функция для отображения правил игры
+        /// </summary>
         public void ShowRules()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Функция изменения кнопки при наведении мышки на блок
+        /// </summary>
+        /// <param name="sender">Объект, который в обработке</param>
+        /// <param name="e">Аргументы события</param>
         private void ChangeBackMouseEnter(object sender, EventArgs e)
         {
             (sender as Label).BackColor = Color.FromArgb(244, 135, 76);
         }
 
+        /// <summary>
+        /// Функция изменения кнопки при покидании мышки блока
+        /// </summary>
+        /// <param name="sender">Объект, который в обработке</param>
+        /// <param name="e">Аргументы события</param>
         private void ChangeBackMouseLeave(object sender, EventArgs e)
         {
             (sender as Label).BackColor = Color.FromArgb(163, 88, 109);
         }
 
+        /// <summary>
+        /// Таймер при инициализации
+        /// </summary>
+        /// <param name="sender">Объект, который в обработке</param>
+        /// <param name="e">Аргументы события</param>
         private void TimerIntro_Tick(object sender, System.EventArgs e)
         {
             timerValue++;
@@ -468,6 +629,9 @@ namespace Memory_Trainer
             }
         }
 
+        /// <summary>
+        /// Функция очистки ресурсов
+        /// </summary>
         public void Dispose()
         {
             foreach (var item in smoothLabels)
@@ -484,6 +648,11 @@ namespace Memory_Trainer
             }
         }
 
+        /// <summary>
+        /// Таймер при создании блоков
+        /// </summary>
+        /// <param name="sender">Объект, который в обработке</param>
+        /// <param name="e">Аргументы события</param>
         private void TimerCreateBlock_Tick(object sender, EventArgs e)
         {
             CreateBlocks(words[numberWords[timerValue]], blockPositions[timerValue][0], blockPositions[timerValue][1]);
@@ -515,6 +684,11 @@ namespace Memory_Trainer
             timerValue++;
         }
 
+        /// <summary>
+        /// Таймер при исчезновении блоков
+        /// </summary>
+        /// <param name="sender">Объект, который в обработке</param>
+        /// <param name="e">Аргументы события</param>
         private void TimerCountDown_Tick(object sender, EventArgs e)
         {
             timerValue--;
@@ -565,6 +739,11 @@ namespace Memory_Trainer
             }
         }
 
+        /// <summary>
+        /// Таймер перед исчезновением слова
+        /// </summary>
+        /// <param name="sender">Объект, который в обработке</param>
+        /// <param name="e">Аргументы события</param>
         private void TimerFind_Tick(object sender, EventArgs e)
         {
             timerValue++;
@@ -606,6 +785,11 @@ namespace Memory_Trainer
             }
         }
 
+        /// <summary>
+        /// Таймер при повторном отображении блоков
+        /// </summary>
+        /// <param name="sender">Объект, который в обработке</param>
+        /// <param name="e">Аргументы события</param>
         private void TimerShowBlock_Tick(object sender, EventArgs e)
         {
             if (timerValue == 6)
@@ -653,6 +837,11 @@ namespace Memory_Trainer
             timerValue++;
         }
 
+        /// <summary>
+        /// Обработка нажатия на блок варианта ответа
+        /// </summary>
+        /// <param name="sender">Объект, который в обработке</param>
+        /// <param name="e">Аргументы события</param>
         private void Answer_Click(object sender, EventArgs e)
         {
             win = false;
@@ -686,7 +875,11 @@ namespace Memory_Trainer
             IsFinish();
         }
 
-
+        /// <summary>
+        /// Таймер при прохождения уровня
+        /// </summary>
+        /// <param name="sender">Объект, который в обработке</param>
+        /// <param name="e">Аргументы события</param>
         private void TimerFinish_Tick(object sender, EventArgs e)
         {
             if (timerValue == 1)
@@ -749,6 +942,11 @@ namespace Memory_Trainer
             timerValue++;
         }
 
+        /// <summary>
+        /// Таймер при отображении надписи о сохранении игры
+        /// </summary>
+        /// <param name="sender">Объект, который в обработке</param>
+        /// <param name="e">Аргументы события</param>
         private void TimerSave_Tick(object sender, EventArgs e)
         {
             if(timerValue == 2)
