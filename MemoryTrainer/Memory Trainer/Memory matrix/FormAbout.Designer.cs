@@ -34,7 +34,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Memory_Trainer.Properties.Resources.fonfon1;
+            this.BackgroundImage = global::Memory_Trainer.Properties.Resources.fonfon;
             this.ClientSize = new System.Drawing.Size(607, 404);
             this.MaximumSize = new System.Drawing.Size(623, 443);
             this.MinimumSize = new System.Drawing.Size(623, 443);

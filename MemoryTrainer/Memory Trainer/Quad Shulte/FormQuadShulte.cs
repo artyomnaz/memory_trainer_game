@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
@@ -271,6 +272,10 @@ namespace Memory_Trainer.Quad_Shulte
         /// </summary>
         public void OpenGame()
         {
+            if (!File.Exists(@"QuadShulte_save.txt"))
+            {
+                return;
+            }
             string[] lines = System.IO.File.ReadAllLines(@"QuadShulte_save.txt");
             NameGame = Convert.ToInt32(lines[0].TrimEnd()) ^ key;
             Level = Convert.ToInt32(lines[1].TrimEnd()) ^ key;

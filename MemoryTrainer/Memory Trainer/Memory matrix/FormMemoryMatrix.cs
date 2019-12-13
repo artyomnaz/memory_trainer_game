@@ -39,7 +39,7 @@ namespace Memory_Trainer.Memory_matrix
 
         private void LoadFont()
         {
-            using (MemoryStream fontStream = new MemoryStream(Resource2.MyFont))
+            using (MemoryStream fontStream = new MemoryStream(Properties.Resources.MyFont))
             {
                 IntPtr data = Marshal.AllocCoTaskMem((int)fontStream.Length);
                 byte[] fontdata = new byte[fontStream.Length];
@@ -82,7 +82,7 @@ namespace Memory_Trainer.Memory_matrix
             LevelLabel.Top = 20;
             LevelLabel.Width = 180;
             LevelLabel.Height = 60;
-            LevelLabel.ForeColor = Color.Black;
+            LevelLabel.ForeColor = Color.FromArgb(39, 36, 36);
             LevelLabel.Font = new Font(private_fonts.Families[0], 20F);
             LevelLabel.Text = "Уровень: " + Level.ToString();
             LevelLabel.BackColor = Color.Transparent;
@@ -94,7 +94,7 @@ namespace Memory_Trainer.Memory_matrix
             label.Height = 60;
             label.Left = this.Width / 2 - 75;
             label.Top = 20;
-            label.ForeColor = Color.Red;
+            label.ForeColor = Color.FromArgb(92, 61, 70);
             label.Text = "Запомни!";
             label.BackColor = Color.Transparent;
 
@@ -104,6 +104,8 @@ namespace Memory_Trainer.Memory_matrix
             SaveButton.Height = 50;
             SaveButton.Width = 130;
             SaveButton.Text = "Сохранить игру";
+            SaveButton.BackColor = Color.FromArgb(231, 245, 222);
+            SaveButton.Padding = Padding.Empty;
 
             OpenButton.Left = this.Width - 170;
             OpenButton.Top = 100;
@@ -111,6 +113,7 @@ namespace Memory_Trainer.Memory_matrix
             OpenButton.Height = 50;
             OpenButton.Width = 130;
             OpenButton.Text = "Открыть игру";
+            OpenButton.BackColor = Color.FromArgb(231, 245, 222);
 
             RulesButton.Left = this.Width - 170;
             RulesButton.Top = this.Height - 140;
@@ -118,6 +121,7 @@ namespace Memory_Trainer.Memory_matrix
             RulesButton.Height = 50;
             RulesButton.Width = 130;
             RulesButton.Text = "Правила";
+            RulesButton.BackColor = Color.FromArgb(231, 245, 222);
 
             AboutButton.Left = this.Width - 170;
             AboutButton.Top = this.Height - 210;
@@ -125,6 +129,7 @@ namespace Memory_Trainer.Memory_matrix
             AboutButton.Height = 50;
             AboutButton.Width = 130;
             AboutButton.Text = "Об игре";
+            AboutButton.BackColor = Color.FromArgb(231, 245, 222);
 
             timerValue = 0;
             delta = 0;
@@ -170,7 +175,7 @@ namespace Memory_Trainer.Memory_matrix
             FigureGrid.Height = 2 * this.Height / 3;
             FigureGrid.Top = this.Height / 2 - FigureGrid.Height / 2;
             FigureGrid.Left = this.Width / 2 - FigureGrid.Width / 2;
-            FigureGrid.GridColor = Color.DarkGray;
+            FigureGrid.GridColor = Color.DarkGray; 
             FigureGrid.BorderStyle = BorderStyle.Fixed3D;
 
             FigureGrid.RowHeadersVisible = false;
@@ -188,7 +193,7 @@ namespace Memory_Trainer.Memory_matrix
                 {
                     pos[i][j] = (int)pos_state.NoColor;
                     FigureGrid.Rows[i].Cells[j].Selected = false;
-                    FigureGrid.Rows[i].Cells[j].Style.BackColor = Color.WhiteSmoke;
+                    FigureGrid.Rows[i].Cells[j].Style.BackColor = Color.FromArgb(231, 245, 222);
                 }
             }
         }
@@ -258,14 +263,14 @@ namespace Memory_Trainer.Memory_matrix
 
             for (int i = 0; i < n; i++)
                 for (int j = 0; j < n; j++)
-                    FigureGrid.Rows[i].Cells[j].Style.BackColor = Color.WhiteSmoke;
+                    FigureGrid.Rows[i].Cells[j].Style.BackColor = Color.FromArgb(231, 245, 222); ;
         }
 
         private void GameProcess(int i, int j)
         {
             if (pos[i][j] == (int)pos_state.WithColor)
             {
-                FigureGrid.Rows[i].Cells[j].Style.BackColor = Color.IndianRed;
+                FigureGrid.Rows[i].Cells[j].Style.BackColor = Color.FromArgb(92, 134, 141);
                 FigureGrid.ClearSelection();
                 pos[i][j] = (int)pos_state.Chosen;
                 if (IsFinish())
@@ -335,7 +340,7 @@ namespace Memory_Trainer.Memory_matrix
                 for (int j = 0; j < n; j++)
                     if (pos[i][j] == (int)pos_state.ForAnimation)
                     {
-                        FigureGrid.Rows[i].Cells[j].Style.BackColor = Color.IndianRed;
+                        FigureGrid.Rows[i].Cells[j].Style.BackColor = Color.FromArgb(92, 134, 141);
                         pos[i][j] = (int)pos_state.WithColor;
                         flag = true;
                         break;
@@ -360,9 +365,6 @@ namespace Memory_Trainer.Memory_matrix
 
         public void SaveGame()
         {
-            if (timer.Enabled)
-                return;
-
             List<string> SaveList = new List<string>();
             var level_shifr = Level ^ key;
             var n_shifr = n ^ key;
@@ -437,21 +439,29 @@ namespace Memory_Trainer.Memory_matrix
 
         public void Save(object sender, EventArgs e)
         {
+            if (timer.Enabled)
+                return;
             SaveGame();
         }
 
         public void Open(object sender, EventArgs e)
         {
+            if (timer.Enabled)
+                return;
             OpenGame();
         }
 
         public void Rules(object sender, EventArgs e)
         {
+            if (timer.Enabled)
+                return;
             ShowRules();
         }
 
         public void Info(object sender, EventArgs e)
         {
+            if (timer.Enabled)
+                return;
             ShowInfo();
         }
 

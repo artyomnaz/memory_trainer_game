@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -174,7 +175,8 @@ namespace Memory_Trainer {
             pbBackground.Image = Properties.Resources.bg;
             g = Graphics.FromImage(pbBackground.Image);
             // Мяч при анимации не рисуем
-            if (!isAnimation) g.DrawImage(ball_image, ball_rect);
+            if (!isAnimation)
+                g.DrawImage(ball_image, ball_rect);
 
             for (int i = 0; i < thimbles.Length; i++)
                 g.DrawImage(thimble_image, thimbles[i]);
@@ -351,6 +353,7 @@ namespace Memory_Trainer {
         /// <param name="e">Аргументы события</param>
         private void TimerCheckWin_Tick(object sender, EventArgs e)
         {
+            isAnimation = false;
             // таймер проверки на победу - подъем всех вверх
             for (int i = 0; i < 3; i++)
             {
@@ -362,20 +365,23 @@ namespace Memory_Trainer {
             if (isToTop && thimbles[0].Top == y2)
             {
                 // подняли - задержали
+                
                 isToTop = !isToTop;
                 Thread.Sleep(400);
             }
             else if (!isToTop && thimbles[0].Top == y1)
             {
                 // остановили таймер
+                
                 timerAllToTop.Stop();
                 timerAllToTop.Enabled = false;
-                isAnimation = false;
+                
                 // проверка победы
                 IsFinish();
                 return;
             }
             DrawField();
+            isAnimation = true;
         }
 
         /// <summary>
@@ -418,6 +424,8 @@ namespace Memory_Trainer {
             dy = y2 - y1;
             isToTop = true;
             // анимируем подъем всех
+            pbBackground.Click += null;
+            isAnimation = true;
             timerAllToTop.Enabled = true;
             timerAllToTop.Start();
         }
@@ -441,6 +449,10 @@ namespace Memory_Trainer {
         /// </summary>
         public void OpenGame()
         {
+            if (!File.Exists(@"thimbles_save.txt"))
+            {
+                return;
+            }
             // открытие сохраненной игры
             string[] lines = System.IO.File.ReadAllLines(@"thimbles_save.txt");
             int[] parameters = new int[lines.Length];

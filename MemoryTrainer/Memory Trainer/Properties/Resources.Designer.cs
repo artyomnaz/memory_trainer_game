@@ -25,9 +25,9 @@ namespace Memory_Trainer.Properties {
     internal class Resources {
 
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
@@ -61,7 +61,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _1 {
             get {
@@ -71,7 +71,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _10 {
             get {
@@ -81,7 +81,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _11 {
             get {
@@ -91,7 +91,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _12 {
             get {
@@ -101,7 +101,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _13 {
             get {
@@ -111,7 +111,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _14 {
             get {
@@ -121,7 +121,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _15 {
             get {
@@ -131,7 +131,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _16 {
             get {
@@ -141,7 +141,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _17 {
             get {
@@ -151,7 +151,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _18 {
             get {
@@ -161,7 +161,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _19 {
             get {
@@ -171,7 +171,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _2 {
             get {
@@ -181,7 +181,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _20 {
             get {
@@ -191,7 +191,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _21 {
             get {
@@ -201,7 +201,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _22 {
             get {
@@ -211,7 +211,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _23 {
             get {
@@ -221,7 +221,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _24 {
             get {
@@ -231,7 +231,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _25 {
             get {
@@ -241,7 +241,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _26 {
             get {
@@ -251,49 +251,18 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _27
-        {
-            get
-            {
+        internal static System.Drawing.Bitmap _27 {
+            get {
                 object obj = ResourceManager.GetObject("_27", resourceCulture);
-                return ((System.Drawing.Bitmap) (obj));
-            }
-        }
-
-        internal static System.Drawing.Bitmap ball {
-            get {
-                object obj = ResourceManager.GetObject("ball", resourceCulture);
-				return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        internal static System.Drawing.Bitmap fon {
-            get {
-                object obj = ResourceManager.GetObject("fon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
+
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bg {
-            get {
-                object obj = ResourceManager.GetObject("bg", resourceCulture);
-				return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-
-        internal static System.Drawing.Bitmap InfoPict
-        {
-            get
-            {
-                object obj = ResourceManager.GetObject("InfoPict", resourceCulture);
-                return ((System.Drawing.Bitmap) (obj));
-            }
-        }
-
         internal static System.Drawing.Bitmap _28 {
             get {
                 object obj = ResourceManager.GetObject("_28", resourceCulture);
@@ -302,7 +271,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _29 {
             get {
@@ -312,24 +281,8 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bg_about {
-            get {
-                object obj = ResourceManager.GetObject("bg_about", resourceCulture);
-				return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-
-        internal static System.Drawing.Bitmap Rules
-        {
-            get
-            {
-                object obj = ResourceManager.GetObject("Rules", resourceCulture);
-                return ((System.Drawing.Bitmap) (obj));
-            }
-        }
-
         internal static System.Drawing.Bitmap _3 {
             get {
                 object obj = ResourceManager.GetObject("_3", resourceCulture);
@@ -338,7 +291,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _30 {
             get {
@@ -346,41 +299,20 @@ namespace Memory_Trainer.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
+
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _4
-        {
-            get
-            {
+        internal static System.Drawing.Bitmap _4 {
+            get {
                 object obj = ResourceManager.GetObject("_4", resourceCulture);
-                return ((System.Drawing.Bitmap) (obj));
-            }
-        }
-
-        internal static System.Drawing.Bitmap bg_rules {
-            get {
-                object obj = ResourceManager.GetObject("bg_rules", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap thimble {
-            get {
-                object obj = ResourceManager.GetObject("thimble", resourceCulture);
-				return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        internal static System.Drawing.Bitmap win {
-            get {
-                object obj = ResourceManager.GetObject("win", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
         internal static System.Drawing.Bitmap _5 {
             get {
                 object obj = ResourceManager.GetObject("_5", resourceCulture);
@@ -389,7 +321,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _6 {
             get {
@@ -399,7 +331,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _7 {
             get {
@@ -409,7 +341,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _8 {
             get {
@@ -419,7 +351,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _9 {
             get {
@@ -429,7 +361,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Back {
             get {
@@ -439,7 +371,47 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ball {
+            get {
+                object obj = ResourceManager.GetObject("ball", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bg {
+            get {
+                object obj = ResourceManager.GetObject("bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bg_about {
+            get {
+                object obj = ResourceManager.GetObject("bg_about", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bg_rules {
+            get {
+                object obj = ResourceManager.GetObject("bg_rules", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Face {
             get {
@@ -449,7 +421,27 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fon {
+            get {
+                object obj = ResourceManager.GetObject("fon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fonfon {
+            get {
+                object obj = ResourceManager.GetObject("fonfon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] fonto {
             get {
@@ -459,7 +451,7 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Об игре
+        ///   Looks up a localized string similar to Об игре
         ///
         ///Цель игры: развивать наблюдательность,
         ///внимание, тонкость зрительного восприятия,
@@ -471,7 +463,7 @@ namespace Memory_Trainer.Properties {
         ///средство поддержания своего интеллекта в тонусе.
         ///Известно, что зрительное восприятие в большей степени ориентировано
         ///именно на анализ объектов, поэтому мы чаще всего
-        ///применяем эти знания [остаток строки не уместился]&quot;;.
+        ///применяем эти знания [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Info {
             get {
@@ -480,7 +472,45 @@ namespace Memory_Trainer.Properties {
         }
 
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Правила
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap InfoPict {
+            get {
+                object obj = ResourceManager.GetObject("InfoPict", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] MyFont {
+            get {
+                object obj = ResourceManager.GetObject("MyFont", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Montserrat_ExtraBold {
+            get {
+                object obj = ResourceManager.GetObject("Montserrat_ExtraBold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Rules {
+            get {
+                object obj = ResourceManager.GetObject("Rules", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Правила
         ///
         ///Игроку предлагается поле с некоторым количеством разных по
         ///оформлению и форме карточек.
@@ -492,30 +522,104 @@ namespace Memory_Trainer.Properties {
         ///Для открытия карточки используйте
         ///левую или правую кнопки мыши..
         /// </summary>
-        internal static string RulesFindAPair
-        {
+        internal static string RulesFindAPair {
             get {
                 return ResourceManager.GetString("RulesFindAPair", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap fonfon {
+        internal static System.Drawing.Bitmap thimble {
             get {
-                object obj = ResourceManager.GetObject("fonfon", resourceCulture);
+                object obj = ResourceManager.GetObject("thimble", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap fonfon1 {
+        internal static System.Drawing.Bitmap win {
             get {
-                object obj = ResourceManager.GetObject("fonfon1", resourceCulture);
+                object obj = ResourceManager.GetObject("win", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на год
+        ///человек
+        ///время
+        ///дело
+        ///жизнь
+        ///день
+        ///рука
+        ///работа
+        ///слово
+        ///место
+        ///вопрос
+        ///лицо
+        ///глаз
+        ///страна
+        ///друг
+        ///сторона
+        ///дом
+        ///случай
+        ///ребенок
+        ///голова
+        ///система
+        ///вид
+        ///конец
+        ///отношение
+        ///город
+        ///часть
+        ///женщина
+        ///проблема
+        ///земля
+        ///решение
+        ///власть
+        ///машина
+        ///закон
+        ///час
+        ///образ
+        ///отец
+        ///история
+        ///нога
+        ///вода
+        ///война
+        ///возможность
+        ///компания
+        ///результат
+        ///дверь
+        ///бог
+        ///народ
+        ///область
+        ///число
+        ///голос
+        ///развитие
+        ///группа
+        ///жена
+        ///процесс
+        ///условие
+        ///книга
+        ///ночь
+        ///суд
+        ///деньга
+        ///уровень
+        ///начало
+        ///государство
+        ///стол
+        ///средство
+        ///связь
+        ///имя
+        ///президент
+        ///форма
+        ///п [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string words {
+            get {
+                return ResourceManager.GetString("words", resourceCulture);
             }
         }
     }
