@@ -44,6 +44,16 @@ namespace UnitTests.Thimbles
         public void TestMethodTimerShuffle_Tick()
         {
             PrivateObject po = new PrivateObject(form);
+            Rectangle[] rect = new Rectangle[]
+            {
+                new Rectangle(0,0,0,0), 
+                new Rectangle(0,0,0,0), 
+                new Rectangle(0,0,0,0), 
+            };
+            po.SetField("thimbles",rect);
+            po.SetField("ind1",0);
+            po.SetField("x2",0);
+            po.SetField("y2",0);
             po.Invoke("TimerShuffle_Tick", null, new object[] { null, null });
         }
 
@@ -123,6 +133,20 @@ namespace UnitTests.Thimbles
             po.SetField("choise", 2);
             po.SetField("bPos", 1);
             Assert.AreEqual(form.IsFinish(), false);
+        }
+
+        [Test]
+        public void TestMethodShuffle()
+        {
+            PrivateObject po = new PrivateObject(form);
+            po.Invoke("Shuffle");
+        }
+
+        [Test]
+        public void TestMethodDispose()
+        {
+            PrivateObject po = new PrivateObject(form);
+            form.Dispose();
         }
     }
 }

@@ -18,8 +18,24 @@ namespace UnitTests.QuadShulte
         private FormQuadShulte form = new FormQuadShulte();
 
         [Test]
+        public void TestMethodDispose()
+        {
+            form.Dispose();
+        }
+
+        [Test]
+        public void TestMethodGame()
+        {
+            FormQuadShulte form = new FormQuadShulte();
+            PrivateObject po = new PrivateObject(form);
+            po.Invoke("Game", 1, 1);
+        }
+
+        [Test]
         public void TestMethodShowInfo()
         {
+            FormQuadShulte form = new FormQuadShulte();
+
             PrivateObject po = new PrivateObject(form);
             po.Invoke("ShowInfo");
         }
@@ -27,6 +43,8 @@ namespace UnitTests.QuadShulte
         [Test]
         public void TestMethodShowRules()
         {
+            FormQuadShulte form = new FormQuadShulte();
+
             PrivateObject po = new PrivateObject(form);
             po.Invoke("ShowRules");
         }
@@ -56,6 +74,8 @@ namespace UnitTests.QuadShulte
         [Test]
         public void TestMethodNewGamebutton_Click()
         {
+            FormQuadShulte form = new FormQuadShulte();
+
             PrivateObject po = new PrivateObject(form);
             po.Invoke("NewGamebutton_Click", null, new object[] { null, null });
         }
@@ -70,7 +90,12 @@ namespace UnitTests.QuadShulte
         [Test]
         public void TestMethodSavebutton_Click()
         {
+            FormQuadShulte form = new FormQuadShulte();
+
             PrivateObject po = new PrivateObject(form);
+            form.NameGame = 4;
+            po.Invoke("Savebutton_Click", null, new object[] { null, null });
+            form.NameGame = 3;
             po.Invoke("Savebutton_Click", null, new object[] { null, null });
         }
 
@@ -110,12 +135,15 @@ namespace UnitTests.QuadShulte
         public void TestMethodFormQuadShulte_FormClosed()
         {
             PrivateObject po = new PrivateObject(form);
+            form.Owner = new Form();
             po.Invoke("FormQuadShulte_FormClosed", null, new object[] { null, null });
         }
 
         [Test]
         public void TestMethodSaveGame()
         {
+            FormQuadShulte form = new FormQuadShulte();
+
             PrivateObject po = new PrivateObject(form);
             form.SaveGame();
         }
@@ -138,6 +166,8 @@ namespace UnitTests.QuadShulte
         [Test]
         public void TestMethodIsFinish()
         {
+            FormQuadShulte form = new FormQuadShulte();
+
             form.Level = 1;
             PrivateObject po = new PrivateObject(form);
             po.SetField("num", 2);
@@ -157,6 +187,10 @@ namespace UnitTests.QuadShulte
         [Test]
         public void TestMethodOpenGame()
         {
+            FormQuadShulte form = new FormQuadShulte();
+            PrivateObject po = new PrivateObject(form);
+            form.SaveGame();
+
             var lines = new[] { "0",
                 "7",
                 "2",
@@ -167,10 +201,10 @@ namespace UnitTests.QuadShulte
                 "й ш е с о",
                 "х ж б р к",
                 "м д п н з" };
-            PrivateObject po = new PrivateObject(form);
             po.SetField("key", 2);
             System.IO.File.WriteAllLines("QuadShulte_save.txt", lines);
             form.OpenGame();
+            po.Invoke("OpenGame");/*
             lines = new[] { "1",
                 "7",
                 "2",
@@ -195,7 +229,21 @@ namespace UnitTests.QuadShulte
                 "х ж б р к",
                 "м д п н з" };
             System.IO.File.WriteAllLines("QuadShulte_save.txt", lines);
-            form.OpenGame();
+            form.OpenGame();*/
+
         }
+
+        [Test]
+        public void TestMethodDrawField()
+        {
+            FormQuadShulte form = new FormQuadShulte();
+
+            PrivateObject po = new PrivateObject(form);
+            form.NameGame = 4;
+            po.Invoke("DrawField");
+            form.NameGame = 3;
+            po.Invoke("DrawField");
+        }
+
     }
 }
