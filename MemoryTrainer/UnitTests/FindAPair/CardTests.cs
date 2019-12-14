@@ -62,7 +62,7 @@ namespace UnitTests.FindAPair
         }
 
         [Test]
-        public void TestMethodAnimationP()
+        public void TestMethodAnimation()
         {
             PrivateObject po = new PrivateObject(card);
             po.Invoke("Animation", null, new object[] { null});
@@ -71,6 +71,11 @@ namespace UnitTests.FindAPair
             po = new PrivateObject(card);
             po.Invoke("Animation", null, new object[] { null });
             card.Image.Width = tmp;
+            Card card1 = new Card(image, image, 0, null);
+            card1.Image.Width = 120;
+            PrivateObject po1 = new PrivateObject(card1);
+            po.SetField("_flip", false);
+            po1.Invoke("Animation", new Bitmap(100,100));
         }
 
     }

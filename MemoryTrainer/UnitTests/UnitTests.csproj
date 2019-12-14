@@ -66,13 +66,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FindAPair\CardTests.cs" />
+    <Compile Include="FindAPair\FormFindAPairTests.cs" />
+    <Compile Include="FindAPair\InfoTests.cs" />
+    <Compile Include="FindAPair\LevelManagerTests.cs" />
     <Compile Include="FindAPair\LevelTest.cs" />
+    <Compile Include="FormMemoryTrainerTests.cs" />
+    <Compile Include="Lost word\FormLostWordTests.cs" />
+    <Compile Include="Lost word\SmoothLabelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Thimbles\FormAboutThimblesTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -96,6 +103,10 @@
   <ItemGroup>
     <None Include="Resources\Face.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

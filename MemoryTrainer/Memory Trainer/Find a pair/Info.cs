@@ -8,7 +8,7 @@ namespace Memory_Trainer.Find_a_pair
     /// <summary>
     /// Класс, отвечающий за отображение информации об игре
     /// </summary>
-    class Info
+    public class Info
     {
         /// <summary>
         /// Выводит информацию об игре
